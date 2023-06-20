@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		91157FC32A3C176B00445E3F /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91157FC22A3C176B00445E3F /* SplashScreen.swift */; };
-		9177659A2A4016830004562D /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 917765992A4016830004562D /* LoginScreen.swift */; };
 		91DA64AD2A3ACAF0000DCBCD /* Aeroh_LinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DA64AC2A3ACAF0000DCBCD /* Aeroh_LinkApp.swift */; };
 		91DA64AF2A3ACAF0000DCBCD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DA64AE2A3ACAF0000DCBCD /* ContentView.swift */; };
 		91DA64B12A3ACAF2000DCBCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91DA64B02A3ACAF2000DCBCD /* Assets.xcassets */; };
@@ -16,9 +14,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		91157FC22A3C176B00445E3F /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		91157FC62A3CABD800445E3F /* Aeroh-Link-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Aeroh-Link-Info.plist"; sourceTree = SOURCE_ROOT; };
-		917765992A4016830004562D /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		91DA64A92A3ACAF0000DCBCD /* Aeroh Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aeroh Link.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91DA64AC2A3ACAF0000DCBCD /* Aeroh_LinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aeroh_LinkApp.swift; sourceTree = "<group>"; };
 		91DA64AE2A3ACAF0000DCBCD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -41,8 +37,6 @@
 			isa = PBXGroup;
 			children = (
 				91DA64AE2A3ACAF0000DCBCD /* ContentView.swift */,
-				917765992A4016830004562D /* LoginScreen.swift */,
-				91157FC22A3C176B00445E3F /* SplashScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,8 +163,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91157FC32A3C176B00445E3F /* SplashScreen.swift in Sources */,
-				9177659A2A4016830004562D /* LoginScreen.swift in Sources */,
 				91DA64AF2A3ACAF0000DCBCD /* ContentView.swift in Sources */,
 				91DA64AD2A3ACAF0000DCBCD /* Aeroh_LinkApp.swift in Sources */,
 			);
