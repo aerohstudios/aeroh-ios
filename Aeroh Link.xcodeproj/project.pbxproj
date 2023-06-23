@@ -15,6 +15,7 @@
 		58F0229F2A440F9D00980667 /* Aeroh_LinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F0229E2A440F9D00980667 /* Aeroh_LinkUITests.swift */; };
 		58F022A12A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022A02A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift */; };
 		918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */; };
+		918B84EB2A45798700C4FD75 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B84EA2A45798700C4FD75 /* SplashScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,8 @@
 		58F0229E2A440F9D00980667 /* Aeroh_LinkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aeroh_LinkUITests.swift; sourceTree = "<group>"; };
 		58F022A02A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aeroh_LinkUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
+		918B84EA2A45798700C4FD75 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		918B84EC2A457A5900C4FD75 /* Aeroh-Link-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Aeroh-Link-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,7 @@
 		58F022822A440F9C00980667 /* Aeroh Link */ = {
 			isa = PBXGroup;
 			children = (
+				918B84EC2A457A5900C4FD75 /* Aeroh-Link-Info.plist */,
 				918B84E72A4576C000C4FD75 /* View */,
 				58F022832A440F9C00980667 /* Aeroh_LinkApp.swift */,
 				58F022872A440F9D00980667 /* Assets.xcassets */,
@@ -134,6 +138,7 @@
 			children = (
 				58F022852A440F9C00980667 /* ContentView.swift */,
 				918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */,
+				918B84EA2A45798700C4FD75 /* SplashScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				918B84EB2A45798700C4FD75 /* SplashScreen.swift in Sources */,
 				58F022862A440F9C00980667 /* ContentView.swift in Sources */,
 				918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */,
 				58F022842A440F9C00980667 /* Aeroh_LinkApp.swift in Sources */,
@@ -431,9 +437,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Aeroh Link/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Aeroh-Link-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -462,9 +468,9 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Aeroh Link/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Aeroh-Link-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
