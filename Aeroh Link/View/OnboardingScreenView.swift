@@ -68,6 +68,7 @@ struct OnboardingScreenView: View {
                         .padding(.horizontal, 40)
                     }
                 }
+        .overlay(SplashScreen()) // Overlay SplashScreen
 
     }
 }
