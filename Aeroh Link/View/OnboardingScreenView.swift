@@ -21,8 +21,8 @@ struct OnboardingScreenView: View {
                             // AerohLinkIllustration Image
                             Image("AerohLinkIllustration")
                                 .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 200, height: 120.9)
+                                .aspectRatio(contentMode: .fit)          .frame(maxWidth: 400)
+                                .padding([.leading, .trailing], 80)
                             
                             // "Aeroh Link" Text
                             Text("Aeroh Link")
@@ -45,7 +45,7 @@ struct OnboardingScreenView: View {
                                 // Handle sign up action
                             }) {
                                 Text("Sign up")
-                                    .frame(width: 110, height: 25)
+                                    .frame(maxWidth: .infinity, minHeight: 25)
                                     .foregroundColor(.white)
                                     .padding()
                                     .background(Color(red: 0.06, green: 0.05, blue: 0.08))
@@ -57,8 +57,8 @@ struct OnboardingScreenView: View {
                             Button(action: {
                                
                             }) {
-                                Text("Login")
-                                    .frame(width: 110, height: 25)
+                                Text("Log in")
+                                    .frame(maxWidth: .infinity, minHeight: 25)
                                     .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
                                     .padding()
                                     .background(Color(red: 1.00, green: 0.79, blue: 0.23))
