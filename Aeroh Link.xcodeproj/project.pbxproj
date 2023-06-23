@@ -14,6 +14,7 @@
 		58F022952A440F9D00980667 /* Aeroh_LinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022942A440F9D00980667 /* Aeroh_LinkTests.swift */; };
 		58F0229F2A440F9D00980667 /* Aeroh_LinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F0229E2A440F9D00980667 /* Aeroh_LinkUITests.swift */; };
 		58F022A12A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022A02A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift */; };
+		918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		58F0229A2A440F9D00980667 /* Aeroh LinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aeroh LinkUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F0229E2A440F9D00980667 /* Aeroh_LinkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aeroh_LinkUITests.swift; sourceTree = "<group>"; };
 		58F022A02A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aeroh_LinkUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +96,8 @@
 		58F022822A440F9C00980667 /* Aeroh Link */ = {
 			isa = PBXGroup;
 			children = (
+				918B84E72A4576C000C4FD75 /* View */,
 				58F022832A440F9C00980667 /* Aeroh_LinkApp.swift */,
-				58F022852A440F9C00980667 /* ContentView.swift */,
 				58F022872A440F9D00980667 /* Assets.xcassets */,
 				58F022892A440F9D00980667 /* Preview Content */,
 			);
@@ -125,6 +127,15 @@
 				58F022A02A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift */,
 			);
 			path = "Aeroh LinkUITests";
+			sourceTree = "<group>";
+		};
+		918B84E72A4576C000C4FD75 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				58F022852A440F9C00980667 /* ContentView.swift */,
+				918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58F022862A440F9C00980667 /* ContentView.swift in Sources */,
+				918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */,
 				58F022842A440F9C00980667 /* Aeroh_LinkApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,6 +443,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.aeroh.Aeroh-Link";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -459,6 +474,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.aeroh.Aeroh-Link";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
