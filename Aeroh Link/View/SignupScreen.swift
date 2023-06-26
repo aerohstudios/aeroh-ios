@@ -70,12 +70,11 @@ struct SignupScreen: View {
                         // Handle sign up action
                     }) {
                         Text("Sign up")
-                            .frame(width: 295)
-                            .padding(.horizontal)
+                            .frame(maxWidth: .infinity)   .padding()
                             .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
-                            .padding()
                             .background(Color(red: 1.00, green: 0.79, blue: 0.23))
                             .clipShape(Capsule())
+                            .padding(.horizontal)
                     }
                     
                     // Separator and "OR" text
@@ -95,13 +94,12 @@ struct SignupScreen: View {
                     // Log in button
                    NavigationLink(destination: LoginScreen().navigationBarHidden(true), label: {
                        Text("Log in")
-                           .frame(width: 295)
-                           .padding(.horizontal)
+                           .frame(maxWidth: .infinity)       .padding()
                            .foregroundColor(.white)
-                           .padding()
                            .background(Color(red: 0.06, green: 0.05, blue: 0.08))
                            .cornerRadius(30)
                            .overlay(RoundedRectangle(cornerRadius: 30).stroke(Color.white, lineWidth: 1))
+                           .padding(.horizontal)
                    }).navigationBarHidden(true)
                         
                     
