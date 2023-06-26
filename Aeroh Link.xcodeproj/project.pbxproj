@@ -14,6 +14,8 @@
 		58F022952A440F9D00980667 /* Aeroh_LinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022942A440F9D00980667 /* Aeroh_LinkTests.swift */; };
 		58F0229F2A440F9D00980667 /* Aeroh_LinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F0229E2A440F9D00980667 /* Aeroh_LinkUITests.swift */; };
 		58F022A12A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022A02A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift */; };
+		911341422A49620200694A17 /* SignupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911341412A49620200694A17 /* SignupScreen.swift */; };
+		911341442A4962BE00694A17 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911341432A4962BE00694A17 /* LoginScreen.swift */; };
 		918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */; };
 		918B84EB2A45798700C4FD75 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B84EA2A45798700C4FD75 /* SplashScreen.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,8 @@
 		58F0229A2A440F9D00980667 /* Aeroh LinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aeroh LinkUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F0229E2A440F9D00980667 /* Aeroh_LinkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aeroh_LinkUITests.swift; sourceTree = "<group>"; };
 		58F022A02A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aeroh_LinkUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		911341412A49620200694A17 /* SignupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreen.swift; sourceTree = "<group>"; };
+		911341432A4962BE00694A17 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
 		918B84EA2A45798700C4FD75 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		918B84EC2A457A5900C4FD75 /* Aeroh-Link-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Aeroh-Link-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -139,6 +143,8 @@
 				58F022852A440F9C00980667 /* ContentView.swift */,
 				918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */,
 				918B84EA2A45798700C4FD75 /* SplashScreen.swift */,
+				911341412A49620200694A17 /* SignupScreen.swift */,
+				911341432A4962BE00694A17 /* LoginScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -276,7 +282,9 @@
 				918B84EB2A45798700C4FD75 /* SplashScreen.swift in Sources */,
 				58F022862A440F9C00980667 /* ContentView.swift in Sources */,
 				918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */,
+				911341422A49620200694A17 /* SignupScreen.swift in Sources */,
 				58F022842A440F9C00980667 /* Aeroh_LinkApp.swift in Sources */,
+				911341442A4962BE00694A17 /* LoginScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
