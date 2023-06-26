@@ -52,8 +52,8 @@ struct SignupScreen: View {
                         .padding(.horizontal)
                         .colorScheme(.dark)
                     
-                    // Password input field
-                    TextField("Password", text: $password)
+                    // Password secure field
+                    SecureField("Password", text: $password)
                         .foregroundColor(.white)
                         .padding()
                         .overlay(
