@@ -9,7 +9,7 @@ import SwiftUI
 
 struct OnboardingScreenView: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                         // Background color
                         Color(red: 0.06, green: 0.05, blue: 0.08)
