@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct SignupScreen: View {
-    @State private var name = ""
+    @State private var first_name = ""
     @State private var email = ""
     @State private var password = ""
+    @State private var firstNameError = false
+    @State private var emailError = false
+    @State private var passwordError = false
+    @State private var showAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
     
     var body: some View {
         ZStack {
@@ -31,43 +37,98 @@ struct SignupScreen: View {
                 
                 VStack(spacing: 22) {
                     // Name input field
-                    TextField("Name", text: $name)
-                        .foregroundColor(.white)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 30)
-                                .stroke(Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
-                        )
-                        .padding(.horizontal)
-                        .colorScheme(.dark)
+                    VStack {
+                        TextField("Name", text: $first_name)
+                            .disableAutocorrection(true)
+                            .foregroundColor(.white)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 30)
+                                    .stroke(firstNameError ? Color.red : Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
+                            )
+                            .padding(.horizontal)
+                            .colorScheme(.dark)
+                        
+                        // Error message for empty first name
+                        if firstNameError {
+                            HStack {
+                                Text("Please enter your name")
+                                    .foregroundColor(.red)
+                                    .font(.caption)
+                                    .padding(.horizontal)
+                                Spacer()
+                            }.padding(.horizontal)
+                        }
+                    }
                     
                     // Email input field
-                    TextField("Email", text: $email)
-                        .foregroundColor(.white)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 30)
-                                .stroke(Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
-                        )
-                        .padding(.horizontal)
-                        .colorScheme(.dark)
+                    VStack {
+                        TextField("Email", text: $email)
+                            .disableAutocorrection(true)
+                            .autocapitalization(.none)
+                            .foregroundColor(.white)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 30)
+                                    .stroke(emailError ? Color.red : Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
+                            )
+                            .padding(.horizontal)
+                            .colorScheme(.dark)
+                        // Error message for invalid email format
+                        if emailError {
+                            HStack {
+                                Text("Please enter a valid email")
+                                    .foregroundColor(.red)
+                                    .font(.caption)
+                                    .padding(.horizontal)
+                                
+                                Spacer()
+                            }.padding(.horizontal)
+                        }
+                    }
+                    
                     
                     // Password secure field
-                    SecureField("Password", text: $password)
-                        .foregroundColor(.white)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 30)
-                                .stroke(Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
-                        )
-                        .padding(.horizontal)
-                        .colorScheme(.dark)
+                    VStack {
+                        SecureField("Password", text: $password)
+                            .foregroundColor(.white)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 30)
+                                    .stroke(passwordError ? Color.red : Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
+                            )
+                            .padding(.horizontal)
+                            .colorScheme(.dark)
+                        
+                        
+                        // Error message for weak password
+                        if passwordError {
+                            HStack {
+                                Text("Password must be strong")
+                                    .foregroundColor(.red)
+                                    .font(.caption)
+                                    .padding(.horizontal)
+                                
+                                Spacer()
+                            }.padding(.horizontal)
+                        }
+                    }
                 }
+                
+                
+                
                 
                 VStack(spacing: 22) {
                     // Sign up button
                     Button(action: {
                         // Handle sign up action
+                        let isValid = validateForm()
+                        
+                        if isValid {
+                            SignupController().authenticate(first_name: first_name, email: email, password: password){ errorMessage in
+                                showAlert(title: "Error", message: errorMessage)
+                            }
+                        }
                     }) {
                         Text("Sign up")
                             .frame(maxWidth: .infinity)   .padding()
@@ -92,21 +153,74 @@ struct SignupScreen: View {
                     }
                     
                     // Log in button
-                   NavigationLink(destination: LoginScreen().navigationBarHidden(true), label: {
-                       Text("Log in")
-                           .frame(maxWidth: .infinity)       .padding()
-                           .foregroundColor(.white)
-                           .background(Color(red: 0.06, green: 0.05, blue: 0.08))
-                           .cornerRadius(30)
-                           .overlay(RoundedRectangle(cornerRadius: 30).stroke(Color.white, lineWidth: 1))
-                           .padding(.horizontal)
-                   }).navigationBarHidden(true)
-                        
+                    NavigationLink(destination: LoginScreen().navigationBarHidden(true), label: {
+                        Text("Log in")
+                            .frame(maxWidth: .infinity)       .padding()
+                            .foregroundColor(.white)
+                            .background(Color(red: 0.06, green: 0.05, blue: 0.08))
+                            .cornerRadius(30)
+                            .overlay(RoundedRectangle(cornerRadius: 30).stroke(Color.white, lineWidth: 1))
+                            .padding(.horizontal)
+                    }).navigationBarHidden(true)
+                    
                     
                 }
             }
             .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK").foregroundColor(.black)))
+            }
         }
+    }
+    private func showAlert(title: String, message: String) {
+        alertTitle = title
+        alertMessage = message
+        showAlert = true
+    }
+    
+    private func validateForm() -> Bool {
+        firstNameError = false
+        emailError = false
+        
+        guard !first_name.isEmpty else {
+            firstNameError = true
+            return false
+        }
+        
+        guard !email.isEmpty else {
+            emailError = true
+            return false
+        }
+        
+        // Check for correct email format using regular expression
+        let emailRegex = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        let isEmailValid = emailPredicate.evaluate(with: email)
+        
+        if !isEmailValid {
+            emailError = true
+            return false
+        }
+        
+        guard !password.isEmpty else {
+            passwordError = true
+            return false
+        }
+        
+        // Check for strong password (minimum 8 characters, combination of letters, numbers, and special characters)
+        let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$"
+        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+        let isPasswordValid = passwordPredicate.evaluate(with: password)
+        
+        if !isPasswordValid {
+            passwordError = true
+            return false
+        }
+        else{
+            passwordError = false
+        }
+        
+        return true
     }
 }
 
