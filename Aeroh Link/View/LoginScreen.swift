@@ -10,8 +10,17 @@ import SwiftUI
 struct LoginScreen: View {
     @State private var email = ""
     @State private var password = ""
+    @State private var isValid = false
+    @State private var emailError = false
+    @State private var passwordError = false
+    @State private var showAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
+    
+    
     
     var body: some View {
+        
         ZStack {
             // Background color
             Color(red: 0.06, green: 0.05, blue: 0.08)
@@ -30,15 +39,31 @@ struct LoginScreen: View {
                 
                 VStack(spacing: 22) {
                     // Email TextField
-                    TextField("Email", text: $email)
-                        .foregroundColor(.white)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 30)
-                                .stroke(Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
-                        )
-                        .padding(.horizontal)
-                        .colorScheme(.dark)
+                    VStack {
+                        TextField("Email", text: $email)
+                            .disableAutocorrection(true)
+                            .autocapitalization(.none)
+                            .foregroundColor(.white)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 30)
+                                    .stroke(emailError ? Color.red : Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
+                            )
+                            .padding(.horizontal)
+                            .colorScheme(.dark)
+                        
+                        if emailError {
+                            HStack {
+                                Text("Please enter a valid email")
+                                    .foregroundColor(.red)
+                                    .font(.caption)
+                                    .padding(.horizontal)
+                                
+                                Spacer()
+                            }.padding(.horizontal)
+                        }
+                    }
+                    
                     
                     // Password SecureField
                     SecureField("Password", text: $password)
@@ -46,7 +71,7 @@ struct LoginScreen: View {
                         .padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 30)
-                                .stroke(Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
+                                .stroke(passwordError ? Color.red : Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
                         )
                         .padding(.horizontal)
                         .colorScheme(.dark)
@@ -55,7 +80,15 @@ struct LoginScreen: View {
                 VStack(spacing: 22) {
                     // Log in Button
                     Button(action: {
-                        // Handle login action
+                        isValid = validateForm()
+                        
+                        if isValid {
+                            LoginController().authenticate(email: email, password: password){ errorMessage in
+                                showAlert(title: "Error", message: errorMessage)
+                            }
+                        }
+                        
+                        
                     }) {
                         Text("Log in")
                             .frame(maxWidth: .infinity)
@@ -96,26 +129,60 @@ struct LoginScreen: View {
                             )
                             .padding(.horizontal)
                     }).navigationBarHidden(true)
-                        
-                   
                     
-                    // Forgot Password Button
-                    Button(action: {
-                        // Handle forgot password action
-                    }) {
-                        Text("Forgot Password?")
-                            .foregroundColor(.accentColor)
-                            .font(.caption)
-                            .bold()
-                    }
+                    Link("Forgot Password?", destination: URL(string: "http://localhost:3000/users/password/new")!)
+                        .foregroundColor(.accentColor)
+                        .font(.caption)
+                        .bold()
+                    
                 }
+            }.alert(isPresented: $showAlert) {
+                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK").foregroundColor(.black)))
             }
         }
     }
+    
+    
+    
+    private func showAlert(title: String, message: String) {
+        alertTitle = title
+        alertMessage = message
+        showAlert = true
+    }
+    
+    private func validateForm() -> Bool {
+        emailError = false
+        
+        guard !email.isEmpty else {
+            emailError = true
+            return false
+        }
+        
+        // Check for correct email format using regular expression
+        let emailRegex = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        let isEmailValid = emailPredicate.evaluate(with: email)
+        
+        if !isEmailValid {
+            emailError = true
+            return false
+        }
+        
+        guard !password.isEmpty else {
+            passwordError = true
+            return false
+        }
+        
+        return true
+    }
+    
 }
+
+
 
 struct LoginScreen_Previews: PreviewProvider {
     static var previews: some View {
         LoginScreen()
     }
+    
 }
