@@ -193,7 +193,6 @@ struct SignupScreen: View {
         }
         
         // Check for correct email format using regular expression
-        let emailRegex = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         let isEmailValid = emailPredicate.evaluate(with: email)
         
@@ -208,7 +207,6 @@ struct SignupScreen: View {
         }
         
         // Check for strong password (minimum 8 characters, combination of letters, numbers, and special characters)
-        let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$"
         let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         let isPasswordValid = passwordPredicate.evaluate(with: password)
         

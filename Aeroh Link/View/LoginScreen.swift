@@ -159,7 +159,6 @@ struct LoginScreen: View {
         }
         
         // Check for correct email format using regular expression
-        let emailRegex = "[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         let isEmailValid = emailPredicate.evaluate(with: email)
         
