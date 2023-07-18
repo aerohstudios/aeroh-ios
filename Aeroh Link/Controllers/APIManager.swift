@@ -14,7 +14,7 @@ class APIManager {
     // Define a callback closure to handle errors
     typealias ErrorCallback = (String) -> Void
     
-    func callingLoginAPI(userRequestData: UserLoginModel, errorCallback: @escaping ErrorCallback) {
+    func callingLoginAPI(userRequestData: UserLoginPayload, errorCallback: @escaping ErrorCallback) {
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
@@ -44,7 +44,7 @@ class APIManager {
         }
     }
     
-    func callingSignupAPI(userRequestData: UserSignupModel, errorCallback: @escaping ErrorCallback) {
+    func callingSignupAPI(userRequestData: UserSignupPayload, errorCallback: @escaping ErrorCallback) {
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
