@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct signData_login{
+struct LoginSignaturePayload{
     let email: String
     let password: String
     let scopes: String
     let timestamp: Int
 }
 
-struct signData_signup{
+struct SignupSignaturePayload{
     let email: String
     let password: String
     let first_name: String
