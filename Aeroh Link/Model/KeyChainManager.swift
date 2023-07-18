@@ -11,10 +11,10 @@ import Security
 class KeychainManager {
     static let shared = KeychainManager()
     
-    private let accessTokenKey = "AccessToken"
-    private let refreshTokenKey = "RefreshToken"
-    private let expiresInKey = "ExpiresIn"
-    private let createdAtKey = "CreatedAt"
+    internal let accessTokenKey = "AccessTokenKey"
+        internal let refreshTokenKey = "RefreshTokenKey"
+        internal let expiresInKey = "ExpiresInKey"
+        internal let createdAtKey = "CreatedAtKey"
     
     func saveCredentials(accessToken: String, refreshToken: String, expiresIn: Int, createdAt: Int) {
         saveValue(accessToken, forKey: accessTokenKey)
@@ -84,5 +84,16 @@ class KeychainManager {
         
         return value
     }
+    internal func deleteValue(forKey key: String) {
+            let query: [String: Any] = [
+                kSecClass as String: kSecClassGenericPassword,
+                kSecAttrAccount as String: key
+            ]
+            
+            let status = SecItemDelete(query as CFDictionary)
+            if status != errSecSuccess {
+                print("Failed to delete value from keychain: \(status)")
+            }
+        }
 }
 
