@@ -21,14 +21,15 @@
 		91AD20AF2A5FA67C008D521D /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20AE2A5FA67C008D521D /* SignupController.swift */; };
 		91AD20B12A5FA736008D521D /* SignatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20B02A5FA736008D521D /* SignatureController.swift */; };
 		91AD20B42A5FA75F008D521D /* TimestampGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20B32A5FA75F008D521D /* TimestampGenerator.swift */; };
-		91AD20B72A5FA806008D521D /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20B62A5FA806008D521D /* DataModel.swift */; };
+		91AD20B72A5FA806008D521D /* SignaturePayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20B62A5FA806008D521D /* SignaturePayload.swift */; };
 		91AD20B92A5FA80F008D521D /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20B82A5FA80F008D521D /* KeyChainManager.swift */; };
-		91AD20BB2A5FA819008D521D /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20BA2A5FA819008D521D /* LoginModel.swift */; };
-		91AD20BD2A5FA824008D521D /* SignupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20BC2A5FA824008D521D /* SignupModel.swift */; };
+		91AD20BB2A5FA819008D521D /* UserLoginPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20BA2A5FA819008D521D /* UserLoginPayload.swift */; };
+		91AD20BD2A5FA824008D521D /* UserSignupPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20BC2A5FA824008D521D /* UserSignupPayload.swift */; };
 		91AD20BF2A5FAA24008D521D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20BE2A5FAA24008D521D /* APIManager.swift */; };
 		91AD20C12A5FAA49008D521D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20C02A5FAA49008D521D /* LoginController.swift */; };
 		91AD20C62A5FAB70008D521D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20C52A5FAB70008D521D /* Constant.swift */; };
 		91AD20C92A5FB2D1008D521D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 91AD20C82A5FB2D1008D521D /* Alamofire */; };
+		91AD20CB2A5FC120008D521D /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20CA2A5FC120008D521D /* HomeScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,13 +68,14 @@
 		91AD20AE2A5FA67C008D521D /* SignupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
 		91AD20B02A5FA736008D521D /* SignatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureController.swift; sourceTree = "<group>"; };
 		91AD20B32A5FA75F008D521D /* TimestampGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimestampGenerator.swift; sourceTree = "<group>"; };
-		91AD20B62A5FA806008D521D /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		91AD20B62A5FA806008D521D /* SignaturePayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignaturePayload.swift; sourceTree = "<group>"; };
 		91AD20B82A5FA80F008D521D /* KeyChainManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
-		91AD20BA2A5FA819008D521D /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
-		91AD20BC2A5FA824008D521D /* SignupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupModel.swift; sourceTree = "<group>"; };
+		91AD20BA2A5FA819008D521D /* UserLoginPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLoginPayload.swift; sourceTree = "<group>"; };
+		91AD20BC2A5FA824008D521D /* UserSignupPayload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSignupPayload.swift; sourceTree = "<group>"; };
 		91AD20BE2A5FAA24008D521D /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		91AD20C02A5FAA49008D521D /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		91AD20C52A5FAB70008D521D /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		91AD20CA2A5FC120008D521D /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				918B84EA2A45798700C4FD75 /* SplashScreen.swift */,
 				911341412A49620200694A17 /* SignupScreen.swift */,
 				911341432A4962BE00694A17 /* LoginScreen.swift */,
+				91AD20CA2A5FC120008D521D /* HomeScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -177,9 +180,9 @@
 		91AD20AD2A5FA621008D521D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				91AD20B22A5FA744008D521D /* Utilities */,
 				91AD20BE2A5FAA24008D521D /* APIManager.swift */,
 				91AD20C02A5FAA49008D521D /* LoginController.swift */,
-				91AD20B22A5FA744008D521D /* Utilities */,
 				91AD20AE2A5FA67C008D521D /* SignupController.swift */,
 				91AD20B02A5FA736008D521D /* SignatureController.swift */,
 			);
@@ -197,10 +200,10 @@
 		91AD20B52A5FA7E8008D521D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				91AD20B62A5FA806008D521D /* DataModel.swift */,
+				91AD20B62A5FA806008D521D /* SignaturePayload.swift */,
+				91AD20BA2A5FA819008D521D /* UserLoginPayload.swift */,
 				91AD20B82A5FA80F008D521D /* KeyChainManager.swift */,
-				91AD20BA2A5FA819008D521D /* LoginModel.swift */,
-				91AD20BC2A5FA824008D521D /* SignupModel.swift */,
+				91AD20BC2A5FA824008D521D /* UserSignupPayload.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -351,7 +354,7 @@
 			files = (
 				918B84EB2A45798700C4FD75 /* SplashScreen.swift in Sources */,
 				91AD20C62A5FAB70008D521D /* Constant.swift in Sources */,
-				91AD20BB2A5FA819008D521D /* LoginModel.swift in Sources */,
+				91AD20BB2A5FA819008D521D /* UserLoginPayload.swift in Sources */,
 				58F022862A440F9C00980667 /* ContentView.swift in Sources */,
 				91AD20B12A5FA736008D521D /* SignatureController.swift in Sources */,
 				91AD20C12A5FAA49008D521D /* LoginController.swift in Sources */,
@@ -359,10 +362,11 @@
 				91AD20B92A5FA80F008D521D /* KeyChainManager.swift in Sources */,
 				91AD20BF2A5FAA24008D521D /* APIManager.swift in Sources */,
 				918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */,
-				91AD20B72A5FA806008D521D /* DataModel.swift in Sources */,
+				91AD20B72A5FA806008D521D /* SignaturePayload.swift in Sources */,
 				911341422A49620200694A17 /* SignupScreen.swift in Sources */,
+				91AD20CB2A5FC120008D521D /* HomeScreen.swift in Sources */,
 				58F022842A440F9C00980667 /* Aeroh_LinkApp.swift in Sources */,
-				91AD20BD2A5FA824008D521D /* SignupModel.swift in Sources */,
+				91AD20BD2A5FA824008D521D /* UserSignupPayload.swift in Sources */,
 				91AD20B42A5FA75F008D521D /* TimestampGenerator.swift in Sources */,
 				911341442A4962BE00694A17 /* LoginScreen.swift in Sources */,
 			);
