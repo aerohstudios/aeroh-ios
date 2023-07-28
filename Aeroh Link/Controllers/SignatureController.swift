@@ -34,6 +34,6 @@ class SignatureController {
         }
         
         let hmacData = Data(bytes: signature, count: Int(CC_SHA256_DIGEST_LENGTH))
-        return hmacData.map { String(format: "%02hhx", $0) }.joined()    }
-
+        return hmacData.map { String(format: "%02hhx", $0) }.joined()
+    }
 }
