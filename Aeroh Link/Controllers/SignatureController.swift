@@ -9,15 +9,15 @@ import Foundation
 import CommonCrypto
 
 class SignatureController {
-    func login_signature(signData: LoginSignaturePayload, key: String) -> String {
+    func login_signature(signData: UserModel, key: String) -> String {
         let payloadString = "\(signData.email)|\(signData.password)|\(signData.scopes)|\(signData.timestamp)"
         let payloadData = payloadString.data(using: .utf8)!
         let secretKeyData = key.data(using: .utf8)!
         let Signature = calculateHMAC(payload: payloadData, key: secretKeyData)
         return Signature
     }
-    func signup_signature(signData: SignupSignaturePayload, key: String) -> String {
-        let payloadString = "\(signData.email)|\(signData.password)|\(signData.first_name)|\(signData.scopes)|\(signData.timestamp)"
+    func signup_signature(signData: UserModel, key: String) -> String {
+        let payloadString = "\(signData.email)|\(signData.password)|\(signData.first_name!)|\(signData.scopes)|\(signData.timestamp)"
         let payloadData = payloadString.data(using: .utf8)!
         let secretKeyData = key.data(using: .utf8)!
         let Signature = calculateHMAC(payload: payloadData, key: secretKeyData)

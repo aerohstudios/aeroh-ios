@@ -20,7 +20,7 @@ class APIManager {
         return reachabilityManager?.isReachable ?? false
     }
     
-    func callingLoginAPI(userRequestData: UserLoginPayload, errorCallback: @escaping ErrorCallback) {
+    func callingLoginAPI(userRequestData: UserModel, errorCallback: @escaping ErrorCallback) {
         guard isInternetConnected() else {
             let errorMessage = "No internet connection"
             errorCallback(errorMessage)
@@ -55,7 +55,7 @@ class APIManager {
         }
     }
     
-    func callingSignupAPI(userRequestData: UserSignupPayload, errorCallback: @escaping ErrorCallback) {
+    func callingSignupAPI(userRequestData: UserModel, errorCallback: @escaping ErrorCallback) {
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
