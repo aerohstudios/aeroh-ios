@@ -1,0 +1,4 @@
+import Foundation
+
+let client_id = ""
+let secret = ""
