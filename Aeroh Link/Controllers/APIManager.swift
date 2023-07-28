@@ -14,7 +14,18 @@ class APIManager {
     // Define a callback closure to handle errors
     typealias ErrorCallback = (String) -> Void
     
+    // Check internet connectivity before making API requests
+    private func isInternetConnected() -> Bool {
+        let reachabilityManager = NetworkReachabilityManager()
+        return reachabilityManager?.isReachable ?? false
+    }
+    
     func callingLoginAPI(userRequestData: UserLoginPayload, errorCallback: @escaping ErrorCallback) {
+        guard isInternetConnected() else {
+            let errorMessage = "No internet connection"
+            errorCallback(errorMessage)
+            return
+        }
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
