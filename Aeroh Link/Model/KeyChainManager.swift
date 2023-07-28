@@ -12,9 +12,9 @@ class KeychainManager {
     static let shared = KeychainManager()
     
     internal let accessTokenKey = "AccessTokenKey"
-        internal let refreshTokenKey = "RefreshTokenKey"
-        internal let expiresInKey = "ExpiresInKey"
-        internal let createdAtKey = "CreatedAtKey"
+    internal let refreshTokenKey = "RefreshTokenKey"
+    internal let expiresInKey = "ExpiresInKey"
+    internal let createdAtKey = "CreatedAtKey"
     
     func saveCredentials(accessToken: String, refreshToken: String, expiresIn: Int, createdAt: Int) {
         saveValue(accessToken, forKey: accessTokenKey)
