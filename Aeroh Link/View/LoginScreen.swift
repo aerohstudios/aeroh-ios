@@ -16,8 +16,7 @@ struct LoginScreen: View {
     @State private var showAlert = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
-    
-    
+    @ObservedObject var loginManager : LoginManager
     
     var body: some View {
         
@@ -31,11 +30,31 @@ struct LoginScreen: View {
                 Image("logo-white")
                     .frame(height: 30)
                 
-                // Login Text
-                Text("Log in")
-                    .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
-                    .font(.title2)
-                    .bold()
+                VStack(spacing: 22){
+                    // Login Text
+                    Text("Log in")
+                        .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                        .font(.title2)
+                        .bold()
+                    
+                    if showAlert {
+                        withAnimation{
+                            HStack {
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(.red)
+                                Text(alertMessage)
+                                    .foregroundColor(.red)
+                                    .font(.subheadline)
+                            }
+                            .transition(.opacity)
+                        }
+                    }
+                    else{
+                        HStack{
+                        }.frame(height: 18)
+                    }
+                }
                 
                 VStack(spacing: 22) {
                     // Email TextField
@@ -83,9 +102,13 @@ struct LoginScreen: View {
                         isValid = validateForm()
                         
                         if isValid {
-                            LoginController().authenticate(email: email, password: password){ errorMessage in
-                                showAlert(title: "Error", message: errorMessage)
-                            }
+                            LoginController().authenticate(email: email, password: password, loginManager: loginManager, errorCallback: { errorMessage in
+                                showAlert(message: errorMessage, duration: 3.0 )
+                            }, successCallback: {
+                                withAnimation{
+                                    loginManager.login()
+                                }
+                            })
                         }
                         
                         
@@ -117,7 +140,7 @@ struct LoginScreen: View {
                     }
                     
                     // Sign up Button
-                    NavigationLink(destination: SignupScreen().navigationBarHidden(true), label: {
+                    NavigationLink(destination: SignupScreen(loginManager: loginManager).navigationBarHidden(true), label: {
                         Text("Sign up")
                             .frame(maxWidth: .infinity)                            .padding()
                             .foregroundColor(.white)
@@ -136,18 +159,26 @@ struct LoginScreen: View {
                         .bold()
                     
                 }
-            }.alert(isPresented: $showAlert) {
-                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK").foregroundColor(.black)))
             }
         }
     }
     
     
     
-    private func showAlert(title: String, message: String) {
-        alertTitle = title
+    private func showAlert(message: String, duration: Double) {
         alertMessage = message
-        showAlert = true
+        withAnimation{
+            showAlert = true
+        }
+        
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration){
+            withAnimation{
+                showAlert = false
+            }
+            
+            alertMessage = ""
+        }
     }
     
     private func validateForm() -> Bool {

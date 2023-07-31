@@ -35,6 +35,24 @@ struct SignupScreen: View {
                     .font(.title2)
                     .bold()
                 
+                if showAlert {
+                    withAnimation{
+                        HStack {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .font(.system(size: 14))
+                                .foregroundColor(.red)
+                            Text(alertMessage)
+                                .foregroundColor(.red)
+                                .font(.subheadline)
+                        }
+                        .transition(.opacity)
+                    }
+                }
+                else{
+                    HStack{
+                    }.frame(height: 18)
+                }
+                
                 VStack(spacing: 22) {
                     // Name input field
                     VStack {
@@ -167,15 +185,22 @@ struct SignupScreen: View {
                 }
             }
             .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK").foregroundColor(.black)))
-            }
         }
     }
     private func showAlert(title: String, message: String) {
         alertTitle = title
         alertMessage = message
-        showAlert = true
+        withAnimation{
+            showAlert = true
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration){
+            withAnimation{
+                showAlert = false
+            }
+            alertMessage = ""
+        }
+        
     }
     
     private func validateForm() -> Bool {
