@@ -212,7 +212,9 @@ struct LoginScreen: View {
 
 struct LoginScreen_Previews: PreviewProvider {
     static var previews: some View {
-        LoginScreen()
+        // Create an instance of LoginManager
+        let loginManager = LoginManager()        // Pass the loginManager instance to the LoginScreen preview
+        LoginScreen(loginManager: loginManager)
     }
     
 }

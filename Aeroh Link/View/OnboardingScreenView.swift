@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnboardingScreenView: View {
+    @StateObject var loginManager = LoginManager()
     var body: some View {
         NavigationStack {
             ZStack {
@@ -42,7 +43,7 @@ struct OnboardingScreenView: View {
                             
                             HStack(spacing: 23) {
                                 // Sign up Button
-                                NavigationLink(destination: SignupScreen().navigationBarHidden(true), label: {
+                                NavigationLink(destination: SignupScreen(loginManager: loginManager).navigationBarHidden(true), label: {
                                     
                                     Text("Sign up")
                                         .frame(maxWidth: .infinity, minHeight: 25)
@@ -57,7 +58,7 @@ struct OnboardingScreenView: View {
                                 
                                 
                                 // Login Button
-                                NavigationLink(destination: LoginScreen().navigationBarHidden(true), label: {
+                                NavigationLink(destination: LoginScreen(loginManager: loginManager).navigationBarHidden(true), label: {
                                     Text("Log in")
                                         .frame(maxWidth: .infinity, minHeight: 25)
                                         .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))

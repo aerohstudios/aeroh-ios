@@ -14,13 +14,16 @@ class APIManager {
     // Define a callback closure to handle errors
     typealias ErrorCallback = (String) -> Void
     
+    //Define a callback closure for success
+    typealias SuccessCallback = () -> Void
+    
     // Check internet connectivity before making API requests
     private func isInternetConnected() -> Bool {
         let reachabilityManager = NetworkReachabilityManager()
         return reachabilityManager?.isReachable ?? false
     }
     
-    func callingLoginAPI(userRequestData: UserModel, errorCallback: @escaping ErrorCallback) {
+    func callingLoginAPI(userRequestData: UserModel, errorCallback: @escaping ErrorCallback, successCallback: @escaping SuccessCallback) {
         guard isInternetConnected() else {
             let errorMessage = "No internet connection"
             errorCallback(errorMessage)
@@ -43,6 +46,7 @@ class APIManager {
                                    let expiresIn = responseData["expires_in"] as? Int,
                                    let createdAt = responseData["created_at"] as? Int {
                                     KeychainManager.shared.saveCredentials(accessToken: accessToken, refreshToken: refreshToken, expiresIn: expiresIn, createdAt: createdAt)
+                                    successCallback()
                                 }
                             }
                     }
@@ -55,7 +59,7 @@ class APIManager {
         }
     }
     
-    func callingSignupAPI(userRequestData: UserModel, errorCallback: @escaping ErrorCallback) {
+    func callingSignupAPI(userRequestData: UserModel, errorCallback: @escaping ErrorCallback, successCallback: @escaping SuccessCallback) {
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
@@ -74,6 +78,7 @@ class APIManager {
                                let expiresIn = responseData["expires_in"] as? Int,
                                let createdAt = responseData["created_at"] as? Int {
                                 KeychainManager.shared.saveCredentials(accessToken: accessToken, refreshToken: refreshToken, expiresIn: expiresIn, createdAt: createdAt)
+                                successCallback()
                             }
                         }
                     }
