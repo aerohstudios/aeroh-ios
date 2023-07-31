@@ -54,7 +54,9 @@ class APIManager {
                     print(error.localizedDescription)
                 }
             case .failure(let error):
-                errorCallback(error.localizedDescription)
+                if error.localizedDescription != "" {
+                    errorCallback("Cannot Connect to Server")
+                }
             }
         }
     }
@@ -86,7 +88,9 @@ class APIManager {
                     print(error.localizedDescription)
                 }
             case .failure(let error):
-                errorCallback(error.localizedDescription)
+                if error.localizedDescription != "" {
+                    errorCallback("Cannot Connect to Server")
+                }
             }
         }
     }
