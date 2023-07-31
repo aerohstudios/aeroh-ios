@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct HomeScreen: View {
-    @State private var accessToken: String = ""
+        @State private var accessToken: String = ""
         @State private var refreshToken: String = ""
         @State private var expiresIn: Int = 0
         @State private var createdAt: Int = 0
+        @ObservedObject var loginManager : LoginManager
         
         var body: some View {
             VStack {
@@ -22,6 +23,7 @@ struct HomeScreen: View {
                 Text("Created At: \(createdAt)")
                 
                 Button("Delete Keychain Values") {
+                    loginManager.logout()
                     deleteKeychainValues()
                 }
                 .buttonStyle(.borderedProminent)
@@ -56,6 +58,7 @@ struct HomeScreen: View {
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScreen()
+        let loginManager = LoginManager()
+        HomeScreen(loginManager: loginManager)
     }
 }

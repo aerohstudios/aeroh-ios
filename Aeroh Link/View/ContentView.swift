@@ -7,27 +7,18 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @State private var isLoggedIn = false
+struct ContentView : View {
+    @StateObject var loginManager = LoginManager()
     
     var body: some View {
-        Group {
-            if isLoggedIn {
-                HomeScreen()
-            } else {
-                OnboardingScreenView()
-                    .onAppear {
-                        // Check if access token is present in keychain
-                        if KeychainManager.shared.getAccessToken() != nil {
-                            print("contentView",KeychainManager.shared.getAccessToken()!)
-                            // Access token exists, set isLoggedIn to true
-                            isLoggedIn = true
-                        } else {
-                            // Access token doesn't exist, set isLoggedIn to false
-                            isLoggedIn = false
-                        }
-                    }
-            }
+        if loginManager.isLoggedIn {
+            HomeScreen(loginManager: loginManager)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .transition(.move(edge: .leading))
+        } else {
+            OnboardingScreenView(loginManager: loginManager)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .transition(.move(edge: .leading))
         }
     }
 }

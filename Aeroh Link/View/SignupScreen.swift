@@ -17,6 +17,7 @@ struct SignupScreen: View {
     @State private var showAlert = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
+    @ObservedObject var loginManager : LoginManager
     
     var body: some View {
         ZStack {
@@ -143,9 +144,12 @@ struct SignupScreen: View {
                         let isValid = validateForm()
                         
                         if isValid {
-                            SignupController().authenticate(first_name: first_name, email: email, password: password){ errorMessage in
-                                showAlert(title: "Error", message: errorMessage)
-                            }
+                            SignupController().authenticate(first_name: first_name, email: email, password: password, errorCallback: { errorMessage in
+                                showAlert(message: errorMessage, duration: 3.0)}, successCallback: {
+                                    withAnimation{
+                                        loginManager.login()
+                                    }
+                                })
                         }
                     }) {
                         Text("Sign up")
@@ -171,7 +175,7 @@ struct SignupScreen: View {
                     }
                     
                     // Log in button
-                    NavigationLink(destination: LoginScreen().navigationBarHidden(true), label: {
+                    NavigationLink(destination: LoginScreen(loginManager: loginManager).navigationBarHidden(true), label: {
                         Text("Log in")
                             .frame(maxWidth: .infinity)       .padding()
                             .foregroundColor(.white)
@@ -187,8 +191,7 @@ struct SignupScreen: View {
             .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
         }
     }
-    private func showAlert(title: String, message: String) {
-        alertTitle = title
+    private func showAlert(message: String, duration: Double) {
         alertMessage = message
         withAnimation{
             showAlert = true
@@ -249,6 +252,7 @@ struct SignupScreen: View {
 
 struct SignupScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SignupScreen()
+        let loginManager = LoginManager()
+        SignupScreen(loginManager: loginManager)
     }
 }
