@@ -13,25 +13,80 @@ struct HomeScreen: View {
         @State private var expiresIn: Int = 0
         @State private var createdAt: Int = 0
         @ObservedObject var loginManager : LoginManager
+        @State var show = false
+        @StateObject private var userController = UserController()
         
         var body: some View {
-            VStack {
+            ZStack(alignment: .trailing) {
+                Color(red: 0.06, green: 0.05, blue: 0.08)
+                    .edgesIgnoringSafeArea(.all)
                 
-                Text("Access Token: \(accessToken)")
-                Text("Refresh Token: \(refreshToken)")
-                Text("Expires In: \(expiresIn)")
-                Text("Created At: \(createdAt)")
-                
-                Button("Delete Keychain Values") {
-                    loginManager.logout()
-                    deleteKeychainValues()
+                GeometryReader { _ in
+                    VStack(alignment: .leading) {
+                        HStack(alignment: .center){
+                            
+                            VStack(alignment: .leading, spacing: 7) {
+                                Text("Hi, There")
+                                    .font(.system(size: 27))
+                                    .foregroundColor(.white)
+                                    .fontWeight(.semibold)
+                                Text("Good to see you again")
+                                    .font(.system(size: 15))
+                                    .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                                
+                                
+                            }
+                            Spacer()
+                            Button(action: {
+                                withAnimation(.default){
+                                    self.show.toggle()
+                                }
+                                
+                            }, label: {
+                                Image("menu")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 40, height: 30)
+                                
+                            })
+                            
+                            
+                        }.padding(.horizontal)
+                        
+                        Button {
+                            
+                        } label: {
+                            Text("Add a new device")
+                                .foregroundColor(.white)
+                                .font(.system(size: 23))
+                                .fontWeight(.semibold)
+                        }.buttonStyle(AddNewDeviceButtonStyle())
+                            .padding()
+                        
+                        Text("Devices")
+                            .padding(.horizontal)
+                            .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
+                            .font(.system(size: 17))
+                            .fontWeight(.semibold)
+                        
+                    }
+                    
                 }
-                .buttonStyle(.borderedProminent)
-                .padding()
-    
+                
+                
+                HStack(){
+                    Menu(loginManager: loginManager, show: self.$show)
+                        .offset(x: self.show ? 0 : +UIScreen.main.bounds.width / 1.3)
+                }
+                .background(Color.primary.opacity(self.show ? 0.05 : 0).edgesIgnoringSafeArea(.all))
             }
             .onAppear {
                 loadKeychainValues()
+                UserController().fetchUsers(accessToken: accessToken) { users in
+                    for user in users {
+                        successCallback(user: user)
+                    }
+                }
             }
         }
         
@@ -42,17 +97,9 @@ struct HomeScreen: View {
             createdAt = KeychainManager.shared.getCreatedAt() ?? 0
         }
         
-        private func deleteKeychainValues() {
-            KeychainManager.shared.deleteValue(forKey: KeychainManager.shared.accessTokenKey)
-            KeychainManager.shared.deleteValue(forKey: KeychainManager.shared.refreshTokenKey)
-            KeychainManager.shared.deleteValue(forKey: KeychainManager.shared.expiresInKey)
-            KeychainManager.shared.deleteValue(forKey: KeychainManager.shared.createdAtKey)
-            
-            // Update the UI after deleting the keychain values
-            accessToken = ""
-            refreshToken = ""
-            expiresIn = 0
-            createdAt = 0
+        private func successCallback(user: UserInfo) {
+            UserDefaults.standard.set(user.first_name, forKey: "first_name")
+            UserDefaults.standard.set(user.email, forKey: "email")
         }
 }
 
@@ -60,5 +107,99 @@ struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
         let loginManager = LoginManager()
         HomeScreen(loginManager: loginManager)
+    }
+}
+
+    struct AddNewDeviceButtonStyle: ButtonStyle {
+        func makeBody(configuration: Configuration) -> some View {
+            HStack {
+                configuration.label
+                Spacer()
+                
+                Image(systemName: "plus")
+                    .font(.system(size: 20))
+                    .fontWeight(.semibold)
+                    .frame(width: 44, height: 44)
+                    .padding()
+                    .background(
+                        Circle()
+                            .fill(Color(red: 1, green: 0.78, blue: 0.23))
+                            .frame(width: 44, height: 44))
+                
+                
+            }
+            .padding(.horizontal, 30)
+            .cornerRadius(20)
+            .frame(maxWidth: .infinity, minHeight: 55)
+            .background(Color(red: 0.16, green: 0.16, blue: 0.16))
+            .clipShape(RoundedRectangle(cornerRadius: 20))
+        }
+    }
+
+struct Menu: View {
+    @ObservedObject var loginManager : LoginManager
+    
+    @Binding var show: Bool
+    
+    
+    var body: some View {
+        VStack(alignment: .leading){
+            
+            HStack{
+                
+                VStack(alignment: .leading , spacing: 5) {
+                    Text(UserDefaults.standard.string(forKey: "first_name") ?? "tanishq")
+                        .font(.system(size: 27))
+                        .foregroundColor(.white)
+                        .fontWeight(.semibold)
+                    
+                    Text(verbatim: UserDefaults.standard.string(forKey: "email") ?? "email")
+                        .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                        .font(.system(size: 16))
+                }
+                .padding(.horizontal)
+                Spacer()
+                
+                Button (action: {
+                    withAnimation(.default){
+                        self.show.toggle()
+                    }
+                }) {
+                    Image(systemName: "arrow.right")
+                        .font(.system(size: 24))
+                        .foregroundColor(.white)
+                    
+                    
+                }
+            }
+            .padding(.top)
+            .padding(.bottom, 25)
+            
+            Button(action: {
+                loginManager.logout()
+                deleteKeychainValues()
+                
+            }, label: {
+                HStack {
+                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                        .foregroundColor(.white)
+                    Text("Logout")
+                        .foregroundColor(.white)
+                }.padding()
+            })
+            
+            Spacer()
+        }.frame(width: UIScreen.main.bounds.width / 1.5)
+            .padding(.horizontal, 20)
+            .background((Color(red: 0.06, green: 0.05, blue: 0.08)).edgesIgnoringSafeArea(.all))
+            .overlay(Rectangle().stroke(Color.primary.opacity(0.2), lineWidth: 2).shadow(radius: 3).edgesIgnoringSafeArea(.all))
+        
+        
+    }
+    private func deleteKeychainValues() {
+        KeychainManager.shared.deleteValue(forKey: KeychainManager.shared.accessTokenKey)
+        KeychainManager.shared.deleteValue(forKey: KeychainManager.shared.refreshTokenKey)
+        KeychainManager.shared.deleteValue(forKey: KeychainManager.shared.expiresInKey)
+        KeychainManager.shared.deleteValue(forKey: KeychainManager.shared.createdAtKey)
     }
 }
