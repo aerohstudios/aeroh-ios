@@ -94,4 +94,34 @@ class APIManager {
             }
         }
     }
+    
+    func fetchUsers(with accessToken: String, errorCallback: @escaping ErrorCallback, completion: @escaping (UserInfo) -> Void) {
+        guard isInternetConnected() else {
+            let errorMessage = "No internet connection"
+            errorCallback(errorMessage)
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(accessToken)"
+        ]
+        
+        AF.request("\(base_url)/api/v1/users", method: .get, headers: headers).responseJSON { response in
+            switch response.result {
+                
+            case .success(let data):
+                if let json = data as? [String: Any],
+                   let dataArray = json["data"] as? [[String: Any]],
+                   let firstUser = dataArray.first,
+                   let attributes = firstUser["attributes"] as? [String: Any],
+                   let email = attributes["email"] as? String,
+                   let firstName = attributes["first-name"] as? String{
+                    let user = UserInfo(email: email, first_name: firstName, id: nil)
+                    completion(user)
+                }
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
 }
