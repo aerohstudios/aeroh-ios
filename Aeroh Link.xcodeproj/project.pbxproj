@@ -16,6 +16,8 @@
 		58F022A12A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022A02A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift */; };
 		911341422A49620200694A17 /* SignupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911341412A49620200694A17 /* SignupScreen.swift */; };
 		911FE6152A77AD630059E69C /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE6142A77AD630059E69C /* LoginScreen.swift */; };
+		911FE6172A7D07160059E69C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE6162A7D07160059E69C /* UserController.swift */; };
+		911FE6192A8100D70059E69C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE6182A8100D70059E69C /* UserInfo.swift */; };
 		918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */; };
 		918B84EB2A45798700C4FD75 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B84EA2A45798700C4FD75 /* SplashScreen.swift */; };
 		9193EF582A6E35BC00F4DBDB /* EnvConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193EF572A6E35BC00F4DBDB /* EnvConstants.swift */; };
@@ -62,6 +64,8 @@
 		58F022A02A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aeroh_LinkUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		911341412A49620200694A17 /* SignupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreen.swift; sourceTree = "<group>"; };
 		911FE6142A77AD630059E69C /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
+		911FE6162A7D07160059E69C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		911FE6182A8100D70059E69C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
 		918B84EA2A45798700C4FD75 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		918B84EC2A457A5900C4FD75 /* Aeroh-Link-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Aeroh-Link-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -186,6 +190,7 @@
 				91AD20AE2A5FA67C008D521D /* SignupController.swift */,
 				91AD20B02A5FA736008D521D /* SignatureController.swift */,
 				9193EF5D2A73F35900F4DBDB /* LoginManager.swift */,
+				911FE6162A7D07160059E69C /* UserController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 			children = (
 				9193EF5F2A740FFE00F4DBDB /* UserModel.swift */,
 				91AD20B82A5FA80F008D521D /* KeyChainManager.swift */,
+				911FE6182A8100D70059E69C /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -352,6 +358,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				911FE6192A8100D70059E69C /* UserInfo.swift in Sources */,
+				911FE6172A7D07160059E69C /* UserController.swift in Sources */,
 				9193EF602A740FFE00F4DBDB /* UserModel.swift in Sources */,
 				918B84EB2A45798700C4FD75 /* SplashScreen.swift in Sources */,
 				9193EF5E2A73F35A00F4DBDB /* LoginManager.swift in Sources */,
