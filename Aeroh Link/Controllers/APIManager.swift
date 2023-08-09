@@ -124,4 +124,36 @@ class APIManager {
             }
         }
     }
+    
+    func fetchDevices(with accessToken: String, errorCallback: @escaping ErrorCallback, completion: @escaping ([DeviceInfo]) -> Void) {
+        guard isInternetConnected() else {
+            let errorMessage = "No internet connection"
+            errorCallback(errorMessage)
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(accessToken)"
+        ]
+        
+        AF.request("\(base_url)/api/v1/devices", method: .get, headers: headers).responseJSON { response in
+            switch response.result {
+            case .success(let data):
+                if let json = data as? [String: Any],
+                   let dataArray = json["data"] as? [[String: Any]] {
+                    var devices: [DeviceInfo] = []
+                    for deviceData in dataArray {
+                        if let attributes = deviceData["attributes"] as? [String: Any],
+                           let name = attributes["name"] as? String {
+                            let device = DeviceInfo(name: name)
+                            devices.append(device)
+                        }
+                    }
+                    completion(devices)
+                }
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
 }
