@@ -15,6 +15,7 @@ struct HomeScreen: View {
         @ObservedObject var loginManager : LoginManager
         @State var show = false
         @StateObject private var userController = UserController()
+        @StateObject private var devicesController = DevicesController()
         
         var body: some View {
             ZStack(alignment: .trailing) {
@@ -69,6 +70,14 @@ struct HomeScreen: View {
                             .font(.system(size: 17))
                             .fontWeight(.semibold)
                         
+                        ScrollView {
+                            VStack(alignment: .leading, spacing: 20) {
+                                ForEach(Array(devicesController.devices.enumerated()), id: \.element.id) { index, device in
+                                    DeviceRowView(device: device, isLastDevice: index == devicesController.devices.count - 1)
+                                        .padding(.horizontal)
+                                }
+                            }.padding(.vertical)
+                        }
                     }
                     
                 }
@@ -87,6 +96,7 @@ struct HomeScreen: View {
                         successCallback(user: user)
                     }
                 }
+                devicesController.fetchDevices(accessToken: accessToken)
             }
         }
         
@@ -206,5 +216,39 @@ struct Menu: View {
         KeychainManager.shared.deleteValue(forKey: KeychainManager.shared.refreshTokenKey)
         KeychainManager.shared.deleteValue(forKey: KeychainManager.shared.expiresInKey)
         KeychainManager.shared.deleteValue(forKey: KeychainManager.shared.createdAtKey)
+    }
+}
+
+struct DeviceRowView: View {
+    var device: DeviceInfo
+    var isLastDevice: Bool
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20){
+            HStack(alignment: .center, spacing: 20){
+                Image("AerohLinkIllustration")
+                    .resizable()
+                    .frame(width: 32.0, height: 19.34)
+                    .aspectRatio(1, contentMode: .fit)
+                    .padding()
+                    .background(
+                        Circle()
+                            .fill(Color(red: 0.16, green: 0.16, blue: 0.16))
+                            .frame(width: 60, height: 60))
+                
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(device.name)
+                        .font(.system(size: 18))
+                        .foregroundColor(.white)
+                }
+                
+            }
+            
+            if !isLastDevice {
+                Divider()
+                    .frame(height: 1)
+                    .overlay(Color(red: 0.16, green: 0.16, blue: 0.16))
+            }
+        }
     }
 }
