@@ -125,7 +125,7 @@ class APIManager {
         }
     }
     
-    func fetchDevices(with accessToken: String, errorCallback: @escaping ErrorCallback, completion: @escaping ([DeviceInfo]) -> Void) {
+    func fetchDevices(with accessToken: String, errorCallback: @escaping ErrorCallback, completion: @escaping ([DeviceModel]) -> Void) {
         guard isInternetConnected() else {
             let errorMessage = "No internet connection"
             errorCallback(errorMessage)
@@ -141,11 +141,11 @@ class APIManager {
             case .success(let data):
                 if let json = data as? [String: Any],
                    let dataArray = json["data"] as? [[String: Any]] {
-                    var devices: [DeviceInfo] = []
+                    var devices: [DeviceModel] = []
                     for deviceData in dataArray {
                         if let attributes = deviceData["attributes"] as? [String: Any],
                            let name = attributes["name"] as? String {
-                            let device = DeviceInfo(name: name)
+                            let device = DeviceModel(name: name)
                             devices.append(device)
                         }
                     }

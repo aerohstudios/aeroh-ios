@@ -220,7 +220,7 @@ struct Menu: View {
 }
 
 struct DeviceRowView: View {
-    var device: DeviceInfo
+    var device: DeviceModel
     var isLastDevice: Bool
     
     var body: some View {
