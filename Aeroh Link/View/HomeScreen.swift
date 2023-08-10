@@ -26,7 +26,7 @@ struct HomeScreen: View {
                         HStack(alignment: .center){
                             
                             VStack(alignment: .leading, spacing: 7) {
-                                Text("Hi, There")
+                                Text("Hi, \(UserDefaults.standard.string(forKey: "first_name") ?? "There")")
                                     .font(.system(size: 27))
                                     .foregroundColor(.white)
                                     .fontWeight(.semibold)
@@ -138,7 +138,7 @@ struct HomeScreen_Previews: PreviewProvider {
 
 struct Menu: View {
     @ObservedObject var loginManager : LoginManager
-    
+    @State private var showingLogoutAlert = false
     @Binding var show: Bool
     
     
@@ -148,7 +148,7 @@ struct Menu: View {
             HStack{
                 
                 VStack(alignment: .leading , spacing: 5) {
-                    Text(UserDefaults.standard.string(forKey: "first_name") ?? "tanishq")
+                    Text(UserDefaults.standard.string(forKey: "first_name") ?? "First Name")
                         .font(.system(size: 27))
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
@@ -176,9 +176,7 @@ struct Menu: View {
             .padding(.bottom, 25)
             
             Button(action: {
-                loginManager.logout()
-                deleteKeychainValues()
-                
+                showingLogoutAlert = true
             }, label: {
                 HStack {
                     Image(systemName: "rectangle.portrait.and.arrow.right")
@@ -193,8 +191,15 @@ struct Menu: View {
             .padding(.horizontal, 20)
             .background((Color(red: 0.06, green: 0.05, blue: 0.08)).edgesIgnoringSafeArea(.all))
             .overlay(Rectangle().stroke(Color.primary.opacity(0.2), lineWidth: 2).shadow(radius: 3).edgesIgnoringSafeArea(.all))
-        
-        
+            .alert(isPresented: $showingLogoutAlert) {
+                Alert(title: Text("Logout"),
+                      message: Text("Are you sure you want to logout?"),
+                      primaryButton: .destructive(Text("Logout")) {
+                    loginManager.logout()
+                    deleteKeychainValues()
+                },
+                      secondaryButton: .cancel())
+            }
     }
     private func deleteKeychainValues() {
         KeychainManager.shared.deleteValue(forKey: KeychainManager.shared.accessTokenKey)
