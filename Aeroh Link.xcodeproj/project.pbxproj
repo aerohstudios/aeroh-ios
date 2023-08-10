@@ -33,7 +33,7 @@
 		91AD20C92A5FB2D1008D521D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 91AD20C82A5FB2D1008D521D /* Alamofire */; };
 		91AD20CB2A5FC120008D521D /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20CA2A5FC120008D521D /* HomeScreen.swift */; };
 		91CB07B02A840BEF00573301 /* DeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB07AF2A840BEF00573301 /* DeviceController.swift */; };
-		91CB07B22A840C3B00573301 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB07B12A840C3B00573301 /* DeviceInfo.swift */; };
+		91CB07B42A84EC3900573301 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB07B32A84EC3900573301 /* DeviceModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,7 +83,7 @@
 		91AD20C52A5FAB70008D521D /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		91AD20CA2A5FC120008D521D /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		91CB07AF2A840BEF00573301 /* DeviceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceController.swift; sourceTree = "<group>"; };
-		91CB07B12A840C3B00573301 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
+		91CB07B32A84EC3900573301 /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,10 +211,10 @@
 		91AD20B52A5FA7E8008D521D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				91CB07B12A840C3B00573301 /* DeviceInfo.swift */,
 				9193EF5F2A740FFE00F4DBDB /* UserModel.swift */,
 				91AD20B82A5FA80F008D521D /* KeyChainManager.swift */,
 				911FE6182A8100D70059E69C /* UserInfo.swift */,
+				91CB07B32A84EC3900573301 /* DeviceModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -371,7 +371,7 @@
 				9193EF5E2A73F35A00F4DBDB /* LoginManager.swift in Sources */,
 				9193EF582A6E35BC00F4DBDB /* EnvConstants.swift in Sources */,
 				91AD20C62A5FAB70008D521D /* AppConstants.swift in Sources */,
-				91CB07B22A840C3B00573301 /* DeviceInfo.swift in Sources */,
+				91CB07B42A84EC3900573301 /* DeviceModel.swift in Sources */,
 				58F022862A440F9C00980667 /* ContentView.swift in Sources */,
 				91AD20B12A5FA736008D521D /* SignatureController.swift in Sources */,
 				91AD20C12A5FAA49008D521D /* LoginController.swift in Sources */,

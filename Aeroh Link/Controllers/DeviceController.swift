@@ -8,7 +8,7 @@
 import Foundation
 
 class DevicesController: ObservableObject {
-    @Published var devices: [DeviceInfo] = []
+    @Published var devices: [DeviceModel] = []
     
     func fetchDevices(accessToken: String) {
         APIManager.shared.fetchDevices(with: accessToken, errorCallback: { errorMessage in
