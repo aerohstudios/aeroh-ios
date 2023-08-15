@@ -27,7 +27,6 @@ class APIManager {
     }
     
     private func isAccessTokenValid() -> Bool {
-        print(35, "api manger")
         let tokenGenerationDate = KeychainManager.shared.getCreatedAt() // Assuming it returns TimeInterval or Unix timestamp
         let expiresIn = KeychainManager.shared.getExpiresIn()
         
@@ -134,10 +133,19 @@ class APIManager {
                    let firstName = attributes["first-name"] as? String{
                     let user = UserInfo(email: email, first_name: firstName, id: nil)
                     completion(user)
+                } else {
+                        let errorMessage = "Error parsing user data"
+                        errorCallback(errorMessage)
+                    }
+                case .failure(let error):
+                    let errorMessage = "Error fetching user data: \(error.localizedDescription)"
+                    errorCallback(errorMessage)
                 }
-            case .failure(let error):
-                print("Error: \(error.localizedDescription)")
             }
+        } else if let refreshToken = KeychainManager.shared.getRefreshToken() {
+            refreshTokenAndRetryRequest(completion: {_ in
+                
+            }, errorCallback: errorCallback)
         }
     }
     
@@ -172,5 +180,71 @@ class APIManager {
                 print("Error: \(error.localizedDescription)")
             }
         }
+    }
+}
+    
+    func refreshTokenAndRetryRequest(completion: @escaping (Result<Data, Error>) -> Void, errorCallback: @escaping ErrorCallback) {
+        guard isInternetConnected() else {
+            let errorMessage = "No internet connection"
+            errorCallback(errorMessage)
+            return
+        }
+        
+        let urlString = "http://localhost:3000/oauth/token"
+        let refreshToken = KeychainManager.shared.getRefreshToken()
+        
+        let parameters: [String: Any] = [
+            "client_id": client_id,
+            "client_secret": secret,
+            "grant_type": "refresh_token",
+            "refresh_token": refreshToken!
+        ]
+        
+        AF.request(urlString, method: .post, parameters: parameters)
+            .validate(statusCode: 200..<300) // Only consider success status codes
+            .response { response in
+                switch response.result {
+                case .success(let data):
+                    do {
+                        if let jsonData = data, let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
+                            if let errors = json["errors"] as? [String], errors.count > 0 {
+                                let errorMessage = errors[0]
+                                errorCallback(errorMessage)
+                            } else {
+                                if let accessToken = json["access_token"] as? String,
+                                   let refreshToken = json["refresh_token"] as? String,
+                                   let expiresIn = json["expires_in"] as? Int,
+                                   let createdAt = json["created_at"] as? Int {
+                                    
+                                    KeychainManager.shared.saveCredentials(accessToken: accessToken, refreshToken: refreshToken, expiresIn: expiresIn, createdAt: createdAt)
+                                    
+                                    self.fetchUsers(with: accessToken, errorCallback: errorCallback) { userInfo in
+                                    }
+                                    
+                                    self.fetchDevices(with: accessToken, errorCallback: errorCallback) { devices in
+                                    }
+                                    
+                                    completion(.success(data!))
+                                }
+                            }
+                        }
+                    } catch {
+                        completion(.failure(error))
+                    }
+                case .failure(let error):
+                    if let httpResponse = response.response {
+                        switch httpResponse.statusCode {
+                        case 400:
+                            errorCallback("Authentication error")
+                        case 500:
+                            errorCallback("Server error")
+                        default:
+                            errorCallback(error.localizedDescription)
+                        }
+                    } else {
+                        errorCallback(error.localizedDescription)
+                    }
+                }
+            }
     }
 }
