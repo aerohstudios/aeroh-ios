@@ -17,10 +17,25 @@ class APIManager {
     //Define a callback closure for success
     typealias SuccessCallback = () -> Void
     
+    var isValid: Bool {
+        return isAccessTokenValid()
+    }
     // Check internet connectivity before making API requests
     private func isInternetConnected() -> Bool {
         let reachabilityManager = NetworkReachabilityManager()
         return reachabilityManager?.isReachable ?? false
+    }
+    
+    private func isAccessTokenValid() -> Bool {
+        print(35, "api manger")
+        let tokenGenerationDate = KeychainManager.shared.getCreatedAt() // Assuming it returns TimeInterval or Unix timestamp
+        let expiresIn = KeychainManager.shared.getExpiresIn()
+        
+        let currentDate = Date()
+        let createdDateNewType = Date(timeIntervalSince1970: TimeInterval(tokenGenerationDate ?? 0))
+        let expirationDate = createdDateNewType.addingTimeInterval(TimeInterval(expiresIn ?? 0))
+        
+        return expirationDate > currentDate
     }
     
     func callingLoginAPI(userRequestData: UserModel, errorCallback: @escaping ErrorCallback, successCallback: @escaping SuccessCallback) {
@@ -102,6 +117,7 @@ class APIManager {
             return
         }
         
+        if isValid {
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(accessToken)"
         ]
@@ -132,6 +148,7 @@ class APIManager {
             return
         }
         
+        if isValid {
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(accessToken)"
         ]
