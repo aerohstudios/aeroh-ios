@@ -18,6 +18,7 @@ struct HomeScreen: View {
         @StateObject private var devicesController = DevicesController()
         
         var body: some View {
+        NavigationView {
             ZStack(alignment: .trailing) {
                 Color(red: 0.06, green: 0.05, blue: 0.08)
                     .edgesIgnoringSafeArea(.all)
@@ -91,26 +92,27 @@ struct HomeScreen: View {
             }
             .onAppear {
                 loadKeychainValues()
-                UserController().fetchUsers(accessToken: accessToken) { users in
-                    for user in users {
-                        successCallback(user: user)
-                    }
+                userController.fetchUsers(accessToken: accessToken)
+                if devicesController.devices.isEmpty {
+                    devicesController.fetchDevicesIfNeeded(accessToken: accessToken)
                 }
-                devicesController.fetchDevices(accessToken: accessToken)
             }
+        }.alert(isPresented: $userController.showAlert) {
+            Alert(title: Text("Network Error"), message: Text(userController.alertMessage), dismissButton: .default(Text("OK")))
         }
-        
-        private func loadKeychainValues() {
-            accessToken = KeychainManager.shared.getAccessToken() ?? ""
-            refreshToken = KeychainManager.shared.getRefreshToken() ?? ""
-            expiresIn = KeychainManager.shared.getExpiresIn() ?? 0
-            createdAt = KeychainManager.shared.getCreatedAt() ?? 0
-        }
-        
-        private func successCallback(user: UserInfo) {
-            UserDefaults.standard.set(user.first_name, forKey: "first_name")
-            UserDefaults.standard.set(user.email, forKey: "email")
-        }
+    }
+    
+    private func loadKeychainValues() {
+        accessToken = KeychainManager.shared.getAccessToken() ?? ""
+        refreshToken = KeychainManager.shared.getRefreshToken() ?? ""
+        expiresIn = KeychainManager.shared.getExpiresIn() ?? 0
+        createdAt = KeychainManager.shared.getCreatedAt() ?? 0
+    }
+    
+    private func successCallback(user: UserInfo) {
+        UserDefaults.standard.set(user.first_name, forKey: "first_name")
+        UserDefaults.standard.set(user.email, forKey: "email")
+    }
 }
 
 struct HomeScreen_Previews: PreviewProvider {
