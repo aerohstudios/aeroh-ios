@@ -76,6 +76,11 @@ class APIManager {
     }
     
     func callingSignupAPI(userRequestData: UserModel, errorCallback: @escaping ErrorCallback, successCallback: @escaping SuccessCallback) {
+        guard isInternetConnected() else {
+            let errorMessage = "No internet connection"
+            errorCallback(errorMessage)
+            return
+        }
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
