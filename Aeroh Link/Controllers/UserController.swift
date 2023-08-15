@@ -9,14 +9,18 @@ import Foundation
 
 class UserController: ObservableObject {
     @Published var users: [UserInfo] = []
+    @Published var showAlert = false
+    @Published var alertMessage = ""
     
-    func fetchUsers(accessToken: String, completion: @escaping ([UserInfo]) -> Void) {
+    func fetchUsers(accessToken: String) {
         APIManager.shared.fetchUsers(with: accessToken, errorCallback: { errorMessage in
-            print(errorMessage) // Handle the error
-            completion([]) // Return an empty array in case of an error
+            DispatchQueue.main.async {
+                self.showAlert = true
+                self.alertMessage = errorMessage
+            }
         }, completion: { users in
             DispatchQueue.main.async {
-                completion([users])
+                self.users = [users]
             }
         })
     }
