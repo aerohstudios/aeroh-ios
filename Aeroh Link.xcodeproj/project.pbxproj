@@ -32,6 +32,8 @@
 		91AD20C62A5FAB70008D521D /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20C52A5FAB70008D521D /* AppConstants.swift */; };
 		91AD20C92A5FB2D1008D521D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 91AD20C82A5FB2D1008D521D /* Alamofire */; };
 		91AD20CB2A5FC120008D521D /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20CA2A5FC120008D521D /* HomeScreen.swift */; };
+		91BC848D2A8CC58100C4C46E /* SearchBluetoothDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BC848C2A8CC58100C4C46E /* SearchBluetoothDevices.swift */; };
+		91BC848F2A8D23F500C4C46E /* DeviceNamingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BC848E2A8D23F500C4C46E /* DeviceNamingScreen.swift */; };
 		91CB07B02A840BEF00573301 /* DeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB07AF2A840BEF00573301 /* DeviceController.swift */; };
 		91CB07B42A84EC3900573301 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB07B32A84EC3900573301 /* DeviceModel.swift */; };
 /* End PBXBuildFile section */
@@ -82,6 +84,8 @@
 		91AD20C02A5FAA49008D521D /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		91AD20C52A5FAB70008D521D /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		91AD20CA2A5FC120008D521D /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		91BC848C2A8CC58100C4C46E /* SearchBluetoothDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBluetoothDevices.swift; sourceTree = "<group>"; };
+		91BC848E2A8D23F500C4C46E /* DeviceNamingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceNamingScreen.swift; sourceTree = "<group>"; };
 		91CB07AF2A840BEF00573301 /* DeviceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceController.swift; sourceTree = "<group>"; };
 		91CB07B32A84EC3900573301 /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +185,8 @@
 				911FE6142A77AD630059E69C /* LoginScreen.swift */,
 				911341412A49620200694A17 /* SignupScreen.swift */,
 				91AD20CA2A5FC120008D521D /* HomeScreen.swift */,
+				91BC848C2A8CC58100C4C46E /* SearchBluetoothDevices.swift */,
+				91BC848E2A8D23F500C4C46E /* DeviceNamingScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -364,12 +370,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91BC848D2A8CC58100C4C46E /* SearchBluetoothDevices.swift in Sources */,
 				911FE6192A8100D70059E69C /* UserInfo.swift in Sources */,
 				911FE6172A7D07160059E69C /* UserController.swift in Sources */,
 				9193EF602A740FFE00F4DBDB /* UserModel.swift in Sources */,
 				918B84EB2A45798700C4FD75 /* SplashScreen.swift in Sources */,
 				9193EF5E2A73F35A00F4DBDB /* LoginManager.swift in Sources */,
 				9193EF582A6E35BC00F4DBDB /* EnvConstants.swift in Sources */,
+				91BC848F2A8D23F500C4C46E /* DeviceNamingScreen.swift in Sources */,
 				91AD20C62A5FAB70008D521D /* AppConstants.swift in Sources */,
 				91CB07B42A84EC3900573301 /* DeviceModel.swift in Sources */,
 				58F022862A440F9C00980667 /* ContentView.swift in Sources */,
