@@ -53,6 +53,7 @@ class BluetoothManager: NSObject, ObservableObject, CBCentralManagerDelegate, CB
 struct SearchBluetoothDevices: View {
     @StateObject var bluetoothManager = BluetoothManager()
     @State private var fakeData = false
+    @State private var showBluetoothModal = false
     var body: some View {
         NavigationView {
             ZStack {
@@ -92,6 +93,9 @@ struct SearchBluetoothDevices: View {
                         Spacer()
                         
                     } else {
+                        Button(action: {
+                            showBluetoothModal.toggle()
+                        }, label: {
                         HStack {
                             Text("Turn on Bluetooth")
                                 .foregroundColor(.white)
@@ -107,10 +111,17 @@ struct SearchBluetoothDevices: View {
                         .frame(maxWidth: .infinity, minHeight: 55)
                         .background(Color(red: 0.16, green: 0.16, blue: 0.16))
                         .clipShape(Capsule())
+                        })
                         
                         Spacer()
                     }
                 }.padding()
+                    .sheet(isPresented: $showBluetoothModal) {
+                        BottomSheetView()
+                            .presentationDetents([.medium])
+                            .presentationBackground(.black)
+                            .presentationCornerRadius(25)
+                    }
             }
         }
         .navigationTitle("Add Device")
@@ -153,6 +164,63 @@ struct BluetoothDeviceRowView: View {
     }
 }
 
+struct BottomSheetView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 30){
+            HStack{
+                Image("BluetoothOnIcon")
+                
+                VStack(alignment: .leading, spacing: 5){
+                    Text("Aeroh link needs bluetooth to connect")
+                        .font(
+                            Font.system(size: 16)
+                                .weight(.semibold)
+                        )
+                        .foregroundColor(.white)
+                    
+                    Text("Enable Bluetooth to add aeroh link")
+                        .font(Font.system(size: 14))
+                        .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                }
+            }
+            
+            Divider()
+                .frame(height: 2)
+                .overlay(Color(red: 0.16, green: 0.16, blue: 0.16))
+            
+            HStack(){
+                VStack(alignment: .leading, spacing: 5){
+                    Text("Go to settings and turn on bluetooth")
+                        .font(Font.system(size: 16))
+                        .foregroundColor(.white)
+                    
+                    Text("Go to settings >")
+                        .font(Font.system(size: 14))
+                        .foregroundColor(Color(red: 1, green: 0.78, blue: 0.23))
+                }
+                Image("SettingsIllustration")
+            }
+            Divider()
+                .frame(height: 2)
+                .overlay(Color(red: 0.16, green: 0.16, blue: 0.16))
+            HStack{
+                VStack(alignment: .leading, spacing: 5){
+                    Text("Turn on Bluetooth")
+                        .font(Font.custom("Inter", size: 16))
+                        .foregroundColor(.white)
+                        .frame(width: 206, alignment: .topLeading)
+                    
+                    
+                    Text("Turned on")
+                        .font(Font.custom("Poppins", size: 14))
+                        .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                }
+                Image("BluetoothOnIllustration")
+            }
+        }.padding()
+        
+    }
+}
 struct SearchBluetoothDevices_Previews: PreviewProvider {
     static var previews: some View {
         SearchBluetoothDevices()
