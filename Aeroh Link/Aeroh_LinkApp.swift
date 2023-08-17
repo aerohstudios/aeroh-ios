@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct Aeroh_LinkApp: App {
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environment(\.colorScheme, .dark)
         }
     }
 }
