@@ -55,9 +55,7 @@ struct HomeScreen: View {
                             
                         }.padding(.horizontal)
                         
-                        Button {
-                            
-                        } label: {
+                        NavigationLink(destination: SearchBluetoothDevices()) {
                             Text("Add a new device")
                                 .foregroundColor(.white)
                                 .font(.system(size: 23))
@@ -146,6 +144,7 @@ struct HomeScreen_Previews: PreviewProvider {
                 
                 Image(systemName: "plus")
                     .font(.system(size: 20))
+                    .foregroundColor(.black)
                     .fontWeight(.semibold)
                     .frame(width: 44, height: 44)
                     .padding()
