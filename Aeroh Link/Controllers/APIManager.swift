@@ -195,7 +195,7 @@ class APIManager {
             return
         }
         
-        let urlString = "http://localhost:3000/oauth/token"
+        let urlString = "\(base_url)/oauth/token"
         let refreshToken = KeychainManager.shared.getRefreshToken()
         
         let parameters: [String: Any] = [
