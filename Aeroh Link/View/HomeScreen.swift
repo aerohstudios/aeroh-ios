@@ -71,13 +71,34 @@ struct HomeScreen: View {
                             .font(.system(size: 17))
                             .fontWeight(.semibold)
                         
-                        ScrollView {
-                            VStack(alignment: .leading, spacing: 20) {
-                                ForEach(Array(devicesController.devices.enumerated()), id: \.element.id) { index, device in
-                                    DeviceRowView(device: device, isLastDevice: index == devicesController.devices.count - 1)
-                                        .padding(.horizontal)
+                        if devicesController.devices.count == 0 {
+                            HStack(alignment: .center) {
+                                Spacer()
+                                VStack(alignment: .center, spacing: 10){
+                                    Spacer()
+                                    Image("empty-box")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 70, height: 70)
+                                    
+                                    Text("No devices found \n Please add a new device")
+                                        .font(Font.system( size: 15))
+                                        .multilineTextAlignment(.center)
+                                        .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                                    
+                                    Spacer()
                                 }
-                            }.padding(.vertical)
+                                Spacer()
+                            }                        }
+                        else {
+                            ScrollView {
+                                VStack(alignment: .leading, spacing: 20) {
+                                    ForEach(Array(devicesController.devices.enumerated()), id: \.element.id) { index, device in
+                                        DeviceRowView(device: device, isLastDevice: index == devicesController.devices.count - 1)
+                                            .padding(.horizontal)
+                                    }
+                                }.padding(.vertical)
+                            }
                         }
                     }
                     
