@@ -18,7 +18,7 @@ struct HomeScreen: View {
         @StateObject private var devicesController = DevicesController()
         
         var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack(alignment: .trailing) {
                 Color(red: 0.06, green: 0.05, blue: 0.08)
                     .edgesIgnoringSafeArea(.all)
