@@ -226,7 +226,6 @@ struct Menu: View {
         }.frame(width: UIScreen.main.bounds.width / 1.5)
             .padding(.horizontal, 20)
             .background((Color(red: 0.06, green: 0.05, blue: 0.08)).edgesIgnoringSafeArea(.all))
-            .overlay(Rectangle().stroke(Color.primary.opacity(0.2), lineWidth: 2).shadow(radius: 3).edgesIgnoringSafeArea(.all))
             .alert(isPresented: $showingLogoutAlert) {
                 Alert(title: Text("Logout"),
                       message: Text("Are you sure you want to logout?"),
