@@ -55,7 +55,6 @@ struct SearchBluetoothDevices: View {
     @State private var showBluetoothModal = false
     @AppStorage("demoMode") private var demoMode = false
     var body: some View {
-        NavigationView {
             ZStack {
                 Color(red: 0.06, green: 0.05, blue: 0.08)
                     .edgesIgnoringSafeArea(.all)
@@ -131,7 +130,6 @@ struct SearchBluetoothDevices: View {
                             .presentationCornerRadius(25)
                     }
             }
-        }
         .navigationTitle("Add Device")
         .navigationBarTitleDisplayMode(.inline)
     }
