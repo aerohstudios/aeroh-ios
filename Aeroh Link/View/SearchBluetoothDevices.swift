@@ -153,7 +153,7 @@ struct BluetoothDeviceRowView: View {
                     .foregroundColor(.white)
                     .fontWeight(.medium)
                 
-                NavigationLink(destination: DeviceNamingScreen(), label: {
+                NavigationLink(destination: WifiConnectionScreen(), label: {
                     Text("Add")
                         .font(.system(size: 12))
                         .frame(width: 79, height: 30)

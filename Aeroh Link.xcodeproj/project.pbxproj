@@ -37,6 +37,7 @@
 		91BC848F2A8D23F500C4C46E /* DeviceNamingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BC848E2A8D23F500C4C46E /* DeviceNamingScreen.swift */; };
 		91CB07B02A840BEF00573301 /* DeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB07AF2A840BEF00573301 /* DeviceController.swift */; };
 		91CB07B42A84EC3900573301 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB07B32A84EC3900573301 /* DeviceModel.swift */; };
+		91DC89A72A8FC8B60086A033 /* WifiConnectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DC89A62A8FC8B60086A033 /* WifiConnectionScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		91BC848E2A8D23F500C4C46E /* DeviceNamingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceNamingScreen.swift; sourceTree = "<group>"; };
 		91CB07AF2A840BEF00573301 /* DeviceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceController.swift; sourceTree = "<group>"; };
 		91CB07B32A84EC3900573301 /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
+		91DC89A62A8FC8B60086A033 /* WifiConnectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiConnectionScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 				91BC848C2A8CC58100C4C46E /* SearchBluetoothDevices.swift */,
 				91BC848E2A8D23F500C4C46E /* DeviceNamingScreen.swift */,
 				918BEDC22AA212FC001CFF59 /* SettingsPage.swift */,
+				91DC89A62A8FC8B60086A033 /* WifiConnectionScreen.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */,
 				911341422A49620200694A17 /* SignupScreen.swift in Sources */,
 				91AD20CB2A5FC120008D521D /* HomeScreen.swift in Sources */,
+				91DC89A72A8FC8B60086A033 /* WifiConnectionScreen.swift in Sources */,
 				91CB07B02A840BEF00573301 /* DeviceController.swift in Sources */,
 				58F022842A440F9C00980667 /* Aeroh_LinkApp.swift in Sources */,
 				91AD20B42A5FA75F008D521D /* TimestampGenerator.swift in Sources */,
