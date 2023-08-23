@@ -247,9 +247,7 @@ class APIManager {
                             errorCallback(error.localizedDescription)
                         }
                     } else {
-                        if error.localizedDescription != "" {
-                            errorCallback("Could not connect to the server. Please contact to support")
-                        }
+                        errorCallback(error.localizedDescription)
                     }
                 }
             }
