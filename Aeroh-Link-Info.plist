@@ -9,5 +9,7 @@
 		<key>UILaunchScreen</key>
 		<dict/>
 	</dict>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>We use Bluetooth to connect to nearby Aeroh devices for provisioning.</string>
 </dict>
 </plist>
