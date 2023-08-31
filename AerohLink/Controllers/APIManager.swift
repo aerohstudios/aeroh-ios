@@ -8,9 +8,18 @@
 import Foundation
 import Alamofire
 
+struct Device: Codable {
+    let name: String
+    let macAddr: String
+
+    enum CodingKeys: String, CodingKey {
+        case name
+        case macAddr = "mac_addr"
+    }
+}
+
 class APIManager {
     static let shared = APIManager()
-
     var isValid: Bool {
         return isAccessTokenValid()
     }
@@ -240,6 +249,59 @@ class APIManager {
                     }
                 }
             }
+    }
+
+    func createDevice(name: String, macAddr: String, completion: @escaping (Result<[DeviceModel], APIError>) -> Void) {
+        guard isInternetConnected() else {
+            completion(.failure(.noInternetConnectionError))
+            return
+        }
+
+        if isValid {
+            let endpoint = URL(string: "\(baseUrl)/api/v1/devices")!
+            guard let accessToken = KeychainManager.shared.getAccessToken() else {
+                completion(.failure(.authenticationError))
+                return
+            }
+
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(accessToken)",
+                "Content-Type": "application/vnd.api+json"
+            ]
+
+            let parameters: [String: Any] = [
+                "data": [
+                    "type": "devices",
+                    "attributes": [
+                        "name": name,
+                        "mac-addr": macAddr
+                    ]
+                ]
+            ]
+
+            AF.request(endpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+                .responseJSON { response in
+                    switch response.result {
+                    case .success(let data):
+                        if let json = data as? [String: Any], let dataArray = json["data"] as? [[String: Any]] {
+                            var devices: [DeviceModel] = []
+                            for deviceData in dataArray {
+                                if let attributes = deviceData["attributes"] as? [String: Any], let name = attributes["name"] as? String {
+                                    let device = DeviceModel(name: name)
+                                    devices.append(device)
+                                }
+                            }
+                            completion(.success(devices))
+                        } else {
+                            completion(.failure(.dataParsingError))
+                        }
+                    case .failure(let error):
+                        completion(.failure(.serverError))
+                    }
+                }
+        } else {
+            completion(.failure(.customError("Invalid Request")))
+        }
     }
 }
 
