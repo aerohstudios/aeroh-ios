@@ -73,6 +73,7 @@ struct SearchBluetoothDevices: View {
                             
                         }
                         
+                    ScrollView {
                         VStack(alignment: .center) {
                             
                             ForEach(bluetoothManager.discoveredPeripherals, id: \.identifier) { peripheral in
@@ -86,6 +87,7 @@ struct SearchBluetoothDevices: View {
                         .onAppear {
                             bluetoothManager.startScanning()
                         }
+                    }
                         
                         Spacer()
                         
