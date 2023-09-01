@@ -20,6 +20,7 @@
 		911FE6192A8100D70059E69C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE6182A8100D70059E69C /* UserInfo.swift */; };
 		918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */; };
 		918B84EB2A45798700C4FD75 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B84EA2A45798700C4FD75 /* SplashScreen.swift */; };
+		918BEDC32AA212FC001CFF59 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918BEDC22AA212FC001CFF59 /* SettingsPage.swift */; };
 		9193EF582A6E35BC00F4DBDB /* EnvConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193EF572A6E35BC00F4DBDB /* EnvConstants.swift */; };
 		9193EF5E2A73F35A00F4DBDB /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193EF5D2A73F35900F4DBDB /* LoginManager.swift */; };
 		9193EF602A740FFE00F4DBDB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193EF5F2A740FFE00F4DBDB /* UserModel.swift */; };
@@ -73,6 +74,7 @@
 		918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
 		918B84EA2A45798700C4FD75 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		918B84EC2A457A5900C4FD75 /* Aeroh-Link-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Aeroh-Link-Info.plist"; sourceTree = SOURCE_ROOT; };
+		918BEDC22AA212FC001CFF59 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		9193EF572A6E35BC00F4DBDB /* EnvConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvConstants.swift; sourceTree = "<group>"; };
 		9193EF5D2A73F35900F4DBDB /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		9193EF5F2A740FFE00F4DBDB /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				91AD20CA2A5FC120008D521D /* HomeScreen.swift */,
 				91BC848C2A8CC58100C4C46E /* SearchBluetoothDevices.swift */,
 				91BC848E2A8D23F500C4C46E /* DeviceNamingScreen.swift */,
+				918BEDC22AA212FC001CFF59 /* SettingsPage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				91BC848D2A8CC58100C4C46E /* SearchBluetoothDevices.swift in Sources */,
 				911FE6192A8100D70059E69C /* UserInfo.swift in Sources */,
 				911FE6172A7D07160059E69C /* UserController.swift in Sources */,
+				918BEDC32AA212FC001CFF59 /* SettingsPage.swift in Sources */,
 				9193EF602A740FFE00F4DBDB /* UserModel.swift in Sources */,
 				918B84EB2A45798700C4FD75 /* SplashScreen.swift in Sources */,
 				9193EF5E2A73F35A00F4DBDB /* LoginManager.swift in Sources */,
