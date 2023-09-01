@@ -52,8 +52,8 @@ class BluetoothManager: NSObject, ObservableObject, CBCentralManagerDelegate, CB
 
 struct SearchBluetoothDevices: View {
     @StateObject var bluetoothManager = BluetoothManager()
-    @State private var fakeData = false
     @State private var showBluetoothModal = false
+    @AppStorage("isToggleOn") private var isToggleOn = false
     var body: some View {
         NavigationView {
             ZStack {
@@ -74,9 +74,6 @@ struct SearchBluetoothDevices: View {
                         }
                         
                         VStack(alignment: .center) {
-                            if fakeData {
-                                BluetoothDeviceRowView(device: DeviceModel(name: "Aeroh Link"), isLastDevice: true)
-                            }
                             
                             ForEach(bluetoothManager.discoveredPeripherals, id: \.identifier) { peripheral in
                                 BluetoothDeviceRowView(device: DeviceModel(name: peripheral.name ?? "Unknown"), isLastDevice: false)
@@ -93,25 +90,45 @@ struct SearchBluetoothDevices: View {
                         Spacer()
                         
                     } else {
-                        Button(action: {
-                            showBluetoothModal.toggle()
-                        }, label: {
-                        HStack {
-                            Text("Turn on Bluetooth")
-                                .foregroundColor(.white)
-                            Spacer()
+                        if isToggleOn {
+                            HStack(spacing: 5) {
+                                ProgressView()
+                                    .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                                
+                                Text("Searching for nearby devices")
+                                    .font(Font.custom("Poppins", size: 16))
+                                    .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                            }
+                            VStack(alignment: .center) {
+                                BluetoothDeviceRowView(device: DeviceModel(name: "Aeroh Link"), isLastDevice: true)
+                                
+                                
+                            }
+                            .padding(.vertical)
                             
-                            Image("BluetoothOffIcon")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 35, height: 35)
+                            
                         }
-                        .padding(.horizontal, 30)
-                        .padding(.vertical, 15)
-                        .frame(maxWidth: .infinity, minHeight: 55)
-                        .background(Color(red: 0.16, green: 0.16, blue: 0.16))
-                        .clipShape(Capsule())
-                        })
+                        else {
+                            Button(action: {
+                                showBluetoothModal.toggle()
+                            }, label: {
+                                HStack {
+                                    Text("Turn on Bluetooth")
+                                        .foregroundColor(.white)
+                                    Spacer()
+                                    
+                                    Image("BluetoothOffIcon")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 35, height: 35)
+                                }
+                                .padding(.horizontal, 30)
+                                .padding(.vertical, 15)
+                                .frame(maxWidth: .infinity, minHeight: 55)
+                                .background(Color(red: 0.16, green: 0.16, blue: 0.16))
+                                .clipShape(Capsule())
+                            })
+                        }
                         
                         Spacer()
                     }
