@@ -213,6 +213,15 @@ struct Menu: View {
                 }.padding()
             })
             
+            NavigationLink(destination: SettingsPage(), label: {
+                HStack {
+                    Image(systemName: "slider.horizontal.3")
+                        .foregroundColor(.white)
+                    Text("Settings")
+                        .foregroundColor(.white)
+                }.padding()
+            })
+            
             Spacer()
         }.frame(width: UIScreen.main.bounds.width / 1.5)
             .padding(.horizontal, 20)
