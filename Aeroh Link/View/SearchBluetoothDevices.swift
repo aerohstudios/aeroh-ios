@@ -39,8 +39,8 @@ class BluetoothManager: NSObject, ObservableObject, CBCentralManagerDelegate, CB
         centralManager.connect(peripheral, options: nil)
     }
     
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        if let deviceName = peripheral.name, deviceName == "aeroh link" {
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
+        if let deviceName = peripheral.name?.lowercased(), deviceName.hasPrefix("aeroh") {
             discoveredPeripherals.append(peripheral)
         }
     }
