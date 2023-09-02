@@ -73,21 +73,21 @@ struct SearchBluetoothDevices: View {
                             
                         }
                         
-                    ScrollView {
-                        VStack(alignment: .center) {
-                            
-                            ForEach(bluetoothManager.discoveredPeripherals, id: \.identifier) { peripheral in
-                                BluetoothDeviceRowView(device: DeviceModel(name: peripheral.name ?? "Unknown"), isLastDevice: false)
-                                    .onTapGesture {
-                                        bluetoothManager.connectPeripheral(peripheral: peripheral)
-                                    }
+                        ScrollView {
+                            VStack(alignment: .center) {
+                                
+                                ForEach(bluetoothManager.discoveredPeripherals, id: \.identifier) { peripheral in
+                                    BluetoothDeviceRowView(device: DeviceModel(name: peripheral.name ?? "Unknown"), isLastDevice: false)
+                                        .onTapGesture {
+                                            bluetoothManager.connectPeripheral(peripheral: peripheral)
+                                        }
+                                }
+                            }
+                            .padding(.vertical)
+                            .onAppear {
+                                bluetoothManager.startScanning()
                             }
                         }
-                        .padding(.vertical)
-                        .onAppear {
-                            bluetoothManager.startScanning()
-                        }
-                    }
                         
                         Spacer()
                         
