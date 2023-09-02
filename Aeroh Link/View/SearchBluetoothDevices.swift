@@ -53,7 +53,7 @@ class BluetoothManager: NSObject, ObservableObject, CBCentralManagerDelegate, CB
 struct SearchBluetoothDevices: View {
     @StateObject var bluetoothManager = BluetoothManager()
     @State private var showBluetoothModal = false
-    @AppStorage("isToggleOn") private var isToggleOn = false
+    @AppStorage("demoMode") private var demoMode = false
     var body: some View {
         NavigationView {
             ZStack {
@@ -92,7 +92,7 @@ struct SearchBluetoothDevices: View {
                         Spacer()
                         
                     } else {
-                        if isToggleOn {
+                        if demoMode {
                             HStack(spacing: 5) {
                                 ProgressView()
                                     .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))

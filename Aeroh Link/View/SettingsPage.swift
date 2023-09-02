@@ -8,21 +8,13 @@
 import SwiftUI
 
 struct SettingsPage: View {
-    //    @State private var isToggleOn = false
-    @AppStorage("isToggleOn") private var isToggleOn = false
+    @AppStorage("demoMode") private var demoMode = false
     var body: some View {
         ZStack(alignment: .top) {
             Color(red: 0.06, green: 0.05, blue: 0.08)
                 .edgesIgnoringSafeArea(.all)
             HStack{
-                Toggle("Bluetooth dev mode", isOn: $isToggleOn)
-                    .onChange(of: isToggleOn) { newValue in
-                        if newValue {
-                            print("Toggle is ON")
-                        } else {
-                            print("Toggle is OFF")
-                        }
-                    }
+                Toggle("Demo Mode", isOn: $demoMode)
             }.padding()
         }
         .navigationTitle("Settings")
