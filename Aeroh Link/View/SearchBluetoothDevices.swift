@@ -62,7 +62,20 @@ struct SearchBluetoothDevices: View {
                 
                 VStack(alignment: .center) {
                     
-                    if bluetoothManager.isBluetoothOn {
+                    if demoMode {
+                        HStack(spacing: 5) {
+                            ProgressView()
+                                .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+
+                            Text("Searching for nearby devices")
+                                .font(Font.custom("Poppins", size: 16))
+                                .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                        }
+                        VStack(alignment: .center) {
+                            BluetoothDeviceRowView(device: DeviceModel(name: "Aeroh Link"), isLastDevice: true)
+                        }
+                        .padding(.vertical)
+                    } else if bluetoothManager.isBluetoothOn {
                         HStack(spacing: 5) {
                             ProgressView()
                                 .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
@@ -70,7 +83,6 @@ struct SearchBluetoothDevices: View {
                             Text("Searching for nearby devices")
                                 .font(Font.custom("Poppins", size: 16))
                                 .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
-                            
                         }
                         
                         ScrollView {
@@ -88,52 +100,29 @@ struct SearchBluetoothDevices: View {
                                 bluetoothManager.startScanning()
                             }
                         }
-                        
-                        Spacer()
-                        
                     } else {
-                        if demoMode {
-                            HStack(spacing: 5) {
-                                ProgressView()
-                                    .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                        Button(action: {
+                            showBluetoothModal.toggle()
+                        }, label: {
+                            HStack {
+                                Text("Turn on Bluetooth")
+                                    .foregroundColor(.white)
+                                Spacer()
                                 
-                                Text("Searching for nearby devices")
-                                    .font(Font.custom("Poppins", size: 16))
-                                    .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                                Image("BluetoothOffIcon")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 35, height: 35)
                             }
-                            VStack(alignment: .center) {
-                                BluetoothDeviceRowView(device: DeviceModel(name: "Aeroh Link"), isLastDevice: true)
-                                
-                                
-                            }
-                            .padding(.vertical)
-                            
-                            
-                        }
-                        else {
-                            Button(action: {
-                                showBluetoothModal.toggle()
-                            }, label: {
-                                HStack {
-                                    Text("Turn on Bluetooth")
-                                        .foregroundColor(.white)
-                                    Spacer()
-                                    
-                                    Image("BluetoothOffIcon")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 35, height: 35)
-                                }
-                                .padding(.horizontal, 30)
-                                .padding(.vertical, 15)
-                                .frame(maxWidth: .infinity, minHeight: 55)
-                                .background(Color(red: 0.16, green: 0.16, blue: 0.16))
-                                .clipShape(Capsule())
-                            })
-                        }
-                        
-                        Spacer()
+                            .padding(.horizontal, 30)
+                            .padding(.vertical, 15)
+                            .frame(maxWidth: .infinity, minHeight: 55)
+                            .background(Color(red: 0.16, green: 0.16, blue: 0.16))
+                            .clipShape(Capsule())
+                        })
                     }
+
+                    Spacer()
                 }.padding()
                     .sheet(isPresented: $showBluetoothModal) {
                         BottomSheetView()
