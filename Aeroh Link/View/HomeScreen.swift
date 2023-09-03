@@ -129,11 +129,6 @@ struct HomeScreen: View {
         expiresIn = KeychainManager.shared.getExpiresIn() ?? 0
         createdAt = KeychainManager.shared.getCreatedAt() ?? 0
     }
-    
-    private func successCallback(user: UserInfo) {
-        UserDefaults.standard.set(user.first_name, forKey: "first_name")
-        UserDefaults.standard.set(user.email, forKey: "email")
-    }
 }
 
 struct HomeScreen_Previews: PreviewProvider {
