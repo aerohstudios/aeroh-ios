@@ -111,7 +111,7 @@ struct HomeScreen: View {
             }
             .onAppear {
                 loadKeychainValues()
-                userController.fetchUsers(accessToken: accessToken)
+                userController.fetchUser(accessToken: accessToken)
                 if devicesController.devices.isEmpty {
                     devicesController.fetchDevicesIfNeeded(accessToken: accessToken)
                 }

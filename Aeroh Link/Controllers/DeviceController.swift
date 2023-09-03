@@ -16,13 +16,16 @@ class DevicesController: ObservableObject {
             return
         }
         isFetchingDevices = true
-        APIManager.shared.fetchDevices(with: accessToken, errorCallback: { errorMessage in
-            print(errorMessage)
-        }, completion: { devices in
-            DispatchQueue.main.async {
-                self.devices.append(contentsOf: devices)
-                self.isFetchingDevices = false
+        APIManager.shared.fetchDevices(with: accessToken) { result in
+            switch result {
+            case .success(let devices):
+                DispatchQueue.main.async {
+                    self.devices.append(contentsOf: devices)
+                    self.isFetchingDevices = false
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
             }
-        })
+        }
     }
 }

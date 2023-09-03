@@ -144,12 +144,16 @@ struct SignupScreen: View {
                         let isValid = validateForm()
                         
                         if isValid {
-                            SignupController().authenticate(first_name: first_name, email: email, password: password, errorCallback: { errorMessage in
-                                showAlert(message: errorMessage, duration: 3.0)}, successCallback: {
+                            SignupController().authenticate(first_name: first_name, email: email, password: password) { result in
+                                switch result {
+                                case .success(_):
                                     withAnimation{
                                         loginManager.login()
                                     }
-                                })
+                                case .failure(let error):
+                                    showAlert(message: error.localizedDescription, duration: 3.0 )
+                                }
+                            }
                         }
                     }) {
                         Text("Sign up")

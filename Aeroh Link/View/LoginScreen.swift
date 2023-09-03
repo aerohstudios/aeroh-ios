@@ -102,13 +102,16 @@ struct LoginScreen: View {
                         isValid = validateForm()
                         
                         if isValid {
-                            LoginController().authenticate(email: email, password: password, loginManager: loginManager, errorCallback: { errorMessage in
-                                showAlert(message: errorMessage, duration: 3.0 )
-                            }, successCallback: {
-                                withAnimation{
-                                    loginManager.login()
+                            LoginController().authenticate(email: email, password: password, loginManager: loginManager) { result in
+                                switch result {
+                                case .success(_):
+                                    withAnimation{
+                                        loginManager.login()
+                                    }
+                                case .failure(let error):
+                                    showAlert(message: error.localizedDescription, duration: 3.0 )
                                 }
-                            })
+                            }
                         }
                         
                         

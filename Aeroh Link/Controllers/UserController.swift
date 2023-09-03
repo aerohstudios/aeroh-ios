@@ -12,19 +12,22 @@ class UserController: ObservableObject {
     @Published var showAlert = false
     @Published var alertMessage = ""
 
-    func fetchUsers(accessToken: String) {
-        APIManager.shared.fetchUsers(with: accessToken, errorCallback: { errorMessage in
-            DispatchQueue.main.async {
-                self.showAlert = true
-                self.alertMessage = errorMessage
+    func fetchUser(accessToken: String) {
+        APIManager.shared.fetchUser(with: accessToken) { result in
+            switch result {
+            case .success(let user):
+                DispatchQueue.main.async {
+                    self.user = user
+                    UserDefaults.standard.set(user.first_name, forKey: "first_name")
+                    UserDefaults.standard.set(user.email, forKey: "email")
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    self.showAlert = true
+                    self.alertMessage = error.localizedDescription
+                }
             }
-        }, completion: { user in
-            DispatchQueue.main.async {
-                self.user = user
-                UserDefaults.standard.set(user.first_name, forKey: "first_name")
-                UserDefaults.standard.set(user.email, forKey: "email")
-            }
-        })
+        }
     }
 }
 
