@@ -72,6 +72,7 @@
 		911FE6142A77AD630059E69C /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		911FE6162A7D07160059E69C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		911FE6182A8100D70059E69C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		917EB5D22AA633E000407F43 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
 		918B84EA2A45798700C4FD75 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		918B84EC2A457A5900C4FD75 /* Aeroh-Link-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Aeroh-Link-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -127,6 +128,7 @@
 				58F022932A440F9D00980667 /* Aeroh LinkTests */,
 				58F0229D2A440F9D00980667 /* Aeroh LinkUITests */,
 				58F022812A440F9C00980667 /* Products */,
+				917EB5D12AA633DF00407F43 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,6 +180,14 @@
 				58F022A02A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift */,
 			);
 			path = "Aeroh LinkUITests";
+			sourceTree = "<group>";
+		};
+		917EB5D12AA633DF00407F43 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				917EB5D22AA633E000407F43 /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		918B84E72A4576C000C4FD75 /* View */ = {

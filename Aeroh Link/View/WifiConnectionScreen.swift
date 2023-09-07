@@ -6,6 +6,32 @@
 //
 
 import SwiftUI
+import Security
+import NetworkExtension
+import Combine
+import CoreFoundation
+import SystemConfiguration.CaptiveNetwork
+
+class WiFiListViewModel: ObservableObject {
+    @Published var wifiNetworks: [String] = []
+    @State var demoWifiNetworks: [String] = ["LPU kalvi", "LPU wireless"]
+    
+    init() {
+        fetchWiFiNetworks()
+    }
+    
+    func fetchWiFiNetworks() {
+        if let interfaces = CNCopySupportedInterfaces() as? [String] {
+            for interface in interfaces {
+                if let info = CNCopyCurrentNetworkInfo(interface as CFString) as NSDictionary? {
+                    if let ssid = info[kCNNetworkInfoKeySSID as String] as? String {
+                        wifiNetworks.append(ssid)
+                    }
+                }
+            }
+        }
+    }
+}
 
 struct WifiConnectionScreen: View {
     @State private var wifiName = ""
