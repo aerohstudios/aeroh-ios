@@ -58,14 +58,14 @@ class APIManager {
                             let errorMessage = errors[0]
                             completion(.failure(APIError.customError(errorMessage)))
                         } else if let responseData = json["data"] as? [String: Any] {
-                                if let accessToken = responseData["access_token"] as? String,
-                                   let refreshToken = responseData["refresh_token"] as? String,
-                                   let expiresIn = responseData["expires_in"] as? Int,
-                                   let createdAt = responseData["created_at"] as? Int {
-                                    KeychainManager.shared.saveCredentials(accessToken: accessToken, refreshToken: refreshToken, expiresIn: expiresIn, createdAt: createdAt)
-                                    completion(.success(0))
-                                }
+                            if let accessToken = responseData["access_token"] as? String,
+                               let refreshToken = responseData["refresh_token"] as? String,
+                               let expiresIn = responseData["expires_in"] as? Int,
+                               let createdAt = responseData["created_at"] as? Int {
+                                KeychainManager.shared.saveCredentials(accessToken: accessToken, refreshToken: refreshToken, expiresIn: expiresIn, createdAt: createdAt)
+                                completion(.success(0))
                             }
+                        }
                     }
                 } catch {
                     print(error.localizedDescription)
@@ -268,7 +268,6 @@ class APIManager {
                 "Authorization": "Bearer \(accessToken)",
                 "Content-Type": "application/vnd.api+json"
             ]
-
             let parameters: [String: Any] = [
                 "data": [
                     "type": "devices",
@@ -278,7 +277,6 @@ class APIManager {
                     ]
                 ]
             ]
-
             AF.request(endpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
                 .responseJSON { response in
                     switch response.result {
@@ -303,6 +301,7 @@ class APIManager {
             completion(.failure(.customError("Invalid Request")))
         }
     }
+
 }
 
 enum APIError: Error {
