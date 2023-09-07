@@ -40,83 +40,174 @@ struct WifiConnectionScreen: View {
     @ObservedObject var viewModel = WiFiListViewModel()
     @AppStorage("demoMode") private var demoMode = false
     var body: some View {
-        
-        ZStack{
-            Color(red: 0.06, green: 0.05, blue: 0.08)
-                .edgesIgnoringSafeArea(.all)
-            
-            
-            VStack(spacing: 40){
-                Spacer()
-                VStack(spacing: 10) {
-                    Text("Select a Wi-Fi Network and enter\npassword")
-                        .lineSpacing(5)
-                        .font(
-                            Font.system(size: 18)
-                                .weight(.semibold)
-                        )
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(.white)
-                    
-                    Text("You need to connect to wifi to instruct\naeroh link")
-                        .font(Font.system(size: 16))
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
-                }
-                
-                
-                
-                Image("wifi-illustration")
-                    .resizable()
-                    .frame(width: 301, height: 172.68526)
-                
-                VStack(spacing: 25) {
-                    TextField("Wi-Fi Name", text: $wifiName)
-                        .foregroundColor(.white)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 30)
-                                .stroke(Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
+        NavigationView {
+            if demoMode{
+                Form {
+                    if wifiName.isEmpty {
+                        Section {
+                            HStack(spacing: 10) {
+                                ProgressView()
+                                    .foregroundColor(.gray)
+                                Text("Searching for nearby devices")
+                            }
+                        }
+                    } else {
+                        Section {
+                            VStack(spacing: 10){
+                                Text("Select a Wi-Fi Network and enter password")
+                                    .font(.headline)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(.white)
+                                
+                                Text("You need to connect to Wi-Fi to instruct Aeroh Link")
+                                    .font(.subheadline)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(.gray)
+                                
+                                Image("wifi-illustration")
+                                    .resizable()
+                                    .frame(width: 301, height: 172.68526)
+                            }
+                        }
+                        
+                        Section {
+                            TextField("Wi-Fi name", text: $wifiName)
+                                .foregroundColor(.white)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
                             
-                        )
-                        .padding(.horizontal)
-                        .colorScheme(.dark)
+                            if !savedPassword.isEmpty {
+                                DisclosureGroup("Saved Password") {
+                                    Text(savedPassword)
+                                        .onTapGesture {
+                                            wifiPassword = savedPassword
+                                            
+                                        }
+                                }
+                            }
+                            SecureField("Password", text: $wifiPassword)
+                                .foregroundColor(.white)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                            
+                        }
+                        
+                        Section {
+                            Button(action: {
+                                saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
+                            }){
+                                Text("Next")
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
+                                    .background(Color(red: 1.00, green: 0.79, blue: 0.23))
+                                
+                                    .clipShape(Capsule())
+                                    .padding(.horizontal)
+                            }
+                        }
+                    }
                     
-                    SecureField("Password", text: $wifiPassword)
-                        .foregroundColor(.white)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 30)
-                                .stroke(Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
-                        )
-                        .padding(.horizontal)
-                        .colorScheme(.dark)
+                    Section {
+                        List(viewModel.demoWifiNetworks, id: \.self) { network in
+                            HStack {
+                                Image(systemName: "wifi")
+                                    .foregroundColor(.white)
+                                Text(network)
+                            }
+                            .onTapGesture {
+                                withAnimation{
+                                    self.wifiName = network
+                                    loadWiFiCredentials()
+                                }
+                            }
+                        }
+                    }
                 }
-                Spacer()
-                
-                Button(action: {
+            }
+            else {
+                Form {
+                    if wifiName.isEmpty {
+                        Section {
+                            HStack(spacing: 10) {
+                                ProgressView()
+                                    .foregroundColor(.gray)
+                                Text("Searching for nearby devices")
+                            }
+                        }
+                    } else {
+                        Section {
+                            VStack(spacing: 10){
+                                Text("Select a Wi-Fi Network and enter password")
+                                    .font(.headline)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(.white)
+                                
+                                Text("You need to connect to Wi-Fi to instruct Aeroh Link")
+                                    .font(.subheadline)
+                                    .multilineTextAlignment(.center)
+                                    .foregroundColor(.gray)
+                                
+                                Image("wifi-illustration")
+                                    .resizable()
+                                    .frame(width: 301, height: 172.68526)
+                            }
+                        }
+                        
+                        Section {
+                            TextField("Wi-Fi name", text: $wifiName)
+                                .foregroundColor(.white)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                            
+                            if !savedPassword.isEmpty {
+                                DisclosureGroup("Saved Password") {
+                                    Text(savedPassword)
+                                        .onTapGesture {
+                                            wifiPassword = savedPassword
+                                            
+                                        }
+                                }
+                            }
+                            SecureField("Password", text: $wifiPassword)
+                                .foregroundColor(.white)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                            
+                        }
+                        
+                        Section {
+                            Button(action: {
+                                saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
+                            }){
+                                Text("Next")
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
+                                    .background(Color(red: 1.00, green: 0.79, blue: 0.23))
+                                
+                                    .clipShape(Capsule())
+                                    .padding(.horizontal)
+                            }
+                        }
+                    }
                     
-                    saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
-                }){
-                    Text("Next")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
-                        .background(Color(red: 1.00, green: 0.79, blue: 0.23))
-                    
-                        .clipShape(Capsule())
-                        .padding(.horizontal)
+                    Section {
+                        List(viewModel.wifiNetworks, id: \.self) { network in
+                            HStack {
+                                Image(systemName: "wifi")
+                                    .foregroundColor(.white)
+                                Text(network)
+                            }
+                            .onTapGesture {
+                                withAnimation{
+                                    self.wifiName = network
+                                    loadWiFiCredentials()
+                                }
+                            }
+                        }
+                    }
                 }
-                
-                
-                
+                .background(Color(red: 0.06, green: 0.05, blue: 0.08).edgesIgnoringSafeArea(.all))
             }
         }.navigationTitle("Connect wifi")
             .navigationBarTitleDisplayMode(.inline)
-            .onAppear {
-                // Load saved WiFi credentials here
-                loadWiFiCredentials()
-            }
         
         
     }
