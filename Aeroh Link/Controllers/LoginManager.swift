@@ -10,11 +10,11 @@ import SwiftUI
 
 class LoginManager: ObservableObject {
     @Published var isLoggedIn: Bool
-    
+
     init() {
         self.isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn")
     }
-    
+
     func login() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             withAnimation {

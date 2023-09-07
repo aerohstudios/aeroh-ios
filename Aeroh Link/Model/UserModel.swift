@@ -8,7 +8,7 @@
 import Foundation
 
 struct UserModel: Codable {
-    
+
     let email: String
     let password: String
     let first_name: String?
@@ -16,5 +16,5 @@ struct UserModel: Codable {
     let timestamp: Int
     let client_id: String?
     let signature: String?
-    
+
 }

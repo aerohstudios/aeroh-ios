@@ -23,16 +23,16 @@ class SignatureController {
         let Signature = calculateHMAC(payload: payloadData, key: secretKeyData)
         return Signature
     }
-    
+
     func calculateHMAC(payload: Data, key: Data) -> String {
         var signature = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
-        
+
         payload.withUnsafeBytes { dataBytes in
             key.withUnsafeBytes { keyBytes in
                 CCHmac(CCHmacAlgorithm(kCCHmacAlgSHA256), keyBytes.baseAddress!, key.count, dataBytes.baseAddress!, payload.count, &signature)
             }
         }
-        
+
         let hmacData = Data(bytes: signature, count: Int(CC_SHA256_DIGEST_LENGTH))
         return hmacData.map { String(format: "%02hhx", $0) }.joined()
     }

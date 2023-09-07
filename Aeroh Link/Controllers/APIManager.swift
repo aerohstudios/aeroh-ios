@@ -10,7 +10,7 @@ import Alamofire
 
 class APIManager {
     static let shared = APIManager()
-    
+
     var isValid: Bool {
         return isAccessTokenValid()
     }
@@ -19,18 +19,18 @@ class APIManager {
         let reachabilityManager = NetworkReachabilityManager()
         return reachabilityManager?.isReachable ?? false
     }
-    
+
     private func isAccessTokenValid() -> Bool {
         let tokenGenerationDate = KeychainManager.shared.getCreatedAt() // Assuming it returns TimeInterval or Unix timestamp
         let expiresIn = KeychainManager.shared.getExpiresIn()
-        
+
         let currentDate = Date()
         let createdDateNewType = Date(timeIntervalSince1970: TimeInterval(tokenGenerationDate ?? 0))
         let expirationDate = createdDateNewType.addingTimeInterval(TimeInterval(expiresIn ?? 0))
-        
+
         return expirationDate > currentDate
     }
-    
+
     func callingLoginAPI(userRequestData: UserModel, completion: @escaping (Result<Any, Error>) -> Void) {
         guard isInternetConnected() else {
             completion(.failure(APIError.NoInternetConnectionError))
@@ -39,7 +39,7 @@ class APIManager {
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
-        
+
         AF.request(login_url, method: .post, parameters: userRequestData, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result {
             case .success(let data):
@@ -70,7 +70,7 @@ class APIManager {
             }
         }
     }
-    
+
     func callingSignupAPI(userRequestData: UserModel, completion: @escaping (Result<Any, Error>) -> Void) {
         guard isInternetConnected() else {
             completion(.failure(APIError.NoInternetConnectionError))
@@ -79,7 +79,7 @@ class APIManager {
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
-        
+
         AF.request(signup_url, method: .post, parameters: userRequestData, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result {
             case .success(let data):
@@ -111,13 +111,13 @@ class APIManager {
             }
         }
     }
-    
+
     func fetchUser(with accessToken: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
         guard isInternetConnected() else {
             completion(.failure(APIError.NoInternetConnectionError))
             return
         }
-        
+
         if isValid {
             let headers: HTTPHeaders = [
                 "Authorization": "Bearer \(accessToken)"
@@ -146,7 +146,7 @@ class APIManager {
             refreshTokenAndRetryRequest() { result in }
         }
     }
-    
+
     func fetchDevices(with accessToken: String, completion: @escaping (Result<[DeviceModel], Error>) -> Void) {
         guard isInternetConnected() else {
             completion(.failure(APIError.NoInternetConnectionError))
@@ -179,23 +179,23 @@ class APIManager {
             }
         }
     }
-    
+
     func refreshTokenAndRetryRequest(completion: @escaping (Result<Data, Error>) -> Void) {
         guard isInternetConnected() else {
             completion(.failure(APIError.NoInternetConnectionError))
             return
         }
-        
+
         let urlString = "\(base_url)/oauth/token"
         let refreshToken = KeychainManager.shared.getRefreshToken()
-        
+
         let parameters: [String: Any] = [
             "client_id": client_id,
             "client_secret": secret,
             "grant_type": "refresh_token",
             "refresh_token": refreshToken!
         ]
-        
+
         AF.request(urlString, method: .post, parameters: parameters)
             .validate(statusCode: 200..<300) // Only consider success status codes
             .response { response in
@@ -211,13 +211,13 @@ class APIManager {
                                    let refreshToken = json["refresh_token"] as? String,
                                    let expiresIn = json["expires_in"] as? Int,
                                    let createdAt = json["created_at"] as? Int {
-                                    
+
                                     KeychainManager.shared.saveCredentials(accessToken: accessToken, refreshToken: refreshToken, expiresIn: expiresIn, createdAt: createdAt)
-                                    
+
                                     self.fetchUser(with: accessToken) { result in }
-                                    
+
                                     self.fetchDevices(with: accessToken) { result in }
-                                    
+
                                     completion(.success(data!))
                                 }
                             }

@@ -7,9 +7,9 @@
 import Foundation
 
 struct UserInfo: Codable {
-    
+
     let email: String
     let first_name: String
     let id: Int?
-    
+
 }

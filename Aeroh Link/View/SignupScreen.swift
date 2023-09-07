@@ -18,24 +18,24 @@ struct SignupScreen: View {
     @State private var alertTitle = ""
     @State private var alertMessage = ""
     @ObservedObject var loginManager : LoginManager
-    
+
     var body: some View {
         ZStack {
             // Background color
             Color(red: 0.06, green: 0.05, blue: 0.08)
                 .edgesIgnoringSafeArea(.all)
-            
+
             VStack(spacing: 30) {
                 // Logo
                 Image("logo-white")
                     .frame(height: 30)
-                
+
                 // Sign up title
                 Text("Sign up")
                     .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
                     .font(.title2)
                     .bold()
-                
+
                 if showAlert {
                     withAnimation{
                         HStack {
@@ -53,7 +53,7 @@ struct SignupScreen: View {
                     HStack{
                     }.frame(height: 18)
                 }
-                
+
                 VStack(spacing: 22) {
                     // Name input field
                     VStack {
@@ -67,7 +67,7 @@ struct SignupScreen: View {
                             )
                             .padding(.horizontal)
                             .colorScheme(.dark)
-                        
+
                         // Error message for empty first name
                         if firstNameError {
                             HStack {
@@ -79,7 +79,7 @@ struct SignupScreen: View {
                             }.padding(.horizontal)
                         }
                     }
-                    
+
                     // Email input field
                     VStack {
                         TextField("Email", text: $email)
@@ -100,13 +100,13 @@ struct SignupScreen: View {
                                     .foregroundColor(.red)
                                     .font(.caption)
                                     .padding(.horizontal)
-                                
+
                                 Spacer()
                             }.padding(.horizontal)
                         }
                     }
-                    
-                    
+
+
                     // Password secure field
                     VStack {
                         SecureField("Password", text: $password)
@@ -118,8 +118,8 @@ struct SignupScreen: View {
                             )
                             .padding(.horizontal)
                             .colorScheme(.dark)
-                        
-                        
+
+
                         // Error message for weak password
                         if passwordError {
                             HStack {
@@ -127,22 +127,22 @@ struct SignupScreen: View {
                                     .foregroundColor(.red)
                                     .font(.caption)
                                     .padding(.horizontal)
-                                
+
                                 Spacer()
                             }.padding(.horizontal)
                         }
                     }
                 }
-                
-                
-                
-                
+
+
+
+
                 VStack(spacing: 22) {
                     // Sign up button
                     Button(action: {
                         // Handle sign up action
                         let isValid = validateForm()
-                        
+
                         if isValid {
                             SignupController().authenticate(first_name: first_name, email: email, password: password) { result in
                                 switch result {
@@ -163,21 +163,21 @@ struct SignupScreen: View {
                             .clipShape(Capsule())
                             .padding(.horizontal)
                     }
-                    
+
                     // Separator and "OR" text
                     HStack {
                         Rectangle()
                             .frame(width: 50, height: 1)
                             .foregroundColor(.gray)
-                        
+
                         Text("OR")
                             .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
-                        
+
                         Rectangle()
                             .frame(width: 50, height: 1)
                             .foregroundColor(.gray)
                     }
-                    
+
                     // Log in button
                     NavigationLink(destination: LoginScreen(loginManager: loginManager).navigationBarHidden(true), label: {
                         Text("Log in")
@@ -188,8 +188,8 @@ struct SignupScreen: View {
                             .overlay(RoundedRectangle(cornerRadius: 30).stroke(Color.white, lineWidth: 1))
                             .padding(.horizontal)
                     }).navigationBarHidden(true)
-                    
-                    
+
+
                 }
             }
             .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
@@ -200,48 +200,48 @@ struct SignupScreen: View {
         withAnimation{
             showAlert = true
         }
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + duration){
             withAnimation{
                 showAlert = false
             }
             alertMessage = ""
         }
-        
+
     }
-    
+
     private func validateForm() -> Bool {
         firstNameError = false
         emailError = false
-        
+
         guard !first_name.isEmpty else {
             firstNameError = true
             return false
         }
-        
+
         guard !email.isEmpty else {
             emailError = true
             return false
         }
-        
+
         // Check for correct email format using regular expression
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
         let isEmailValid = emailPredicate.evaluate(with: email)
-        
+
         if !isEmailValid {
             emailError = true
             return false
         }
-        
+
         guard !password.isEmpty else {
             passwordError = true
             return false
         }
-        
+
         // Check for strong password (minimum 8 characters, combination of letters, numbers, and special characters)
         let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         let isPasswordValid = passwordPredicate.evaluate(with: password)
-        
+
         if !isPasswordValid {
             passwordError = true
             return false
@@ -249,7 +249,7 @@ struct SignupScreen: View {
         else{
             passwordError = false
         }
-        
+
         return true
     }
 }

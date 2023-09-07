@@ -9,18 +9,18 @@ import SwiftUI
 import CoreBluetooth
 
 class BluetoothManager: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeripheralDelegate {
-    
+
     @Published var isBluetoothOn: Bool = false
     @Published var discoveredPeripherals: [CBPeripheral] = []
-    
+
     private var centralManager: CBCentralManager!
     private var connectedPeripheral: CBPeripheral?
-    
+
     override init() {
         super.init()
         centralManager = CBCentralManager(delegate: self, queue: nil)
     }
-    
+
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
             isBluetoothOn = true
@@ -28,25 +28,25 @@ class BluetoothManager: NSObject, ObservableObject, CBCentralManagerDelegate, CB
             isBluetoothOn = false
         }
     }
-    
+
     func startScanning() {
         centralManager.scanForPeripherals(withServices: nil, options: nil)
     }
-    
+
     func connectPeripheral(peripheral: CBPeripheral) {
         centralManager.stopScan()
         connectedPeripheral = peripheral
         centralManager.connect(peripheral, options: nil)
     }
-    
+
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         if let deviceName = peripheral.name?.lowercased(), deviceName.hasPrefix("aeroh") {
             discoveredPeripherals.append(peripheral)
         }
     }
-    
+
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        
+
     }
 }
 
@@ -58,9 +58,9 @@ struct SearchBluetoothDevices: View {
             ZStack {
                 Color(red: 0.06, green: 0.05, blue: 0.08)
                     .edgesIgnoringSafeArea(.all)
-                
+
                 VStack(alignment: .center) {
-                    
+
                     if demoMode {
                         HStack(spacing: 5) {
                             ProgressView()
@@ -78,15 +78,15 @@ struct SearchBluetoothDevices: View {
                         HStack(spacing: 5) {
                             ProgressView()
                                 .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
-                            
+
                             Text("Searching for nearby devices")
                                 .font(Font.custom("Poppins", size: 16))
                                 .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
                         }
-                        
+
                         ScrollView {
                             VStack(alignment: .center) {
-                                
+
                                 ForEach(bluetoothManager.discoveredPeripherals, id: \.identifier) { peripheral in
                                     BluetoothDeviceRowView(device: DeviceModel(name: peripheral.name ?? "Unknown"), isLastDevice: false)
                                         .onTapGesture {
@@ -107,7 +107,7 @@ struct SearchBluetoothDevices: View {
                                 Text("Turn on Bluetooth")
                                     .foregroundColor(.white)
                                 Spacer()
-                                
+
                                 Image("BluetoothOffIcon")
                                     .resizable()
                                     .scaledToFit()
@@ -138,7 +138,7 @@ struct SearchBluetoothDevices: View {
 struct BluetoothDeviceRowView: View {
     var device: DeviceModel
     var isLastDevice: Bool
-    
+
     var body: some View {
         HStack(alignment: .center, spacing: 60){
             Image("AerohLinkIllustration")
@@ -146,13 +146,13 @@ struct BluetoothDeviceRowView: View {
                 .frame(width: 113.0, height: 68.34)
                 .aspectRatio(1, contentMode: .fit)
                 .padding()
-            
+
             VStack(alignment: .leading, spacing: 10) {
                 Text(device.name)
                     .font(.system(size: 16))
                     .foregroundColor(.white)
                     .fontWeight(.medium)
-                
+
                 NavigationLink(destination: WifiConnectionScreen(), label: {
                     Text("Add")
                         .font(.system(size: 12))
@@ -162,7 +162,7 @@ struct BluetoothDeviceRowView: View {
                         .clipShape(Capsule())
                 })
             }.padding(.horizontal)
-            
+
         }.foregroundColor(.clear)
             .frame(width: 351, height: 124)
             .background(Color(red: 0.16, green: 0.16, blue: 0.16))
@@ -175,7 +175,7 @@ struct BottomSheetView: View {
         VStack(alignment: .leading, spacing: 30){
             HStack{
                 Image("BluetoothOnIcon")
-                
+
                 VStack(alignment: .leading, spacing: 5){
                     Text("Aeroh link needs bluetooth to connect")
                         .font(
@@ -183,23 +183,23 @@ struct BottomSheetView: View {
                                 .weight(.semibold)
                         )
                         .foregroundColor(.white)
-                    
+
                     Text("Enable Bluetooth to add aeroh link")
                         .font(Font.system(size: 14))
                         .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
                 }
             }
-            
+
             Divider()
                 .frame(height: 2)
                 .overlay(Color(red: 0.16, green: 0.16, blue: 0.16))
-            
+
             HStack(){
                 VStack(alignment: .leading, spacing: 5){
                     Text("Go to settings and turn on bluetooth")
                         .font(Font.system(size: 16))
                         .foregroundColor(.white)
-                    
+
                     Text("Go to settings >")
                         .font(Font.system(size: 14))
                         .foregroundColor(Color(red: 1, green: 0.78, blue: 0.23))
@@ -215,8 +215,8 @@ struct BottomSheetView: View {
                         .font(Font.custom("Inter", size: 16))
                         .foregroundColor(.white)
                         .frame(width: 206, alignment: .topLeading)
-                    
-                    
+
+
                     Text("Turned on")
                         .font(Font.custom("Poppins", size: 14))
                         .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
@@ -224,7 +224,7 @@ struct BottomSheetView: View {
                 Image("BluetoothOnIllustration")
             }
         }.padding()
-        
+
     }
 }
 struct SearchBluetoothDevices_Previews: PreviewProvider {

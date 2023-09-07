@@ -15,11 +15,11 @@ import SystemConfiguration.CaptiveNetwork
 class WiFiListViewModel: ObservableObject {
     @Published var wifiNetworks: [String] = []
     @State var demoWifiNetworks: [String] = ["LPU kalvi", "LPU wireless"]
-    
+
     init() {
         fetchWiFiNetworks()
     }
-    
+
     func fetchWiFiNetworks() {
         if let interfaces = CNCopySupportedInterfaces() as? [String] {
             for interface in interfaces {
@@ -58,37 +58,37 @@ struct WifiConnectionScreen: View {
                                     .font(.headline)
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(.white)
-                                
+
                                 Text("You need to connect to Wi-Fi to instruct Aeroh Link")
                                     .font(.subheadline)
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(.gray)
-                                
+
                                 Image("wifi-illustration")
                                     .resizable()
                                     .frame(width: 301, height: 172.68526)
                             }
                         }
-                        
+
                         Section {
                             Text(wifiName)
                                 .foregroundColor(.white)
-                            
+
                             if !savedPassword.isEmpty {
                                 DisclosureGroup("Saved Password") {
                                     Text(savedPassword)
                                         .onTapGesture {
                                             wifiPassword = savedPassword
-                                            
+
                                         }
                                 }
                             }
                             SecureField("Password", text: $wifiPassword)
                                 .foregroundColor(.white)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                            
+
                         }
-                        
+
                         Section {
                             Button(action: {
                                 saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
@@ -98,13 +98,13 @@ struct WifiConnectionScreen: View {
                                     .padding()
                                     .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
                                     .background(Color(red: 1.00, green: 0.79, blue: 0.23))
-                                
+
                                     .clipShape(Capsule())
                                     .padding(.horizontal)
                             }
                         }
                     }
-                    
+
                     Section {
                         List(viewModel.demoWifiNetworks, id: \.self) { network in
                             HStack {
@@ -139,37 +139,37 @@ struct WifiConnectionScreen: View {
                                     .font(.headline)
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(.white)
-                                
+
                                 Text("You need to connect to Wi-Fi to instruct Aeroh Link")
                                     .font(.subheadline)
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(.gray)
-                                
+
                                 Image("wifi-illustration")
                                     .resizable()
                                     .frame(width: 301, height: 172.68526)
                             }
                         }
-                        
+
                         Section {
                             Text(wifiName)
                                 .foregroundColor(.white)
-                            
+
                             if !savedPassword.isEmpty {
                                 DisclosureGroup("Saved Password") {
                                     Text(savedPassword)
                                         .onTapGesture {
                                             wifiPassword = savedPassword
-                                            
+
                                         }
                                 }
                             }
                             SecureField("Password", text: $wifiPassword)
                                 .foregroundColor(.white)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                            
+
                         }
-                        
+
                         Section {
                             Button(action: {
                                 saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
@@ -179,13 +179,13 @@ struct WifiConnectionScreen: View {
                                     .padding()
                                     .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
                                     .background(Color(red: 1.00, green: 0.79, blue: 0.23))
-                                
+
                                     .clipShape(Capsule())
                                     .padding(.horizontal)
                             }
                         }
                     }
-                    
+
                     Section {
                         List(viewModel.wifiNetworks, id: \.self) { network in
                             HStack {
@@ -206,15 +206,15 @@ struct WifiConnectionScreen: View {
             }
         }.navigationTitle("Connect wifi")
             .navigationBarTitleDisplayMode(.inline)
-        
-        
+
+
     }
-    
+
     func saveWiFiCredentials(ssid: String, password: String) {
         UserDefaults.standard.set(ssid, forKey: "savedWifiName")
         UserDefaults.standard.set(password, forKey: "savedWifiPassword")
     }
-    
+
     func loadWiFiCredentials() {
         let savedSsid = UserDefaults.standard.string(forKey: "savedWifiName")
         let savedWifiPassword = UserDefaults.standard.string(forKey: "savedWifiPassword")

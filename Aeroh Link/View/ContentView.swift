@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView : View {
     @StateObject var loginManager = LoginManager()
-    
+
     var body: some View {
         if loginManager.isLoggedIn {
             HomeScreen(loginManager: loginManager)

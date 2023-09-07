@@ -16,17 +16,17 @@ struct HomeScreen: View {
         @State var show = false
         @StateObject private var userController = UserController()
         @StateObject private var devicesController = DevicesController()
-        
+
         var body: some View {
         NavigationStack {
             ZStack(alignment: .trailing) {
                 Color(red: 0.06, green: 0.05, blue: 0.08)
                     .edgesIgnoringSafeArea(.all)
-                
+
                 GeometryReader { _ in
                     VStack(alignment: .leading) {
                         HStack(alignment: .center){
-                            
+
                             VStack(alignment: .leading, spacing: 7) {
                                 Text("Hi, \(UserDefaults.standard.string(forKey: "first_name") ?? "There")")
                                     .font(.system(size: 27))
@@ -35,26 +35,26 @@ struct HomeScreen: View {
                                 Text("Good to see you again")
                                     .font(.system(size: 15))
                                     .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
-                                
-                                
+
+
                             }
                             Spacer()
                             Button(action: {
                                 withAnimation(.default){
                                     self.show.toggle()
                                 }
-                                
+
                             }, label: {
                                 Image("menu")
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 40, height: 30)
-                                
+
                             })
-                            
-                            
+
+
                         }.padding(.horizontal)
-                        
+
                         NavigationLink(destination: SearchBluetoothDevices()) {
                             Text("Add a new device")
                                 .foregroundColor(.white)
@@ -62,13 +62,13 @@ struct HomeScreen: View {
                                 .fontWeight(.semibold)
                         }.buttonStyle(AddNewDeviceButtonStyle())
                             .padding()
-                        
+
                         Text("Devices")
                             .padding(.horizontal)
                             .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
                             .font(.system(size: 17))
                             .fontWeight(.semibold)
-                        
+
                         if devicesController.devices.count == 0 {
                             HStack(alignment: .center) {
                                 Spacer()
@@ -78,12 +78,12 @@ struct HomeScreen: View {
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: 70, height: 70)
-                                    
+
                                     Text("No devices found \n Please add a new device")
                                         .font(Font.system( size: 15))
                                         .multilineTextAlignment(.center)
                                         .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
-                                    
+
                                     Spacer()
                                 }
                                 Spacer()
@@ -99,10 +99,10 @@ struct HomeScreen: View {
                             }
                         }
                     }
-                    
+
                 }
-                
-                
+
+
                 HStack(){
                     Menu(loginManager: loginManager, show: self.$show)
                         .offset(x: self.show ? 0 : +UIScreen.main.bounds.width / 1.3)
@@ -120,7 +120,7 @@ struct HomeScreen: View {
             Alert(title: Text("Network Error"), message: Text(userController.alertMessage), dismissButton: .default(Text("OK")))
         }
     }
-    
+
     private func loadKeychainValues() {
         accessToken = KeychainManager.shared.getAccessToken() ?? ""
         refreshToken = KeychainManager.shared.getRefreshToken() ?? ""
@@ -141,7 +141,7 @@ struct HomeScreen_Previews: PreviewProvider {
             HStack {
                 configuration.label
                 Spacer()
-                
+
                 Image(systemName: "plus")
                     .font(.system(size: 20))
                     .foregroundColor(.black)
@@ -152,8 +152,8 @@ struct HomeScreen_Previews: PreviewProvider {
                         Circle()
                             .fill(Color(red: 1, green: 0.78, blue: 0.23))
                             .frame(width: 44, height: 44))
-                
-                
+
+
             }
             .padding(.horizontal, 30)
             .cornerRadius(20)
@@ -167,26 +167,26 @@ struct Menu: View {
     @ObservedObject var loginManager : LoginManager
     @State private var showingLogoutAlert = false
     @Binding var show: Bool
-    
-    
+
+
     var body: some View {
         VStack(alignment: .leading){
-            
+
             HStack{
-                
+
                 VStack(alignment: .leading , spacing: 5) {
                     Text(UserDefaults.standard.string(forKey: "first_name") ?? "First Name")
                         .font(.system(size: 27))
                         .foregroundColor(.white)
                         .fontWeight(.semibold)
-                    
+
                     Text(verbatim: UserDefaults.standard.string(forKey: "email") ?? "email")
                         .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
                         .font(.system(size: 16))
                 }
                 .padding(.horizontal)
                 Spacer()
-                
+
                 Button (action: {
                     withAnimation(.default){
                         self.show.toggle()
@@ -195,13 +195,13 @@ struct Menu: View {
                     Image(systemName: "arrow.right")
                         .font(.system(size: 24))
                         .foregroundColor(.white)
-                    
-                    
+
+
                 }
             }
             .padding(.top)
             .padding(.bottom, 25)
-            
+
             NavigationLink(destination: SettingsPage(), label: {
                 HStack {
                     Image(systemName: "slider.horizontal.3")
@@ -247,7 +247,7 @@ struct Menu: View {
 struct DeviceRowView: View {
     var device: DeviceModel
     var isLastDevice: Bool
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 20){
             HStack(alignment: .center, spacing: 20){
@@ -260,15 +260,15 @@ struct DeviceRowView: View {
                         Circle()
                             .fill(Color(red: 0.16, green: 0.16, blue: 0.16))
                             .frame(width: 60, height: 60))
-                
+
                 VStack(alignment: .leading, spacing: 5) {
                     Text(device.name)
                         .font(.system(size: 18))
                         .foregroundColor(.white)
                 }
-                
+
             }
-            
+
             if !isLastDevice {
                 Divider()
                     .frame(height: 1)

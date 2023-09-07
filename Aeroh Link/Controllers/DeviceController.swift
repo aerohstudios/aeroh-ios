@@ -10,7 +10,7 @@ import Foundation
 class DevicesController: ObservableObject {
     @Published var devices: [DeviceModel] = []
     var isFetchingDevices = false
-    
+
     func fetchDevicesIfNeeded(accessToken: String) {
         guard !isFetchingDevices else {
             return
