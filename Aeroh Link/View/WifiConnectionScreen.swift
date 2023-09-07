@@ -36,6 +36,9 @@ class WiFiListViewModel: ObservableObject {
 struct WifiConnectionScreen: View {
     @State private var wifiName = ""
     @State private var wifiPassword = ""
+    @State private var savedPassword = ""
+    @ObservedObject var viewModel = WiFiListViewModel()
+    @AppStorage("demoMode") private var demoMode = false
     var body: some View {
         
         ZStack{
@@ -119,38 +122,15 @@ struct WifiConnectionScreen: View {
     }
     
     func saveWiFiCredentials(ssid: String, password: String) {
-        let query: [CFString: Any] = [
-            kSecClass: kSecClassInternetPassword,
-            kSecAttrServer: ssid,
-            kSecAttrAccount: "WiFi",
-            kSecValueData: password.data(using: .utf8)!,
-        ]
-        
-        let status = SecItemAdd(query as CFDictionary, nil)
-        if status == errSecSuccess {
-            print("WiFi credentials saved.")
-        }
+        UserDefaults.standard.set(ssid, forKey: "savedWifiName")
+        UserDefaults.standard.set(password, forKey: "savedWifiPassword")
     }
     
     func loadWiFiCredentials() {
-        let query: [CFString: Any] = [
-            kSecClass: kSecClassInternetPassword,
-            kSecAttrAccount: "WiFi",
-            kSecReturnAttributes: true,
-            kSecReturnData: true,
-        ]
-        
-        var item: CFTypeRef?
-        let status = SecItemCopyMatching(query as CFDictionary, &item)
-        
-        if status == errSecSuccess {
-            if let item = item as? [CFString: Any],
-               let ssid = item[kSecAttrServer] as? String,
-               let passwordData = item[kSecValueData] as? Data,
-               let password = String(data: passwordData, encoding: .utf8) {
-                wifiName = ssid
-                wifiPassword = password
-            }
+        let savedSsid = UserDefaults.standard.string(forKey: "savedWifiName")
+        let savedWifiPassword = UserDefaults.standard.string(forKey: "savedWifiPassword")
+        if wifiName == savedSsid! {
+            savedPassword = savedWifiPassword!
         }
     }
 }
