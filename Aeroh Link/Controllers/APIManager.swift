@@ -142,7 +142,7 @@ class APIManager {
                     completion(.failure(error))
                 }
             }
-        } else if let refreshToken = KeychainManager.shared.getRefreshToken() {
+        } else if KeychainManager.shared.getRefreshToken() != nil {
             refreshTokenAndRetryRequest { _ in }
         }
     }
