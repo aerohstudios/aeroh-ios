@@ -71,9 +71,8 @@ struct WifiConnectionScreen: View {
                         }
                         
                         Section {
-                            TextField("Wi-Fi name", text: $wifiName)
+                            Text(wifiName)
                                 .foregroundColor(.white)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
                             
                             if !savedPassword.isEmpty {
                                 DisclosureGroup("Saved Password") {
@@ -153,9 +152,8 @@ struct WifiConnectionScreen: View {
                         }
                         
                         Section {
-                            TextField("Wi-Fi name", text: $wifiName)
+                            Text(wifiName)
                                 .foregroundColor(.white)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
                             
                             if !savedPassword.isEmpty {
                                 DisclosureGroup("Saved Password") {
