@@ -143,7 +143,7 @@ class APIManager {
                 }
             }
         } else if let refreshToken = KeychainManager.shared.getRefreshToken() {
-            refreshTokenAndRetryRequest() { result in }
+            refreshTokenAndRetryRequest { _ in }
         }
     }
 
@@ -214,9 +214,9 @@ class APIManager {
 
                                     KeychainManager.shared.saveCredentials(accessToken: accessToken, refreshToken: refreshToken, expiresIn: expiresIn, createdAt: createdAt)
 
-                                    self.fetchUser(with: accessToken) { result in }
+                                    self.fetchUser(with: accessToken) { _ in }
 
-                                    self.fetchDevices(with: accessToken) { result in }
+                                    self.fetchDevices(with: accessToken) { _ in }
 
                                     completion(.success(data!))
                                 }

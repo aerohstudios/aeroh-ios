@@ -41,7 +41,7 @@ struct WifiConnectionScreen: View {
     @AppStorage("demoMode") private var demoMode = false
     var body: some View {
         NavigationView {
-            if demoMode{
+            if demoMode {
                 Form {
                     if wifiName.isEmpty {
                         Section {
@@ -53,7 +53,7 @@ struct WifiConnectionScreen: View {
                         }
                     } else {
                         Section {
-                            VStack(spacing: 10){
+                            VStack(spacing: 10) {
                                 Text("Select a Wi-Fi Network and enter password")
                                     .font(.headline)
                                     .multilineTextAlignment(.center)
@@ -92,7 +92,7 @@ struct WifiConnectionScreen: View {
                         Section {
                             Button(action: {
                                 saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
-                            }){
+                            }) {
                                 Text("Next")
                                     .frame(maxWidth: .infinity)
                                     .padding()
@@ -113,7 +113,7 @@ struct WifiConnectionScreen: View {
                                 Text(network)
                             }
                             .onTapGesture {
-                                withAnimation{
+                                withAnimation {
                                     self.wifiName = network
                                     loadWiFiCredentials()
                                 }
@@ -121,8 +121,7 @@ struct WifiConnectionScreen: View {
                         }
                     }
                 }
-            }
-            else {
+            } else {
                 Form {
                     if wifiName.isEmpty {
                         Section {
@@ -134,7 +133,7 @@ struct WifiConnectionScreen: View {
                         }
                     } else {
                         Section {
-                            VStack(spacing: 10){
+                            VStack(spacing: 10) {
                                 Text("Select a Wi-Fi Network and enter password")
                                     .font(.headline)
                                     .multilineTextAlignment(.center)
@@ -173,7 +172,7 @@ struct WifiConnectionScreen: View {
                         Section {
                             Button(action: {
                                 saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
-                            }){
+                            }) {
                                 Text("Next")
                                     .frame(maxWidth: .infinity)
                                     .padding()
@@ -194,7 +193,7 @@ struct WifiConnectionScreen: View {
                                 Text(network)
                             }
                             .onTapGesture {
-                                withAnimation{
+                                withAnimation {
                                     self.wifiName = network
                                     loadWiFiCredentials()
                                 }
@@ -206,7 +205,6 @@ struct WifiConnectionScreen: View {
             }
         }.navigationTitle("Connect wifi")
             .navigationBarTitleDisplayMode(.inline)
-
 
     }
 
@@ -223,7 +221,6 @@ struct WifiConnectionScreen: View {
         }
     }
 }
-
 
 struct WifiConnectionScreen_Previews: PreviewProvider {
     static var previews: some View {

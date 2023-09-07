@@ -5,7 +5,6 @@
 //  Created by Tanishq Patidar on 23/06/23.
 //
 
-
 import SwiftUI
 
 struct SplashScreen: View {

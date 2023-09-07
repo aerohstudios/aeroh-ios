@@ -140,7 +140,7 @@ struct BluetoothDeviceRowView: View {
     var isLastDevice: Bool
 
     var body: some View {
-        HStack(alignment: .center, spacing: 60){
+        HStack(alignment: .center, spacing: 60) {
             Image("AerohLinkIllustration")
                 .resizable()
                 .frame(width: 113.0, height: 68.34)
@@ -172,11 +172,11 @@ struct BluetoothDeviceRowView: View {
 
 struct BottomSheetView: View {
     var body: some View {
-        VStack(alignment: .leading, spacing: 30){
-            HStack{
+        VStack(alignment: .leading, spacing: 30) {
+            HStack {
                 Image("BluetoothOnIcon")
 
-                VStack(alignment: .leading, spacing: 5){
+                VStack(alignment: .leading, spacing: 5) {
                     Text("Aeroh link needs bluetooth to connect")
                         .font(
                             Font.system(size: 16)
@@ -194,8 +194,8 @@ struct BottomSheetView: View {
                 .frame(height: 2)
                 .overlay(Color(red: 0.16, green: 0.16, blue: 0.16))
 
-            HStack(){
-                VStack(alignment: .leading, spacing: 5){
+            HStack {
+                VStack(alignment: .leading, spacing: 5) {
                     Text("Go to settings and turn on bluetooth")
                         .font(Font.system(size: 16))
                         .foregroundColor(.white)
@@ -209,13 +209,12 @@ struct BottomSheetView: View {
             Divider()
                 .frame(height: 2)
                 .overlay(Color(red: 0.16, green: 0.16, blue: 0.16))
-            HStack{
-                VStack(alignment: .leading, spacing: 5){
+            HStack {
+                VStack(alignment: .leading, spacing: 5) {
                     Text("Turn on Bluetooth")
                         .font(Font.custom("Inter", size: 16))
                         .foregroundColor(.white)
                         .frame(width: 206, alignment: .topLeading)
-
 
                     Text("Turned on")
                         .font(Font.custom("Poppins", size: 14))

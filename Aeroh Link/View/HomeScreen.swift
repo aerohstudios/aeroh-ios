@@ -12,7 +12,7 @@ struct HomeScreen: View {
         @State private var refreshToken: String = ""
         @State private var expiresIn: Int = 0
         @State private var createdAt: Int = 0
-        @ObservedObject var loginManager : LoginManager
+        @ObservedObject var loginManager: LoginManager
         @State var show = false
         @StateObject private var userController = UserController()
         @StateObject private var devicesController = DevicesController()
@@ -25,7 +25,7 @@ struct HomeScreen: View {
 
                 GeometryReader { _ in
                     VStack(alignment: .leading) {
-                        HStack(alignment: .center){
+                        HStack(alignment: .center) {
 
                             VStack(alignment: .leading, spacing: 7) {
                                 Text("Hi, \(UserDefaults.standard.string(forKey: "first_name") ?? "There")")
@@ -36,11 +36,10 @@ struct HomeScreen: View {
                                     .font(.system(size: 15))
                                     .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
 
-
                             }
                             Spacer()
                             Button(action: {
-                                withAnimation(.default){
+                                withAnimation(.default) {
                                     self.show.toggle()
                                 }
 
@@ -51,7 +50,6 @@ struct HomeScreen: View {
                                     .frame(width: 40, height: 30)
 
                             })
-
 
                         }.padding(.horizontal)
 
@@ -72,7 +70,7 @@ struct HomeScreen: View {
                         if devicesController.devices.count == 0 {
                             HStack(alignment: .center) {
                                 Spacer()
-                                VStack(alignment: .center, spacing: 10){
+                                VStack(alignment: .center, spacing: 10) {
                                     Spacer()
                                     Image("empty-box")
                                         .resizable()
@@ -87,8 +85,8 @@ struct HomeScreen: View {
                                     Spacer()
                                 }
                                 Spacer()
-                            }                        }
-                        else {
+                            }
+                        } else {
                             ScrollView {
                                 VStack(alignment: .leading, spacing: 20) {
                                     ForEach(Array(devicesController.devices.enumerated()), id: \.element.id) { index, device in
@@ -102,8 +100,7 @@ struct HomeScreen: View {
 
                 }
 
-
-                HStack(){
+                HStack {
                     Menu(loginManager: loginManager, show: self.$show)
                         .offset(x: self.show ? 0 : +UIScreen.main.bounds.width / 1.3)
                 }
@@ -153,7 +150,6 @@ struct HomeScreen_Previews: PreviewProvider {
                             .fill(Color(red: 1, green: 0.78, blue: 0.23))
                             .frame(width: 44, height: 44))
 
-
             }
             .padding(.horizontal, 30)
             .cornerRadius(20)
@@ -164,17 +160,16 @@ struct HomeScreen_Previews: PreviewProvider {
     }
 
 struct Menu: View {
-    @ObservedObject var loginManager : LoginManager
+    @ObservedObject var loginManager: LoginManager
     @State private var showingLogoutAlert = false
     @Binding var show: Bool
 
-
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
 
-            HStack{
+            HStack {
 
-                VStack(alignment: .leading , spacing: 5) {
+                VStack(alignment: .leading, spacing: 5) {
                     Text(UserDefaults.standard.string(forKey: "first_name") ?? "First Name")
                         .font(.system(size: 27))
                         .foregroundColor(.white)
@@ -187,15 +182,14 @@ struct Menu: View {
                 .padding(.horizontal)
                 Spacer()
 
-                Button (action: {
-                    withAnimation(.default){
+                Button(action: {
+                    withAnimation(.default) {
                         self.show.toggle()
                     }
                 }) {
                     Image(systemName: "arrow.right")
                         .font(.system(size: 24))
                         .foregroundColor(.white)
-
 
                 }
             }
@@ -249,8 +243,8 @@ struct DeviceRowView: View {
     var isLastDevice: Bool
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20){
-            HStack(alignment: .center, spacing: 20){
+        VStack(alignment: .leading, spacing: 20) {
+            HStack(alignment: .center, spacing: 20) {
                 Image("AerohLinkIllustration")
                     .resizable()
                     .frame(width: 32.0, height: 19.34)

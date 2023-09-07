@@ -55,8 +55,6 @@ struct OnboardingScreenView: View {
 
                                 })
 
-
-
                                 // Login Button
                                 NavigationLink(destination: LoginScreen(loginManager: loginManager).navigationBarHidden(true), label: {
                                     Text("Log in")
@@ -67,7 +65,6 @@ struct OnboardingScreenView: View {
                                         .clipShape(Capsule())
                                 })
 
-
                             }
                             .padding(.horizontal, 40)
                         }
@@ -77,7 +74,6 @@ struct OnboardingScreenView: View {
 
     }
 }
-
 
 struct OnboardingScreenView_Previews: PreviewProvider {
     static var previews: some View {

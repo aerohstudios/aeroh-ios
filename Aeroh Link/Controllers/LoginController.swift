@@ -14,7 +14,7 @@ struct LoginController {
         let data = UserModel(email: email, password: password, first_name: nil, scopes: scopes, timestamp: timestamp, client_id: nil, signature: nil)
         let signature = SignatureController().login_signature(signData: data, key: secret)
 
-        let userRequestData = UserModel(email: email.lowercased(), password: password, first_name: nil ,scopes: scopes, timestamp: timestamp, client_id: client_id, signature: signature)
+        let userRequestData = UserModel(email: email.lowercased(), password: password, first_name: nil, scopes: scopes, timestamp: timestamp, client_id: client_id, signature: signature)
 
         APIManager.shared.callingLoginAPI(userRequestData: userRequestData) { result in
             switch result {

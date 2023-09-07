@@ -7,10 +7,9 @@
 
 import Foundation
 
-class TimestampGenerator{
-    static func generateTimestamp() -> Int{
+class TimestampGenerator {
+    static func generateTimestamp() -> Int {
         let timestamp = Int(Date().timeIntervalSince1970)
         return timestamp
     }
 }
-

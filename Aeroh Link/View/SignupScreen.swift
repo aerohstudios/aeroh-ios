@@ -17,7 +17,7 @@ struct SignupScreen: View {
     @State private var showAlert = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
-    @ObservedObject var loginManager : LoginManager
+    @ObservedObject var loginManager: LoginManager
 
     var body: some View {
         ZStack {
@@ -37,7 +37,7 @@ struct SignupScreen: View {
                     .bold()
 
                 if showAlert {
-                    withAnimation{
+                    withAnimation {
                         HStack {
                             Image(systemName: "exclamationmark.triangle.fill")
                                 .font(.system(size: 14))
@@ -48,9 +48,8 @@ struct SignupScreen: View {
                         }
                         .transition(.opacity)
                     }
-                }
-                else{
-                    HStack{
+                } else {
+                    HStack {
                     }.frame(height: 18)
                 }
 
@@ -106,7 +105,6 @@ struct SignupScreen: View {
                         }
                     }
 
-
                     // Password secure field
                     VStack {
                         SecureField("Password", text: $password)
@@ -118,7 +116,6 @@ struct SignupScreen: View {
                             )
                             .padding(.horizontal)
                             .colorScheme(.dark)
-
 
                         // Error message for weak password
                         if passwordError {
@@ -134,9 +131,6 @@ struct SignupScreen: View {
                     }
                 }
 
-
-
-
                 VStack(spacing: 22) {
                     // Sign up button
                     Button(action: {
@@ -147,7 +141,7 @@ struct SignupScreen: View {
                             SignupController().authenticate(first_name: first_name, email: email, password: password) { result in
                                 switch result {
                                 case .success(_):
-                                    withAnimation{
+                                    withAnimation {
                                         loginManager.login()
                                     }
                                 case .failure(let error):
@@ -189,7 +183,6 @@ struct SignupScreen: View {
                             .padding(.horizontal)
                     }).navigationBarHidden(true)
 
-
                 }
             }
             .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
@@ -197,12 +190,12 @@ struct SignupScreen: View {
     }
     private func showAlert(message: String, duration: Double) {
         alertMessage = message
-        withAnimation{
+        withAnimation {
             showAlert = true
         }
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + duration){
-            withAnimation{
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            withAnimation {
                 showAlert = false
             }
             alertMessage = ""
@@ -245,8 +238,7 @@ struct SignupScreen: View {
         if !isPasswordValid {
             passwordError = true
             return false
-        }
-        else{
+        } else {
             passwordError = false
         }
 

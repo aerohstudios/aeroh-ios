@@ -16,7 +16,7 @@ struct LoginScreen: View {
     @State private var showAlert = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
-    @ObservedObject var loginManager : LoginManager
+    @ObservedObject var loginManager: LoginManager
 
     var body: some View {
 
@@ -30,7 +30,7 @@ struct LoginScreen: View {
                 Image("logo-white")
                     .frame(height: 30)
 
-                VStack(spacing: 22){
+                VStack(spacing: 22) {
                     // Login Text
                     Text("Log in")
                         .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
@@ -38,7 +38,7 @@ struct LoginScreen: View {
                         .bold()
 
                     if showAlert {
-                        withAnimation{
+                        withAnimation {
                             HStack {
                                 Image(systemName: "exclamationmark.triangle.fill")
                                     .font(.system(size: 14))
@@ -49,9 +49,8 @@ struct LoginScreen: View {
                             }
                             .transition(.opacity)
                         }
-                    }
-                    else{
-                        HStack{
+                    } else {
+                        HStack {
                         }.frame(height: 18)
                     }
                 }
@@ -83,7 +82,6 @@ struct LoginScreen: View {
                         }
                     }
 
-
                     // Password SecureField
                     SecureField("Password", text: $password)
                         .foregroundColor(.white)
@@ -105,7 +103,7 @@ struct LoginScreen: View {
                             LoginController().authenticate(email: email, password: password, loginManager: loginManager) { result in
                                 switch result {
                                 case .success(_):
-                                    withAnimation{
+                                    withAnimation {
                                         loginManager.login()
                                     }
                                 case .failure(let error):
@@ -113,7 +111,6 @@ struct LoginScreen: View {
                                 }
                             }
                         }
-
 
                     }) {
                         Text("Log in")
@@ -166,17 +163,14 @@ struct LoginScreen: View {
         }
     }
 
-
-
     private func showAlert(message: String, duration: Double) {
         alertMessage = message
-        withAnimation{
+        withAnimation {
             showAlert = true
         }
 
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + duration){
-            withAnimation{
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            withAnimation {
                 showAlert = false
             }
 
@@ -210,8 +204,6 @@ struct LoginScreen: View {
     }
 
 }
-
-
 
 struct LoginScreen_Previews: PreviewProvider {
     static var previews: some View {

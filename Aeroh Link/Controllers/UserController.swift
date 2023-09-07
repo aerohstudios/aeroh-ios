@@ -8,7 +8,7 @@
 import Foundation
 
 class UserController: ObservableObject {
-    @Published var user: UserInfo = UserInfo(email: "email", first_name: "First Name", id: nil);
+    @Published var user: UserInfo = UserInfo(email: "email", first_name: "First Name", id: nil)
     @Published var showAlert = false
     @Published var alertMessage = ""
 
@@ -30,6 +30,3 @@ class UserController: ObservableObject {
         }
     }
 }
-
-
-

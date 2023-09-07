@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView : View {
+struct ContentView: View {
     @StateObject var loginManager = LoginManager()
 
     var body: some View {
@@ -28,4 +28,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-

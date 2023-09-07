@@ -13,7 +13,7 @@ struct SettingsPage: View {
         ZStack(alignment: .top) {
             Color(red: 0.06, green: 0.05, blue: 0.08)
                 .edgesIgnoringSafeArea(.all)
-            HStack{
+            HStack {
                 Toggle("Demo Mode", isOn: $demoMode)
             }.padding()
         }
