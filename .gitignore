@@ -1,4 +1,4 @@
-Aeroh Link/Constant/EnvConstants.swift
+AerohLink/Constant/EnvConstants.swift
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/xcode,macos,emacs,swift,vim,visualstudiocode,windows,linux,objective-c
@@ -301,4 +301,3 @@ $RECYCLE.BIN/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode,macos,emacs,swift,vim,visualstudiocode,windows,linux,objective-c
-
