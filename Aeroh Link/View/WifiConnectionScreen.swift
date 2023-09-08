@@ -14,7 +14,7 @@ import SystemConfiguration.CaptiveNetwork
 
 class WiFiListViewModel: ObservableObject {
     @Published var wifiNetworks: [String] = []
-    @State var demoWifiNetworks: [String] = ["LPU kalvi", "LPU wireless"]
+    @State var demoWifiNetworks: [String] = ["Aeroh Home Wi-Fi", "Aeroh Corp Wi-Fi"]
 
     init() {
         fetchWiFiNetworks()
@@ -48,18 +48,18 @@ struct WifiConnectionScreen: View {
                             HStack(spacing: 10) {
                                 ProgressView()
                                     .foregroundColor(.gray)
-                                Text("Searching for nearby devices")
+                                Text("Searching for nearby networks")
                             }
                         }
                     } else {
                         Section {
                             VStack(spacing: 10) {
-                                Text("Select a Wi-Fi Network and enter password")
+                                Text("Select your Wi-Fi Network and enter password")
                                     .font(.headline)
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(.white)
 
-                                Text("You need to connect to Wi-Fi to instruct Aeroh Link")
+                                Text("You need to connect Aeroh Link to Wi-Fi to use it")
                                     .font(.subheadline)
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(.gray)
@@ -134,12 +134,12 @@ struct WifiConnectionScreen: View {
                     } else {
                         Section {
                             VStack(spacing: 10) {
-                                Text("Select a Wi-Fi Network and enter password")
+                                Text("Select your Wi-Fi Network and enter password")
                                     .font(.headline)
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(.white)
 
-                                Text("You need to connect to Wi-Fi to instruct Aeroh Link")
+                                Text("You need to connect Aeroh Link to Wi-Fi to use it")
                                     .font(.subheadline)
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(.gray)
@@ -203,7 +203,7 @@ struct WifiConnectionScreen: View {
                 }
                 .background(Color(red: 0.06, green: 0.05, blue: 0.08).edgesIgnoringSafeArea(.all))
             }
-        }.navigationTitle("Connect wifi")
+        }.navigationTitle("Connect Wi-Fi")
             .navigationBarTitleDisplayMode(.inline)
 
     }
@@ -216,7 +216,7 @@ struct WifiConnectionScreen: View {
     func loadWiFiCredentials() {
         let savedSsid = UserDefaults.standard.string(forKey: "savedWifiName")
         let savedWifiPassword = UserDefaults.standard.string(forKey: "savedWifiPassword")
-        if wifiName == savedSsid! {
+        if savedSsid != nil && wifiName == savedSsid {
             savedPassword = savedWifiPassword!
         }
     }
