@@ -57,6 +57,7 @@ struct WifiConnectionScreen: View {
     @State private var savedPassword = ""
     @ObservedObject var viewModel = WiFiListViewModel()
     @AppStorage("demoMode") private var demoMode = false
+    @StateObject private var newDeviceController = NewDeviceController()
 
     var body: some View {
         NavigationView {
@@ -191,6 +192,8 @@ struct WifiConnectionScreen: View {
                         Section {
                             Button(action: {
                                 saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
+                                newDeviceController.createDevice(name: "Aeroh Link", macAddr: "12.323.4343.35") { _ in
+                                                    }
                             }) {
                                 Text("Next")
                                     .frame(maxWidth: .infinity)
