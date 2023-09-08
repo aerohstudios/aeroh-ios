@@ -1,13 +1,13 @@
 //
-//  Aeroh_LinkUITests.swift
-//  Aeroh LinkUITests
+//  AerohLinkUITests.swift
+//  AerohLinkUITests
 //
 //  Created by Shiv Deepak on 6/21/23.
 //
 
 import XCTest
 
-final class Aeroh_LinkUITests: XCTestCase {
+final class AerohLinkUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

@@ -1,6 +1,6 @@
 //
-//  Aeroh_LinkApp.swift
-//  Aeroh Link
+//  AerohLinkApp.swift
+//  AerohLink
 //
 //  Created by Shiv Deepak on 6/21/23.
 //
@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Aeroh_LinkApp: App {
+struct AerohLinkApp: App {
 
     var body: some Scene {
         WindowGroup {

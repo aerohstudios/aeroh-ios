@@ -1,13 +1,13 @@
 //
-//  Aeroh_LinkUITestsLaunchTests.swift
-//  Aeroh LinkUITests
+//  AerohLinkUITestsLaunchTests.swift
+//  AerohLinkUITests
 //
 //  Created by Shiv Deepak on 6/21/23.
 //
 
 import XCTest
 
-final class Aeroh_LinkUITestsLaunchTests: XCTestCase {
+final class AerohLinkUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

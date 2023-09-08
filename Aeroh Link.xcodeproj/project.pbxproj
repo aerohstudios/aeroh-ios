@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		58F022842A440F9C00980667 /* Aeroh_LinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022832A440F9C00980667 /* Aeroh_LinkApp.swift */; };
+		58F022842A440F9C00980667 /* AerohLinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022832A440F9C00980667 /* AerohLinkApp.swift */; };
 		58F022862A440F9C00980667 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022852A440F9C00980667 /* ContentView.swift */; };
 		58F022882A440F9D00980667 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58F022872A440F9D00980667 /* Assets.xcassets */; };
 		58F0228B2A440F9D00980667 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58F0228A2A440F9D00980667 /* Preview Assets.xcassets */; };
-		58F022952A440F9D00980667 /* Aeroh_LinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022942A440F9D00980667 /* Aeroh_LinkTests.swift */; };
-		58F0229F2A440F9D00980667 /* Aeroh_LinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F0229E2A440F9D00980667 /* Aeroh_LinkUITests.swift */; };
-		58F022A12A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022A02A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift */; };
+		58F022952A440F9D00980667 /* AerohLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022942A440F9D00980667 /* AerohLinkTests.swift */; };
+		58F0229F2A440F9D00980667 /* AerohLinkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F0229E2A440F9D00980667 /* AerohLinkUITests.swift */; };
+		58F022A12A440F9D00980667 /* AerohLinkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022A02A440F9D00980667 /* AerohLinkUITestsLaunchTests.swift */; };
 		911341422A49620200694A17 /* SignupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911341412A49620200694A17 /* SignupScreen.swift */; };
 		911FE6152A77AD630059E69C /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE6142A77AD630059E69C /* LoginScreen.swift */; };
 		911FE6172A7D07160059E69C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE6162A7D07160059E69C /* UserController.swift */; };
@@ -60,15 +60,15 @@
 /* Begin PBXFileReference section */
 		58A97CEA2AAAA3A6009261FA /* Aeroh LinkDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Aeroh LinkDebug.entitlements"; sourceTree = "<group>"; };
 		58F022802A440F9C00980667 /* Aeroh Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aeroh Link.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		58F022832A440F9C00980667 /* Aeroh_LinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aeroh_LinkApp.swift; sourceTree = "<group>"; };
+		58F022832A440F9C00980667 /* AerohLinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerohLinkApp.swift; sourceTree = "<group>"; };
 		58F022852A440F9C00980667 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		58F022872A440F9D00980667 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58F0228A2A440F9D00980667 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		58F022902A440F9D00980667 /* Aeroh LinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aeroh LinkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		58F022942A440F9D00980667 /* Aeroh_LinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aeroh_LinkTests.swift; sourceTree = "<group>"; };
+		58F022942A440F9D00980667 /* AerohLinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerohLinkTests.swift; sourceTree = "<group>"; };
 		58F0229A2A440F9D00980667 /* Aeroh LinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aeroh LinkUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		58F0229E2A440F9D00980667 /* Aeroh_LinkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aeroh_LinkUITests.swift; sourceTree = "<group>"; };
-		58F022A02A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aeroh_LinkUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		58F0229E2A440F9D00980667 /* AerohLinkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerohLinkUITests.swift; sourceTree = "<group>"; };
+		58F022A02A440F9D00980667 /* AerohLinkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerohLinkUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		911341412A49620200694A17 /* SignupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreen.swift; sourceTree = "<group>"; };
 		911FE6142A77AD630059E69C /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		911FE6162A7D07160059E69C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 				91AD20AD2A5FA621008D521D /* Controllers */,
 				918B84EC2A457A5900C4FD75 /* Aeroh-Link-Info.plist */,
 				918B84E72A4576C000C4FD75 /* View */,
-				58F022832A440F9C00980667 /* Aeroh_LinkApp.swift */,
+				58F022832A440F9C00980667 /* AerohLinkApp.swift */,
 				58F022872A440F9D00980667 /* Assets.xcassets */,
 				58F022892A440F9D00980667 /* Preview Content */,
 			);
@@ -170,7 +170,7 @@
 		58F022932A440F9D00980667 /* Aeroh LinkTests */ = {
 			isa = PBXGroup;
 			children = (
-				58F022942A440F9D00980667 /* Aeroh_LinkTests.swift */,
+				58F022942A440F9D00980667 /* AerohLinkTests.swift */,
 			);
 			path = "Aeroh LinkTests";
 			sourceTree = "<group>";
@@ -178,8 +178,8 @@
 		58F0229D2A440F9D00980667 /* Aeroh LinkUITests */ = {
 			isa = PBXGroup;
 			children = (
-				58F0229E2A440F9D00980667 /* Aeroh_LinkUITests.swift */,
-				58F022A02A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift */,
+				58F0229E2A440F9D00980667 /* AerohLinkUITests.swift */,
+				58F022A02A440F9D00980667 /* AerohLinkUITestsLaunchTests.swift */,
 			);
 			path = "Aeroh LinkUITests";
 			sourceTree = "<group>";
@@ -433,7 +433,7 @@
 				91AD20CB2A5FC120008D521D /* HomeScreen.swift in Sources */,
 				91DC89A72A8FC8B60086A033 /* WifiConnectionScreen.swift in Sources */,
 				91CB07B02A840BEF00573301 /* DeviceController.swift in Sources */,
-				58F022842A440F9C00980667 /* Aeroh_LinkApp.swift in Sources */,
+				58F022842A440F9C00980667 /* AerohLinkApp.swift in Sources */,
 				91AD20B42A5FA75F008D521D /* TimestampGenerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,7 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58F022952A440F9D00980667 /* Aeroh_LinkTests.swift in Sources */,
+				58F022952A440F9D00980667 /* AerohLinkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,8 +450,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58F022A12A440F9D00980667 /* Aeroh_LinkUITestsLaunchTests.swift in Sources */,
-				58F0229F2A440F9D00980667 /* Aeroh_LinkUITests.swift in Sources */,
+				58F022A12A440F9D00980667 /* AerohLinkUITestsLaunchTests.swift in Sources */,
+				58F0229F2A440F9D00980667 /* AerohLinkUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
