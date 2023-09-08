@@ -9,7 +9,7 @@
 		<key>UILaunchScreen</key>
 		<dict/>
 	</dict>
-    <key>NSBluetoothAlwaysUsageDescription</key>
-    <string>We use Bluetooth to connect to nearby Aeroh devices for provisioning.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need Wi-Fi access to connect Aeroh IoT devices to the internet.</string>
 </dict>
 </plist>

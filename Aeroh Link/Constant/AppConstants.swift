@@ -7,7 +7,7 @@
 
 import Foundation
 
-let base_url = "http://localhost:3000"
+let base_url = "https://cloud.aeroh.org"
 let login_url = "\(base_url)/users/sign_in"
 let signup_url = "\(base_url)/users"
 // android location for email and password regex: app/src/utils/TextValidators.java

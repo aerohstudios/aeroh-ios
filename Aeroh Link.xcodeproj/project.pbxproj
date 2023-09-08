@@ -58,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		58A97CEA2AAAA3A6009261FA /* Aeroh LinkDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Aeroh LinkDebug.entitlements"; sourceTree = "<group>"; };
 		58F022802A440F9C00980667 /* Aeroh Link.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aeroh Link.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F022832A440F9C00980667 /* Aeroh_LinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aeroh_LinkApp.swift; sourceTree = "<group>"; };
 		58F022852A440F9C00980667 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 		58F022822A440F9C00980667 /* Aeroh Link */ = {
 			isa = PBXGroup;
 			children = (
+				58A97CEA2AAAA3A6009261FA /* Aeroh LinkDebug.entitlements */,
 				91AD20C42A5FAB5B008D521D /* Constant */,
 				91AD20B52A5FA7E8008D521D /* Model */,
 				91AD20AD2A5FA621008D521D /* Controllers */,
@@ -588,13 +590,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Aeroh Link/Aeroh LinkDebug.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Aeroh Link/Preview Content\"";
-				DEVELOPMENT_TEAM = 8MJ523L73A;
+				DEVELOPMENT_TEAM = N3BWCX2BRJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Aeroh-Link-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Aeroh Link";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We use Bluetooth to connect to nearby Aeroh devices for provisioning.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
@@ -605,7 +610,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.aeroh.Aeroh-Link";
+				PRODUCT_BUNDLE_IDENTIFIER = org.aeroh.AerohLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -628,6 +633,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Aeroh-Link-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Aeroh Link";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We use Bluetooth to connect to nearby Aeroh devices for provisioning.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;

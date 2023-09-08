@@ -11,13 +11,31 @@ import NetworkExtension
 import Combine
 import CoreFoundation
 import SystemConfiguration.CaptiveNetwork
+import CoreLocation
 
-class WiFiListViewModel: ObservableObject {
+class WiFiListViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var wifiNetworks: [String] = []
     @State var demoWifiNetworks: [String] = ["Aeroh Home Wi-Fi", "Aeroh Corp Wi-Fi"]
 
-    init() {
-        fetchWiFiNetworks()
+    var locationManager: CLLocationManager
+
+    override init() {
+        locationManager = CLLocationManager()
+        super.init()
+        locationManager.delegate = self
+    }
+
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedWhenInUse, .authorizedAlways:
+            fetchWiFiNetworks()
+        case .denied, .restricted:
+            print("Here2")
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        @unknown default:
+            break
+        }
     }
 
     func fetchWiFiNetworks() {
@@ -39,6 +57,7 @@ struct WifiConnectionScreen: View {
     @State private var savedPassword = ""
     @ObservedObject var viewModel = WiFiListViewModel()
     @AppStorage("demoMode") private var demoMode = false
+
     var body: some View {
         NavigationView {
             if demoMode {
