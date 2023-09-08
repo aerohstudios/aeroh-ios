@@ -147,11 +147,11 @@
 			isa = PBXGroup;
 			children = (
 				58A97CEA2AAAA3A6009261FA /* AerohLinkDebug.entitlements */,
-				91AD20C42A5FAB5B008D521D /* Constant */,
-				91AD20B52A5FA7E8008D521D /* Model */,
+				91AD20C42A5FAB5B008D521D /* Constants */,
+				91AD20B52A5FA7E8008D521D /* Models */,
 				91AD20AD2A5FA621008D521D /* Controllers */,
 				918B84EC2A457A5900C4FD75 /* Info.plist */,
-				918B84E72A4576C000C4FD75 /* View */,
+				918B84E72A4576C000C4FD75 /* Views */,
 				58F022832A440F9C00980667 /* AerohLinkApp.swift */,
 				58F022872A440F9D00980667 /* Assets.xcassets */,
 				58F022892A440F9D00980667 /* Preview Content */,
@@ -192,7 +192,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		918B84E72A4576C000C4FD75 /* View */ = {
+		918B84E72A4576C000C4FD75 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				58F022852A440F9C00980667 /* ContentView.swift */,
@@ -206,7 +206,7 @@
 				918BEDC22AA212FC001CFF59 /* SettingsPage.swift */,
 				91DC89A62A8FC8B60086A033 /* WifiConnectionScreen.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		91AD20AD2A5FA621008D521D /* Controllers */ = {
@@ -232,7 +232,7 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		91AD20B52A5FA7E8008D521D /* Model */ = {
+		91AD20B52A5FA7E8008D521D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				9193EF5F2A740FFE00F4DBDB /* UserModel.swift */,
@@ -240,16 +240,16 @@
 				911FE6182A8100D70059E69C /* UserInfo.swift */,
 				91CB07B32A84EC3900573301 /* DeviceModel.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		91AD20C42A5FAB5B008D521D /* Constant */ = {
+		91AD20C42A5FAB5B008D521D /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				91AD20C52A5FAB70008D521D /* AppConstants.swift */,
 				9193EF572A6E35BC00F4DBDB /* EnvConstants.swift */,
 			);
-			path = Constant;
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
