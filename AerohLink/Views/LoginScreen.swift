@@ -153,7 +153,7 @@ struct LoginScreen: View {
                             .padding(.horizontal)
                     }).navigationBarHidden(true)
 
-                    Link("Forgot Password?", destination: URL(string: forgotPassword_url)!)
+                    Link("Forgot Password?", destination: URL(string: forgotPasswordUrl)!)
                         .foregroundColor(.accentColor)
                         .font(.caption)
                         .bold()

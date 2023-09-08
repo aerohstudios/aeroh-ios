@@ -33,21 +33,21 @@ class APIManager {
 
     func callingLoginAPI(userRequestData: UserModel, completion: @escaping (Result<Any, Error>) -> Void) {
         guard isInternetConnected() else {
-            completion(.failure(APIError.NoInternetConnectionError))
+            completion(.failure(APIError.noInternetConnectionError))
             return
         }
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
 
-        AF.request(login_url, method: .post, parameters: userRequestData, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+        AF.request(loginUrl, method: .post, parameters: userRequestData, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result {
             case .success(let data):
                 do {
                     if let jsonData = data, let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
                         if let errors = json["errors"] as? [String], errors.count > 0 {
                             let errorMessage = errors[0]
-                            completion(.failure(APIError.CustomError(errorMessage)))
+                            completion(.failure(APIError.customError(errorMessage)))
                         } else if let responseData = json["data"] as? [String: Any] {
                                 if let accessToken = responseData["access_token"] as? String,
                                    let refreshToken = responseData["refresh_token"] as? String,
@@ -63,7 +63,7 @@ class APIManager {
                 }
             case .failure(let error):
                 if error.localizedDescription != "" {
-                    completion(.failure(APIError.ServerNotReachableError))
+                    completion(.failure(APIError.serverNotReachableError))
                 } else {
                     completion(.failure(error))
                 }
@@ -73,21 +73,21 @@ class APIManager {
 
     func callingSignupAPI(userRequestData: UserModel, completion: @escaping (Result<Any, Error>) -> Void) {
         guard isInternetConnected() else {
-            completion(.failure(APIError.NoInternetConnectionError))
+            completion(.failure(APIError.noInternetConnectionError))
             return
         }
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
 
-        AF.request(signup_url, method: .post, parameters: userRequestData, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+        AF.request(signupUrl, method: .post, parameters: userRequestData, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result {
             case .success(let data):
                 do {
                     if let jsonData = data, let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
                         if let errors = json["errors"] as? [String], errors.count > 0 {
                             let errorMessage = errors[0]
-                            completion(.failure(APIError.CustomError(errorMessage)))
+                            completion(.failure(APIError.customError(errorMessage)))
                         } else if let responseData = json["data"] as? [String: Any] {
                             if let accessToken = responseData["access_token"] as? String,
                                let refreshToken = responseData["refresh_token"] as? String,
@@ -104,7 +104,7 @@ class APIManager {
                 }
             case .failure(let error):
                 if error.localizedDescription != "" {
-                    completion(.failure(APIError.ServerNotReachableError))
+                    completion(.failure(APIError.serverNotReachableError))
                 } else {
                     completion(.failure(error))
                 }
@@ -114,7 +114,7 @@ class APIManager {
 
     func fetchUser(with accessToken: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
         guard isInternetConnected() else {
-            completion(.failure(APIError.NoInternetConnectionError))
+            completion(.failure(APIError.noInternetConnectionError))
             return
         }
 
@@ -123,7 +123,7 @@ class APIManager {
                 "Authorization": "Bearer \(accessToken)"
             ]
 
-            AF.request("\(base_url)/api/v1/users", method: .get, headers: headers).responseJSON { response in
+            AF.request("\(baseUrl)/api/v1/users", method: .get, headers: headers).responseJSON { response in
                 switch response.result {
                 case .success(let data):
                     if let json = data as? [String: Any],
@@ -133,10 +133,10 @@ class APIManager {
                        let email = attributes["email"] as? String,
                        let firstName = attributes["first-name"] as? String {
 
-                        let user = UserInfo(email: email, first_name: firstName, id: nil)
+                        let user = UserInfo(email: email, firstName: firstName, id: nil)
                         completion(.success(user))
                     } else {
-                        completion(.failure(APIError.DataParsingError))
+                        completion(.failure(APIError.dataParsingError))
                     }
                 case .failure(let error):
                     completion(.failure(error))
@@ -149,7 +149,7 @@ class APIManager {
 
     func fetchDevices(with accessToken: String, completion: @escaping (Result<[DeviceModel], Error>) -> Void) {
         guard isInternetConnected() else {
-            completion(.failure(APIError.NoInternetConnectionError))
+            completion(.failure(APIError.noInternetConnectionError))
             return
         }
 
@@ -158,7 +158,7 @@ class APIManager {
                 "Authorization": "Bearer \(accessToken)"
             ]
 
-            AF.request("\(base_url)/api/v1/devices", method: .get, headers: headers).responseJSON { response in
+            AF.request("\(baseUrl)/api/v1/devices", method: .get, headers: headers).responseJSON { response in
                 switch response.result {
                 case .success(let data):
                     if let json = data as? [String: Any],
@@ -182,16 +182,16 @@ class APIManager {
 
     func refreshTokenAndRetryRequest(completion: @escaping (Result<Data, Error>) -> Void) {
         guard isInternetConnected() else {
-            completion(.failure(APIError.NoInternetConnectionError))
+            completion(.failure(APIError.noInternetConnectionError))
             return
         }
 
-        let urlString = "\(base_url)/oauth/token"
+        let urlString = "\(baseUrl)/oauth/token"
         let refreshToken = KeychainManager.shared.getRefreshToken()
 
         let parameters: [String: Any] = [
-            "client_id": client_id,
-            "client_secret": secret,
+            "client_id": oAuthClientId,
+            "client_secret": oAuthClientSecret,
             "grant_type": "refresh_token",
             "refresh_token": refreshToken!
         ]
@@ -205,7 +205,7 @@ class APIManager {
                         if let jsonData = data, let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
                             if let errors = json["errors"] as? [String], errors.count > 0 {
                                 let errorMessage = errors[0]
-                                completion(.failure(APIError.CustomError(errorMessage)))
+                                completion(.failure(APIError.customError(errorMessage)))
                             } else {
                                 if let accessToken = json["access_token"] as? String,
                                    let refreshToken = json["refresh_token"] as? String,
@@ -229,9 +229,9 @@ class APIManager {
                     if let httpResponse = response.response {
                         switch httpResponse.statusCode {
                         case 401, 403:
-                            completion(.failure(APIError.AuthenticationError))
+                            completion(.failure(APIError.authenticationError))
                         case 500:
-                            completion(.failure(APIError.ServerError))
+                            completion(.failure(APIError.serverError))
                         default:
                             completion(.failure(error))
                         }
@@ -244,28 +244,28 @@ class APIManager {
 }
 
 enum APIError: Error {
-    case NoInternetConnectionError
-    case ServerNotReachableError
-    case ServerError
-    case AuthenticationError
-    case DataParsingError
-    case CustomError(String)
+    case noInternetConnectionError
+    case serverNotReachableError
+    case serverError
+    case authenticationError
+    case dataParsingError
+    case customError(String)
 }
 
 extension APIError: LocalizedError {
     public var errorDescription: String? {
         switch self {
-        case .NoInternetConnectionError:
+        case .noInternetConnectionError:
             return NSLocalizedString("Internet connection is not available", comment: "Not internet connection")
-        case .ServerNotReachableError:
+        case .serverNotReachableError:
             return NSLocalizedString("Unable to reach the server", comment: "Server not reachable")
-        case .ServerError:
+        case .serverError:
             return NSLocalizedString("Error occured on the server", comment: "Server Error")
-        case .AuthenticationError:
+        case .authenticationError:
             return NSLocalizedString("Authentication Error", comment: "Authentication Error")
-        case .DataParsingError:
+        case .dataParsingError:
             return NSLocalizedString("Error Parsing Data", comment: "Data Parsing Error")
-        case .CustomError(let message):
+        case .customError(let message):
             return NSLocalizedString(message, comment: message)
         }
     }

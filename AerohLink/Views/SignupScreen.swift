@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignupScreen: View {
-    @State private var first_name = ""
+    @State private var firstName = ""
     @State private var email = ""
     @State private var password = ""
     @State private var firstNameError = false
@@ -56,7 +56,7 @@ struct SignupScreen: View {
                 VStack(spacing: 22) {
                     // Name input field
                     VStack {
-                        TextField("Name", text: $first_name)
+                        TextField("Name", text: $firstName)
                             .disableAutocorrection(true)
                             .foregroundColor(.white)
                             .padding()
@@ -138,7 +138,7 @@ struct SignupScreen: View {
                         let isValid = validateForm()
 
                         if isValid {
-                            SignupController().authenticate(first_name: first_name, email: email, password: password) { result in
+                            SignupController().authenticate(firstName: firstName, email: email, password: password) { result in
                                 switch result {
                                 case .success(_):
                                     withAnimation {
@@ -207,7 +207,7 @@ struct SignupScreen: View {
         firstNameError = false
         emailError = false
 
-        guard !first_name.isEmpty else {
+        guard !firstName.isEmpty else {
             firstNameError = true
             return false
         }

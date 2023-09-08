@@ -1,4 +1,4 @@
 import Foundation
 
-let client_id = ""
-let secret = ""
+let oAuthClientId = ""
+let oAuthClientSecret = ""

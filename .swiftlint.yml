@@ -2,7 +2,6 @@ disabled_rules:
 - multiple_closures_with_trailing_closure
 - empty_enum_arguments
 - line_length
-- identifier_name
 
 excluded:
 - DerivedData/

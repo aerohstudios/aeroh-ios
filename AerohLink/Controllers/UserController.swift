@@ -8,7 +8,7 @@
 import Foundation
 
 class UserController: ObservableObject {
-    @Published var user: UserInfo = UserInfo(email: "email", first_name: "First Name", id: nil)
+    @Published var user: UserInfo = UserInfo(email: "email", firstName: "First Name", id: nil)
     @Published var showAlert = false
     @Published var alertMessage = ""
 
@@ -18,7 +18,7 @@ class UserController: ObservableObject {
             case .success(let user):
                 DispatchQueue.main.async {
                     self.user = user
-                    UserDefaults.standard.set(user.first_name, forKey: "first_name")
+                    UserDefaults.standard.set(user.firstName, forKey: "first_name")
                     UserDefaults.standard.set(user.email, forKey: "email")
                 }
             case .failure(let error):

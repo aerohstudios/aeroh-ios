@@ -13,15 +13,15 @@ class SignatureController {
         let payloadString = "\(signData.email)|\(signData.password)|\(signData.scopes)|\(signData.timestamp)"
         let payloadData = payloadString.data(using: .utf8)!
         let secretKeyData = key.data(using: .utf8)!
-        let Signature = calculateHMAC(payload: payloadData, key: secretKeyData)
-        return Signature
+        let signature = calculateHMAC(payload: payloadData, key: secretKeyData)
+        return signature
     }
     func signup_signature(signData: UserModel, key: String) -> String {
-        let payloadString = "\(signData.email)|\(signData.password)|\(signData.first_name!)|\(signData.scopes)|\(signData.timestamp)"
+        let payloadString = "\(signData.email)|\(signData.password)|\(signData.firstName!)|\(signData.scopes)|\(signData.timestamp)"
         let payloadData = payloadString.data(using: .utf8)!
         let secretKeyData = key.data(using: .utf8)!
-        let Signature = calculateHMAC(payload: payloadData, key: secretKeyData)
-        return Signature
+        let signature = calculateHMAC(payload: payloadData, key: secretKeyData)
+        return signature
     }
 
     func calculateHMAC(payload: Data, key: Data) -> String {

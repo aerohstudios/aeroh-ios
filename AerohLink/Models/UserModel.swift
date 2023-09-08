@@ -11,10 +11,10 @@ struct UserModel: Codable {
 
     let email: String
     let password: String
-    let first_name: String?
+    let firstName: String?
     let scopes: String
     let timestamp: Int
-    let client_id: String?
+    let oAuthClientId: String?
     let signature: String?
 
 }
