@@ -102,7 +102,7 @@ struct LoginScreen: View {
                         if isValid {
                             LoginController().authenticate(email: email, password: password, loginManager: loginManager) { result in
                                 switch result {
-                                case .success(_):
+                                case .success:
                                     withAnimation {
                                         loginManager.login()
                                     }

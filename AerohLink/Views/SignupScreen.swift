@@ -140,7 +140,7 @@ struct SignupScreen: View {
                         if isValid {
                             SignupController().authenticate(firstName: firstName, email: email, password: password) { result in
                                 switch result {
-                                case .success(_):
+                                case .success:
                                     withAnimation {
                                         loginManager.login()
                                     }

@@ -16,7 +16,7 @@ struct SignupController {
         let userRequestData = UserModel(email: email.lowercased(), password: password, firstName: firstName, scopes: scopes, timestamp: timestamp, oAuthClientId: oAuthClientId, signature: signature)
         APIManager.shared.callingSignupAPI(userRequestData: userRequestData) { result in
             switch result {
-            case .success(_):
+            case .success:
                 completion(.success(0))
             case .failure(let error):
                 completion(.failure(error))
