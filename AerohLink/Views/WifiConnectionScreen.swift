@@ -192,7 +192,7 @@ struct WifiConnectionScreen: View {
                         Section {
                             Button(action: {
                                 saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
-                                newDeviceController.createDevice(name: "Aeroh Link", macAddr: "12.323.4343.35") { _ in
+                                newDeviceController.createDevice(name: "Aeroh Link", macAddr: "12:AB:34:CD:56:EF") { _ in
                                                     }
                             }) {
                                 Text("Next")
