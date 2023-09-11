@@ -241,7 +241,7 @@ class APIManager {
                 }
             }
     }
-    
+
     func createDevice(name: String, macAddr: String, completion: @escaping (Result<[DeviceModel], APIError>) -> Void) {
             guard isInternetConnected() else {
                 completion(.failure(.noInternetConnectionError))
