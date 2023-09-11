@@ -17,4 +17,14 @@ struct UserModel: Codable {
     let oAuthClientId: String?
     let signature: String?
 
+    // CodingKeys enum to specify custom keys
+    private enum CodingKeys: String, CodingKey {
+        case email
+        case password
+        case firstName = "first_name"
+        case scopes
+        case timestamp
+        case oAuthClientId = "client_id"
+        case signature
+    }
 }
