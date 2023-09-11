@@ -110,18 +110,19 @@ struct WifiConnectionScreen: View {
                         }
 
                         Section {
-                            Button(action: {
-                                saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
-                            }) {
-                                Text("Next")
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
-                                    .background(Color(red: 1.00, green: 0.79, blue: 0.23))
-
-                                    .clipShape(Capsule())
-                                    .padding(.horizontal)
-                            }
+                            NavigationLink(destination: DeviceNamingScreen(), label: {
+                                Button(action: {
+                                    saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
+                                }) {
+                                    Text("Next")
+                                        .frame(maxWidth: .infinity)
+                                        .padding()
+                                        .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
+                                        .background(Color(red: 1.00, green: 0.79, blue: 0.23))
+                                        .clipShape(Capsule())
+                                        .padding(.horizontal)
+                                }
+                            })
                         }
                     }
 
@@ -190,20 +191,21 @@ struct WifiConnectionScreen: View {
                         }
 
                         Section {
-                            Button(action: {
-                                saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
-                                newDeviceController.createDevice(name: "Aeroh Link", macAddr: "12:AB:34:CD:56:EF") { _ in
-                                                    }
-                            }) {
-                                Text("Next")
-                                    .frame(maxWidth: .infinity)
-                                    .padding()
-                                    .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
-                                    .background(Color(red: 1.00, green: 0.79, blue: 0.23))
-
-                                    .clipShape(Capsule())
-                                    .padding(.horizontal)
-                            }
+                            NavigationLink(destination: DeviceNamingScreen(), label: {
+                                Button(action: {
+                                    saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
+                                    newDeviceController.createDevice(name: "Aeroh Link", macAddr: "12:AB:34:CD:56:EF") { _ in
+                                    }
+                                }) {
+                                    Text("Next")
+                                        .frame(maxWidth: .infinity)
+                                        .padding()
+                                        .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
+                                        .background(Color(red: 1.00, green: 0.79, blue: 0.23))
+                                        .clipShape(Capsule())
+                                        .padding(.horizontal)
+                                }
+                            })
                         }
                     }
 
