@@ -38,6 +38,8 @@
 		91CB07B02A840BEF00573301 /* DeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB07AF2A840BEF00573301 /* DeviceController.swift */; };
 		91CB07B42A84EC3900573301 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB07B32A84EC3900573301 /* DeviceModel.swift */; };
 		91DC89A72A8FC8B60086A033 /* WifiConnectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DC89A62A8FC8B60086A033 /* WifiConnectionScreen.swift */; };
+		91EFEB0C2AAF3318000A61B6 /* DeviceTypeSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EFEB0B2AAF3318000A61B6 /* DeviceTypeSelectionScreen.swift */; };
+		91EFEB0E2AAF5FA7000A61B6 /* DeviceControlScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EFEB0D2AAF5FA7000A61B6 /* DeviceControlScreen.swift */; };
 		91FECB5E2AAB524B00D3BEC2 /* NewDeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FECB5D2AAB524B00D3BEC2 /* NewDeviceController.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +97,8 @@
 		91CB07AF2A840BEF00573301 /* DeviceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceController.swift; sourceTree = "<group>"; };
 		91CB07B32A84EC3900573301 /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		91DC89A62A8FC8B60086A033 /* WifiConnectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiConnectionScreen.swift; sourceTree = "<group>"; };
+		91EFEB0B2AAF3318000A61B6 /* DeviceTypeSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTypeSelectionScreen.swift; sourceTree = "<group>"; };
+		91EFEB0D2AAF5FA7000A61B6 /* DeviceControlScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceControlScreen.swift; sourceTree = "<group>"; };
 		91FECB5D2AAB524B00D3BEC2 /* NewDeviceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeviceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,6 +211,8 @@
 				91BC848E2A8D23F500C4C46E /* DeviceNamingScreen.swift */,
 				918BEDC22AA212FC001CFF59 /* SettingsPage.swift */,
 				91DC89A62A8FC8B60086A033 /* WifiConnectionScreen.swift */,
+				91EFEB0B2AAF3318000A61B6 /* DeviceTypeSelectionScreen.swift */,
+				91EFEB0D2AAF5FA7000A61B6 /* DeviceControlScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -427,8 +433,10 @@
 				58F022862A440F9C00980667 /* ContentView.swift in Sources */,
 				91AD20B12A5FA736008D521D /* SignatureController.swift in Sources */,
 				91AD20C12A5FAA49008D521D /* LoginController.swift in Sources */,
+				91EFEB0C2AAF3318000A61B6 /* DeviceTypeSelectionScreen.swift in Sources */,
 				911FE6152A77AD630059E69C /* LoginScreen.swift in Sources */,
 				91AD20AF2A5FA67C008D521D /* SignupController.swift in Sources */,
+				91EFEB0E2AAF5FA7000A61B6 /* DeviceControlScreen.swift in Sources */,
 				91AD20B92A5FA80F008D521D /* KeyChainManager.swift in Sources */,
 				91AD20BF2A5FAA24008D521D /* APIManager.swift in Sources */,
 				918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */,
