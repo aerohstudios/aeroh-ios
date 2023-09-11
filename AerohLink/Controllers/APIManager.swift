@@ -266,7 +266,7 @@ class APIManager {
                             "name": name,
                             "mac-addr": macAddr
                         ]
-                    ] as [String : Any]
+                    ] as [String: Any]
                 ]
                 AF.request(endpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
                     .responseJSON { response in
