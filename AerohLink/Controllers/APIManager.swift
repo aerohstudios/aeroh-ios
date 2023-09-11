@@ -284,7 +284,7 @@ class APIManager {
                             } else {
                                 completion(.failure(.dataParsingError))
                             }
-                        case .failure(let error):
+                        case .failure:
                             completion(.failure(.serverError))
                         }
                     }
