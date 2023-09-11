@@ -11,7 +11,7 @@ import Alamofire
 class NewDeviceController: ObservableObject {
     @StateObject private var devicesController = DevicesController()
     let apiManager = APIManager()
-    
+
     func createDevice(name: String, macAddr: String, completion: @escaping (Bool) -> Void) {
         apiManager.createDevice(name: name, macAddr: macAddr) { result in
             switch result {
