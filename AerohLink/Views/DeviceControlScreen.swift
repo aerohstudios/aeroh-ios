@@ -54,11 +54,10 @@ struct DeviceControlScreen: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                }) {
+                NavigationLink(destination: DeviceSettingsScreen(), label: {
                     Image(systemName: "gearshape.fill")
                         .foregroundColor(.white)
-                }
+                })
             }
         }
         .navigationTitle("Aeroh Link")
