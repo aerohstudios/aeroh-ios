@@ -18,12 +18,16 @@
 		911FE6152A77AD630059E69C /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE6142A77AD630059E69C /* LoginScreen.swift */; };
 		911FE6172A7D07160059E69C /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE6162A7D07160059E69C /* UserController.swift */; };
 		911FE6192A8100D70059E69C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911FE6182A8100D70059E69C /* UserInfo.swift */; };
+		916769842AB1C1D700E7873E /* DeviceRenameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916769832AB1C1D700E7873E /* DeviceRenameScreen.swift */; };
+		916769862AB1C9CC00E7873E /* ChangeDeviceTypeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916769852AB1C9CC00E7873E /* ChangeDeviceTypeScreen.swift */; };
+		916769882AB1DCA200E7873E /* ChangeRoomNameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916769872AB1DCA200E7873E /* ChangeRoomNameScreen.swift */; };
 		918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */; };
 		918B84EB2A45798700C4FD75 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B84EA2A45798700C4FD75 /* SplashScreen.swift */; };
 		918BEDC32AA212FC001CFF59 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918BEDC22AA212FC001CFF59 /* SettingsPage.swift */; };
 		9193EF582A6E35BC00F4DBDB /* EnvConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193EF572A6E35BC00F4DBDB /* EnvConstants.swift */; };
 		9193EF5E2A73F35A00F4DBDB /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193EF5D2A73F35900F4DBDB /* LoginManager.swift */; };
 		9193EF602A740FFE00F4DBDB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193EF5F2A740FFE00F4DBDB /* UserModel.swift */; };
+		91A37AC22AB09CC800E9B929 /* DeviceSettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A37AC12AB09CC800E9B929 /* DeviceSettingsScreen.swift */; };
 		91AD20AF2A5FA67C008D521D /* SignupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20AE2A5FA67C008D521D /* SignupController.swift */; };
 		91AD20B12A5FA736008D521D /* SignatureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20B02A5FA736008D521D /* SignatureController.swift */; };
 		91AD20B42A5FA75F008D521D /* TimestampGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AD20B32A5FA75F008D521D /* TimestampGenerator.swift */; };
@@ -38,6 +42,7 @@
 		91CB07B02A840BEF00573301 /* DeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB07AF2A840BEF00573301 /* DeviceController.swift */; };
 		91CB07B42A84EC3900573301 /* DeviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CB07B32A84EC3900573301 /* DeviceModel.swift */; };
 		91DC89A72A8FC8B60086A033 /* WifiConnectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DC89A62A8FC8B60086A033 /* WifiConnectionScreen.swift */; };
+		91EE19192AB1830100D4BC41 /* DeviceInfoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EE19182AB1830100D4BC41 /* DeviceInfoScreen.swift */; };
 		91EFEB0C2AAF3318000A61B6 /* DeviceTypeSelectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EFEB0B2AAF3318000A61B6 /* DeviceTypeSelectionScreen.swift */; };
 		91EFEB0E2AAF5FA7000A61B6 /* DeviceControlScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EFEB0D2AAF5FA7000A61B6 /* DeviceControlScreen.swift */; };
 		91FECB5E2AAB524B00D3BEC2 /* NewDeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FECB5D2AAB524B00D3BEC2 /* NewDeviceController.swift */; };
@@ -76,6 +81,9 @@
 		911FE6142A77AD630059E69C /* LoginScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		911FE6162A7D07160059E69C /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		911FE6182A8100D70059E69C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		916769832AB1C1D700E7873E /* DeviceRenameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRenameScreen.swift; sourceTree = "<group>"; };
+		916769852AB1C9CC00E7873E /* ChangeDeviceTypeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDeviceTypeScreen.swift; sourceTree = "<group>"; };
+		916769872AB1DCA200E7873E /* ChangeRoomNameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeRoomNameScreen.swift; sourceTree = "<group>"; };
 		917EB5D22AA633E000407F43 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreenView.swift; sourceTree = "<group>"; };
 		918B84EA2A45798700C4FD75 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
@@ -84,6 +92,7 @@
 		9193EF572A6E35BC00F4DBDB /* EnvConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvConstants.swift; sourceTree = "<group>"; };
 		9193EF5D2A73F35900F4DBDB /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		9193EF5F2A740FFE00F4DBDB /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		91A37AC12AB09CC800E9B929 /* DeviceSettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceSettingsScreen.swift; sourceTree = "<group>"; };
 		91AD20AE2A5FA67C008D521D /* SignupController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupController.swift; sourceTree = "<group>"; };
 		91AD20B02A5FA736008D521D /* SignatureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureController.swift; sourceTree = "<group>"; };
 		91AD20B32A5FA75F008D521D /* TimestampGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimestampGenerator.swift; sourceTree = "<group>"; };
@@ -97,6 +106,7 @@
 		91CB07AF2A840BEF00573301 /* DeviceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceController.swift; sourceTree = "<group>"; };
 		91CB07B32A84EC3900573301 /* DeviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceModel.swift; sourceTree = "<group>"; };
 		91DC89A62A8FC8B60086A033 /* WifiConnectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiConnectionScreen.swift; sourceTree = "<group>"; };
+		91EE19182AB1830100D4BC41 /* DeviceInfoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfoScreen.swift; sourceTree = "<group>"; };
 		91EFEB0B2AAF3318000A61B6 /* DeviceTypeSelectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTypeSelectionScreen.swift; sourceTree = "<group>"; };
 		91EFEB0D2AAF5FA7000A61B6 /* DeviceControlScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceControlScreen.swift; sourceTree = "<group>"; };
 		91FECB5D2AAB524B00D3BEC2 /* NewDeviceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeviceController.swift; sourceTree = "<group>"; };
@@ -213,6 +223,11 @@
 				91DC89A62A8FC8B60086A033 /* WifiConnectionScreen.swift */,
 				91EFEB0B2AAF3318000A61B6 /* DeviceTypeSelectionScreen.swift */,
 				91EFEB0D2AAF5FA7000A61B6 /* DeviceControlScreen.swift */,
+				91A37AC12AB09CC800E9B929 /* DeviceSettingsScreen.swift */,
+				91EE19182AB1830100D4BC41 /* DeviceInfoScreen.swift */,
+				916769832AB1C1D700E7873E /* DeviceRenameScreen.swift */,
+				916769852AB1C9CC00E7873E /* ChangeDeviceTypeScreen.swift */,
+				916769872AB1DCA200E7873E /* ChangeRoomNameScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -430,10 +445,12 @@
 				91BC848F2A8D23F500C4C46E /* DeviceNamingScreen.swift in Sources */,
 				91AD20C62A5FAB70008D521D /* AppConstants.swift in Sources */,
 				91CB07B42A84EC3900573301 /* DeviceModel.swift in Sources */,
+				916769882AB1DCA200E7873E /* ChangeRoomNameScreen.swift in Sources */,
 				58F022862A440F9C00980667 /* ContentView.swift in Sources */,
 				91AD20B12A5FA736008D521D /* SignatureController.swift in Sources */,
 				91AD20C12A5FAA49008D521D /* LoginController.swift in Sources */,
 				91EFEB0C2AAF3318000A61B6 /* DeviceTypeSelectionScreen.swift in Sources */,
+				916769862AB1C9CC00E7873E /* ChangeDeviceTypeScreen.swift in Sources */,
 				911FE6152A77AD630059E69C /* LoginScreen.swift in Sources */,
 				91AD20AF2A5FA67C008D521D /* SignupController.swift in Sources */,
 				91EFEB0E2AAF5FA7000A61B6 /* DeviceControlScreen.swift in Sources */,
@@ -442,11 +459,14 @@
 				918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */,
 				911341422A49620200694A17 /* SignupScreen.swift in Sources */,
 				91AD20CB2A5FC120008D521D /* HomeScreen.swift in Sources */,
+				91EE19192AB1830100D4BC41 /* DeviceInfoScreen.swift in Sources */,
 				91DC89A72A8FC8B60086A033 /* WifiConnectionScreen.swift in Sources */,
 				91FECB5E2AAB524B00D3BEC2 /* NewDeviceController.swift in Sources */,
+				916769842AB1C1D700E7873E /* DeviceRenameScreen.swift in Sources */,
 				91CB07B02A840BEF00573301 /* DeviceController.swift in Sources */,
 				58F022842A440F9C00980667 /* AerohLinkApp.swift in Sources */,
 				91AD20B42A5FA75F008D521D /* TimestampGenerator.swift in Sources */,
+				91A37AC22AB09CC800E9B929 /* DeviceSettingsScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
