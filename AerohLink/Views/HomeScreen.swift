@@ -244,24 +244,26 @@ struct DeviceRowView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            HStack(alignment: .center, spacing: 20) {
-                Image("AerohLinkIllustration")
-                    .resizable()
-                    .frame(width: 32.0, height: 19.34)
-                    .aspectRatio(1, contentMode: .fit)
-                    .padding()
-                    .background(
-                        Circle()
-                            .fill(Color(red: 0.16, green: 0.16, blue: 0.16))
-                            .frame(width: 60, height: 60))
+            NavigationLink(destination: DeviceControlScreen(), label: {
+                HStack(alignment: .center, spacing: 20) {
+                    Image("AerohLinkIllustration")
+                        .resizable()
+                        .frame(width: 32.0, height: 19.34)
+                        .aspectRatio(1, contentMode: .fit)
+                        .padding()
+                        .background(
+                            Circle()
+                                .fill(Color(red: 0.16, green: 0.16, blue: 0.16))
+                                .frame(width: 60, height: 60))
 
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(device.name)
-                        .font(.system(size: 18))
-                        .foregroundColor(.white)
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(device.name)
+                            .font(.system(size: 18))
+                            .foregroundColor(.white)
+                    }
+
                 }
-
-            }
+            })
 
             if !isLastDevice {
                 Divider()
