@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DeviceModel: Identifiable, Hashable {
+class DeviceModel: Identifiable, Hashable, Decodable {
     var id = UUID()
     var name: String
 

@@ -10,36 +10,25 @@ import Alamofire
 
 class APIManager {
     static let shared = APIManager()
-
-    var isValid: Bool {
-        return isAccessTokenValid()
-    }
-    // Check internet connectivity before making API requests
-    private func isInternetConnected() -> Bool {
-        let reachabilityManager = NetworkReachabilityManager()
+    private let reachabilityManager = NetworkReachabilityManager()
+    init() {}
+    var isInternetConnected: Bool {
         return reachabilityManager?.isReachable ?? false
     }
-
-    private func isAccessTokenValid() -> Bool {
-        let tokenGenerationDate = KeychainManager.shared.getCreatedAt() // Assuming it returns TimeInterval or Unix timestamp
-        let expiresIn = KeychainManager.shared.getExpiresIn()
-
-        let currentDate = Date()
-        let createdDateNewType = Date(timeIntervalSince1970: TimeInterval(tokenGenerationDate ?? 0))
-        let expirationDate = createdDateNewType.addingTimeInterval(TimeInterval(expiresIn ?? 0))
-
-        return expirationDate > currentDate
+    var isAccessTokenValid: Bool {
+        return KeychainManager.shared.isAccessTokenValid()
     }
-
-    func callingLoginAPI(userRequestData: UserModel, completion: @escaping (Result<Any, Error>) -> Void) {
-        guard isInternetConnected() else {
-            completion(.failure(APIError.noInternetConnectionError))
+    var isValid: Bool {
+        return isAccessTokenValid
+    }
+    func callingLoginAPI(userRequestData: UserModel, completion: @escaping (Result<Any, APIError>) -> Void) {
+        guard isInternetConnected else {
+            completion(.failure(.noInternetConnectionError))
             return
         }
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
-
         AF.request(loginUrl, method: .post, parameters: userRequestData, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result {
             case .success(let data):
@@ -49,14 +38,14 @@ class APIManager {
                             let errorMessage = errors[0]
                             completion(.failure(APIError.customError(errorMessage)))
                         } else if let responseData = json["data"] as? [String: Any] {
-                                if let accessToken = responseData["access_token"] as? String,
-                                   let refreshToken = responseData["refresh_token"] as? String,
-                                   let expiresIn = responseData["expires_in"] as? Int,
-                                   let createdAt = responseData["created_at"] as? Int {
-                                    KeychainManager.shared.saveCredentials(accessToken: accessToken, refreshToken: refreshToken, expiresIn: expiresIn, createdAt: createdAt)
-                                    completion(.success(0))
-                                }
+                            if let accessToken = responseData["access_token"] as? String,
+                               let refreshToken = responseData["refresh_token"] as? String,
+                               let expiresIn = responseData["expires_in"] as? Int,
+                               let createdAt = responseData["created_at"] as? Int {
+                                KeychainManager.shared.saveCredentials(accessToken: accessToken, refreshToken: refreshToken, expiresIn: expiresIn, createdAt: createdAt)
+                                completion(.success(0))
                             }
+                        }
                     }
                 } catch {
                     print(error.localizedDescription)
@@ -65,21 +54,19 @@ class APIManager {
                 if error.localizedDescription != "" {
                     completion(.failure(APIError.serverNotReachableError))
                 } else {
-                    completion(.failure(error))
+                    completion(.failure(APIError.serverError))
                 }
             }
         }
     }
-
-    func callingSignupAPI(userRequestData: UserModel, completion: @escaping (Result<Any, Error>) -> Void) {
-        guard isInternetConnected() else {
-            completion(.failure(APIError.noInternetConnectionError))
+    func callingSignupAPI(userRequestData: UserModel, completion: @escaping (Result<Any, APIError>) -> Void) {
+        guard isInternetConnected else {
+            completion(.failure(.noInternetConnectionError))
             return
         }
         let headers: HTTPHeaders = [
             .contentType("application/json")
         ]
-
         AF.request(signupUrl, method: .post, parameters: userRequestData, encoder: JSONParameterEncoder.default, headers: headers).response { response in
             switch response.result {
             case .success(let data):
@@ -93,7 +80,6 @@ class APIManager {
                                let refreshToken = responseData["refresh_token"] as? String,
                                let expiresIn = responseData["expires_in"] as? Int,
                                let createdAt = responseData["created_at"] as? Int {
-
                                 KeychainManager.shared.saveCredentials(accessToken: accessToken, refreshToken: refreshToken, expiresIn: expiresIn, createdAt: createdAt)
                                 completion(.success(0))
                             }
@@ -106,194 +92,172 @@ class APIManager {
                 if error.localizedDescription != "" {
                     completion(.failure(APIError.serverNotReachableError))
                 } else {
-                    completion(.failure(error))
+                    completion(.failure(APIError.serverError))
                 }
             }
         }
     }
-
     func fetchUser(with accessToken: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
-        guard isInternetConnected() else {
+        guard isInternetConnected else {
             completion(.failure(APIError.noInternetConnectionError))
             return
         }
-
         if isValid {
             let headers: HTTPHeaders = [
                 "Authorization": "Bearer \(accessToken)"
             ]
-
             AF.request("\(baseUrl)/api/v1/users", method: .get, headers: headers).responseJSON { response in
-                switch response.result {
-                case .success(let data):
-                    if let json = data as? [String: Any],
-                       let dataArray = json["data"] as? [[String: Any]],
-                       let firstUser = dataArray.first,
-                       let attributes = firstUser["attributes"] as? [String: Any],
-                       let email = attributes["email"] as? String,
-                       let firstName = attributes["first-name"] as? String {
-
-                        let user = UserInfo(email: email, firstName: firstName, id: nil)
-                        completion(.success(user))
-                    } else {
-                        completion(.failure(APIError.dataParsingError))
-                    }
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-        } else if KeychainManager.shared.getRefreshToken() != nil {
-            refreshTokenAndRetryRequest { _ in }
-        }
-    }
-
-    func fetchDevices(with accessToken: String, completion: @escaping (Result<[DeviceModel], Error>) -> Void) {
-        guard isInternetConnected() else {
-            completion(.failure(APIError.noInternetConnectionError))
-            return
-        }
-
-        if isValid {
-            let headers: HTTPHeaders = [
-                "Authorization": "Bearer \(accessToken)"
-            ]
-
-            AF.request("\(baseUrl)/api/v1/devices", method: .get, headers: headers).responseJSON { response in
-                switch response.result {
-                case .success(let data):
-                    if let json = data as? [String: Any],
-                       let dataArray = json["data"] as? [[String: Any]] {
-                        var devices: [DeviceModel] = []
-                        for deviceData in dataArray {
-                            if let attributes = deviceData["attributes"] as? [String: Any],
-                               let name = attributes["name"] as? String {
-                                let device = DeviceModel(name: name)
-                                devices.append(device)
+                            switch response.result {
+                            case .success(let data):
+                                if let json = data as? [String: Any],
+                                   let dataArray = json["data"] as? [[String: Any]],
+                                   let firstUser = dataArray.first,
+                                   let attributes = firstUser["attributes"] as? [String: Any],
+                                   let email = attributes["email"] as? String,
+                                   let firstName = attributes["first-name"] as? String {
+                                    let user = UserInfo(email: email, firstName: firstName, id: nil)
+                                    completion(.success(user))
+                                } else {
+                                    completion(.failure(APIError.dataParsingError))
+                                }
+                            case .failure(let error):
+                                completion(.failure(error))
                             }
                         }
-                        completion(.success(devices))
+                    } else if KeychainManager.shared.getRefreshToken() != nil {
+                        refreshTokenAndRetryRequest { _ in }
                     }
-                case .failure(let error):
-                    print("Error: \(error.localizedDescription)")
+    }
+
+        func fetchDevices(with accessToken: String, completion: @escaping (Result<[DeviceModel], Error>) -> Void) {
+            guard isInternetConnected else {
+                completion(.failure(APIError.noInternetConnectionError))
+                return
+            }
+            if isValid {
+                let headers: HTTPHeaders = [
+                    "Authorization": "Bearer \(accessToken)"
+                ]
+                AF.request("\(baseUrl)/api/v1/devices", method: .get, headers: headers).responseJSON { response in
+                    switch response.result {
+                    case .success(let data):
+                        if let json = data as? [String: Any],
+                           let dataArray = json["data"] as? [[String: Any]] {
+                            var devices: [DeviceModel] = []
+                            for deviceData in dataArray {
+                                if let attributes = deviceData["attributes"] as? [String: Any],
+                                   let name = attributes["name"] as? String {
+                                    let device = DeviceModel(name: name)
+                                    devices.append(device)
+                                }
+                            }
+                            completion(.success(devices))
+                        }
+                    case .failure(let error):
+                        print("Error: \(error.localizedDescription)")
+                    }
                 }
             }
         }
-    }
-
-    func refreshTokenAndRetryRequest(completion: @escaping (Result<Data, Error>) -> Void) {
-        guard isInternetConnected() else {
-            completion(.failure(APIError.noInternetConnectionError))
+    func refreshTokenAndRetryRequest(completion: @escaping (Result<Data, APIError>) -> Void) {
+        guard isInternetConnected else {
+            completion(.failure(.noInternetConnectionError))
             return
         }
-
+        guard let refreshToken = KeychainManager.shared.getRefreshToken() else {
+            completion(.failure(.authenticationError))
+            return
+        }
         let urlString = "\(baseUrl)/oauth/token"
-        let refreshToken = KeychainManager.shared.getRefreshToken()
-
         let parameters: [String: Any] = [
             "client_id": oAuthClientId,
             "client_secret": oAuthClientSecret,
             "grant_type": "refresh_token",
-            "refresh_token": refreshToken!
+            "refresh_token": refreshToken
         ]
-
         AF.request(urlString, method: .post, parameters: parameters)
-            .validate(statusCode: 200..<300) // Only consider success status codes
-            .response { response in
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: TokenResponse.self) { response in
                 switch response.result {
-                case .success(let data):
-                    do {
-                        if let jsonData = data, let json = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
-                            if let errors = json["errors"] as? [String], errors.count > 0 {
-                                let errorMessage = errors[0]
-                                completion(.failure(APIError.customError(errorMessage)))
-                            } else {
-                                if let accessToken = json["access_token"] as? String,
-                                   let refreshToken = json["refresh_token"] as? String,
-                                   let expiresIn = json["expires_in"] as? Int,
-                                   let createdAt = json["created_at"] as? Int {
-
-                                    KeychainManager.shared.saveCredentials(accessToken: accessToken, refreshToken: refreshToken, expiresIn: expiresIn, createdAt: createdAt)
-
-                                    self.fetchUser(with: accessToken) { _ in }
-
-                                    self.fetchDevices(with: accessToken) { _ in }
-
-                                    completion(.success(data!))
-                                }
-                            }
-                        }
-                    } catch {
-                        completion(.failure(error))
-                    }
+                case .success(let tokenResponse):
+                    KeychainManager.shared.saveCredentials(
+                        accessToken: tokenResponse.accessToken,
+                        refreshToken: tokenResponse.refreshToken,
+                        expiresIn: tokenResponse.expiresIn,
+                        createdAt: tokenResponse.createdAt
+                    )
+                    self.retryRefreshedTokenRequest(completion: completion)
                 case .failure(let error):
-                    if let httpResponse = response.response {
-                        switch httpResponse.statusCode {
-                        case 401, 403:
-                            completion(.failure(APIError.authenticationError))
-                        case 500:
-                            completion(.failure(APIError.serverError))
-                        default:
-                            completion(.failure(error))
-                        }
-                    } else {
-                        completion(.failure(error))
-                    }
+                    self.handleTokenRefreshFailure(error: error, completion: completion)
+                    print(error)
                 }
             }
     }
+    func retryRefreshedTokenRequest(completion: @escaping (Result<Data, APIError>) -> Void) {
+        guard let accessToken = KeychainManager.shared.getAccessToken() else {
+            completion(.failure(.authenticationError))
+            return
+        }
+        self.fetchUser(with: accessToken) { _ in }
+        self.fetchDevices(with: accessToken) { _ in }
+        completion(.success(Data()))
+    }
+
+    func handleTokenRefreshFailure(error: AFError, completion: @escaping (Result<Data, APIError>) -> Void) {
+        if let httpResponse = error.responseCode {
+            switch httpResponse {
+            case 401, 403:
+                completion(.failure(.authenticationError))
+            case 500:
+                completion(.failure(.serverError))
+            default:
+                completion(.failure(.customError(error.localizedDescription)))
+            }
+        } else {
+            completion(.failure(.serverError))
+        }
+    }
 
     func createDevice(name: String, macAddr: String, completion: @escaping (Result<[DeviceModel], APIError>) -> Void) {
-            guard isInternetConnected() else {
-                completion(.failure(.noInternetConnectionError))
+        guard isInternetConnected else {
+            completion(.failure(.noInternetConnectionError))
+            return
+        }
+
+        if isValid {
+            let endpoint = URL(string: "\(baseUrl)/api/v1/devices")!
+            guard let accessToken = KeychainManager.shared.getAccessToken() else {
+                completion(.failure(.authenticationError))
                 return
             }
-
-            if isValid {
-                let endpoint = URL(string: "\(baseUrl)/api/v1/devices")!
-                guard let accessToken = KeychainManager.shared.getAccessToken() else {
-                    completion(.failure(.authenticationError))
-                    return
-                }
-
-                let headers: HTTPHeaders = [
-                    "Authorization": "Bearer \(accessToken)",
-                    "Content-Type": "application/vnd.api+json"
-                ]
-                let parameters: [String: Any] = [
-                    "data": [
-                        "type": "devices",
-                        "attributes": [
-                            "name": name,
-                            "mac-addr": macAddr
-                        ]
-                    ] as [String: Any]
-                ]
-                AF.request(endpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-                    .responseJSON { response in
-                        switch response.result {
-                        case .success(let data):
-                            if let json = data as? [String: Any], let dataArray = json["data"] as? [[String: Any]] {
-                                var devices: [DeviceModel] = []
-                                for deviceData in dataArray {
-                                    if let attributes = deviceData["attributes"] as? [String: Any], let name = attributes["name"] as? String {
-                                        let device = DeviceModel(name: name)
-                                        devices.append(device)
-                                    }
-                                }
-                                completion(.success(devices))
-                            } else {
-                                completion(.failure(.dataParsingError))
-                            }
-                        case .failure:
-                            completion(.failure(.serverError))
-                        }
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer \(accessToken)",
+                "Content-Type": "application/vnd.api+json"
+            ]
+            let deviceAttributes: [String: Any] = [
+                "name": name,
+                "mac-addr": macAddr
+            ]
+            let parameters: [String: Any] = [
+                "data": [
+                    "type": "devices",
+                    "attributes": deviceAttributes
+                ] as [String: Any]
+            ]
+            AF.request(endpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+                .responseDecodable(of: [DeviceModel].self) { response in
+                    switch response.result {
+                    case .success(let devices):
+                        completion(.success(devices))
+                    case .failure:
+                        completion(.failure(.serverError))
                     }
-            } else {
-                completion(.failure(.customError("Invalid Request")))
-            }
+                }
+        } else {
+            completion(.failure(.customError("Invalid Request")))
         }
+    }
 }
-
 enum APIError: Error {
     case noInternetConnectionError
     case serverNotReachableError
@@ -302,7 +266,6 @@ enum APIError: Error {
     case dataParsingError
     case customError(String)
 }
-
 extension APIError: LocalizedError {
     public var errorDescription: String? {
         switch self {
@@ -319,5 +282,16 @@ extension APIError: LocalizedError {
         case .customError(let message):
             return NSLocalizedString(message, comment: message)
         }
+    }
+}
+extension KeychainManager {
+    internal func isAccessTokenValid() -> Bool {
+        let tokenGenerationDate = KeychainManager.shared.getCreatedAt() // Assuming it returns TimeInterval or Unix timestamp
+        let expiresIn = KeychainManager.shared.getExpiresIn()
+        let currentDate = Date()
+        let createdDateNewType = Date(timeIntervalSince1970: TimeInterval(tokenGenerationDate ?? 0))
+        let expirationDate = createdDateNewType.addingTimeInterval(TimeInterval(expiresIn ?? 0))
+
+        return expirationDate > currentDate
     }
 }
