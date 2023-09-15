@@ -11,7 +11,7 @@ struct DeviceRenameScreen: View {
     @State private var deviceName = "Aeroh Link"
     var body: some View {
         ZStack(alignment: .top) {
-            Color(red: 0.06, green: 0.05, blue: 0.08)
+            Color("PrimaryBlack")
                 .edgesIgnoringSafeArea(.all)
 
             VStack {
@@ -21,7 +21,7 @@ struct DeviceRenameScreen: View {
                     .padding()
                     .overlay(
                         RoundedRectangle(cornerRadius: 30)
-                            .stroke(Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
+                            .stroke(Color("SecondaryBlack"), lineWidth: 1)
                     )
                     .padding()
                     .colorScheme(.dark)
@@ -32,8 +32,8 @@ struct DeviceRenameScreen: View {
                     Text("Save")
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
-                        .background(Color(red: 1.00, green: 0.79, blue: 0.23))
+                        .foregroundColor(Color("PrimaryBlack"))
+                        .background(Color("Action"))
                         .clipShape(Capsule())
                         .padding(.horizontal)
                 })

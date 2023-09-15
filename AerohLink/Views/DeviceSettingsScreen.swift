@@ -11,17 +11,17 @@ struct DeviceSettingsScreen: View {
     @State private var vibrateToggle = false
     var body: some View {
         ZStack(alignment: .top) {
-            Color(red: 0.06, green: 0.05, blue: 0.08)
+            Color("PrimaryBlack")
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .leading, spacing: 15) {
                 HStack {
                     Toggle("Vibrate on touch", isOn: $vibrateToggle)
                         .foregroundColor(.white)
-                        .tint(Color(red: 1, green: 0.78, blue: 0.23))
+                        .tint(Color("Action"))
                 }
                 Divider()
                     .frame(height: 1)
-                    .overlay(Color(red: 0.16, green: 0.16, blue: 0.16))
+                    .overlay(Color("SecondaryBlack"))
                 NavigationLink(destination: DeviceInfoScreen(), label: {
                     Text("Device Info")
                         .foregroundColor(.white)
@@ -32,7 +32,7 @@ struct DeviceSettingsScreen: View {
                 })
                 Divider()
                     .frame(height: 1)
-                    .overlay(Color(red: 0.16, green: 0.16, blue: 0.16))
+                    .overlay(Color("SecondaryBlack"))
                 NavigationLink(destination: DeviceNamingScreen(), label: {
                     Text("Configure")
                         .foregroundColor(.white)
@@ -43,7 +43,7 @@ struct DeviceSettingsScreen: View {
                 })
                 Divider()
                     .frame(height: 1)
-                    .overlay(Color(red: 0.16, green: 0.16, blue: 0.16))
+                    .overlay(Color("SecondaryBlack"))
                 Text("Delete")
                     .foregroundColor(.white)
             }

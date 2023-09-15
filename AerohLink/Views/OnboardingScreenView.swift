@@ -13,7 +13,7 @@ struct OnboardingScreenView: View {
         NavigationStack {
             ZStack {
                         // Background color
-                        Color(red: 0.06, green: 0.05, blue: 0.08)
+                        Color("PrimaryBlack")
                             .edgesIgnoringSafeArea(.all)
 
                         VStack(spacing: 179) {
@@ -38,7 +38,7 @@ struct OnboardingScreenView: View {
                                     .bold()
                                     .multilineTextAlignment(.center)
                                     .frame(width: 270)
-                                    .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                                    .foregroundColor(Color("SecondaryWhite"))
                             }
 
                             HStack(spacing: 23) {
@@ -49,7 +49,7 @@ struct OnboardingScreenView: View {
                                         .frame(maxWidth: .infinity, minHeight: 25)
                                         .foregroundColor(.white)
                                         .padding()
-                                        .background(Color(red: 0.06, green: 0.05, blue: 0.08))
+                                        .background(Color("PrimaryBlack"))
                                         .cornerRadius(30)
                                         .overlay(RoundedRectangle(cornerRadius: 30).stroke(Color.white, lineWidth: 1))
 
@@ -59,9 +59,9 @@ struct OnboardingScreenView: View {
                                 NavigationLink(destination: LoginScreen(loginManager: loginManager).navigationBarHidden(true), label: {
                                     Text("Log in")
                                         .frame(maxWidth: .infinity, minHeight: 25)
-                                        .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
+                                        .foregroundColor(Color("PrimaryBlack"))
                                         .padding()
-                                        .background(Color(red: 1.00, green: 0.79, blue: 0.23))
+                                        .background(Color("Action"))
                                         .clipShape(Capsule())
                                 })
 

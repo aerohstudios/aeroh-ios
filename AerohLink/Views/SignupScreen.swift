@@ -22,7 +22,7 @@ struct SignupScreen: View {
     var body: some View {
         ZStack {
             // Background color
-            Color(red: 0.06, green: 0.05, blue: 0.08)
+            Color("PrimaryBlack")
                 .edgesIgnoringSafeArea(.all)
 
             VStack(spacing: 30) {
@@ -32,7 +32,7 @@ struct SignupScreen: View {
 
                 // Sign up title
                 Text("Sign up")
-                    .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                    .foregroundColor(Color("SecondaryWhite"))
                     .font(.title2)
                     .bold()
 
@@ -62,7 +62,7 @@ struct SignupScreen: View {
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 30)
-                                    .stroke(firstNameError ? Color.red : Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
+                                    .stroke(firstNameError ? Color.red : Color("SecondaryBlack"), lineWidth: 1)
                             )
                             .padding(.horizontal)
                             .colorScheme(.dark)
@@ -88,7 +88,7 @@ struct SignupScreen: View {
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 30)
-                                    .stroke(emailError ? Color.red : Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
+                                    .stroke(emailError ? Color.red : Color("SecondaryBlack"), lineWidth: 1)
                             )
                             .padding(.horizontal)
                             .colorScheme(.dark)
@@ -112,7 +112,7 @@ struct SignupScreen: View {
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 30)
-                                    .stroke(passwordError ? Color.red : Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
+                                    .stroke(passwordError ? Color.red : Color("SecondaryBlack"), lineWidth: 1)
                             )
                             .padding(.horizontal)
                             .colorScheme(.dark)
@@ -152,8 +152,8 @@ struct SignupScreen: View {
                     }) {
                         Text("Sign up")
                             .frame(maxWidth: .infinity)   .padding()
-                            .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
-                            .background(Color(red: 1.00, green: 0.79, blue: 0.23))
+                            .foregroundColor(Color("PrimaryBlack"))
+                            .background(Color("Action"))
                             .clipShape(Capsule())
                             .padding(.horizontal)
                     }
@@ -165,7 +165,7 @@ struct SignupScreen: View {
                             .foregroundColor(.gray)
 
                         Text("OR")
-                            .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                            .foregroundColor(Color("SecondaryWhite"))
 
                         Rectangle()
                             .frame(width: 50, height: 1)
@@ -177,7 +177,7 @@ struct SignupScreen: View {
                         Text("Log in")
                             .frame(maxWidth: .infinity)       .padding()
                             .foregroundColor(.white)
-                            .background(Color(red: 0.06, green: 0.05, blue: 0.08))
+                            .background(Color("PrimaryBlack"))
                             .cornerRadius(30)
                             .overlay(RoundedRectangle(cornerRadius: 30).stroke(Color.white, lineWidth: 1))
                             .padding(.horizontal)

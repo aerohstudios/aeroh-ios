@@ -117,8 +117,8 @@ struct WifiConnectionScreen: View {
                                     Text("Next")
                                         .frame(maxWidth: .infinity)
                                         .padding()
-                                        .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
-                                        .background(Color(red: 1.00, green: 0.79, blue: 0.23))
+                                        .foregroundColor(Color("PrimaryBlack"))
+                                        .background(Color("Action"))
                                         .clipShape(Capsule())
                                         .padding(.horizontal)
                                 }
@@ -200,8 +200,8 @@ struct WifiConnectionScreen: View {
                                     Text("Next")
                                         .frame(maxWidth: .infinity)
                                         .padding()
-                                        .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
-                                        .background(Color(red: 1.00, green: 0.79, blue: 0.23))
+                                        .foregroundColor(Color("PrimaryBlack"))
+                                        .background(Color("Action"))
                                         .clipShape(Capsule())
                                         .padding(.horizontal)
                                 }
@@ -225,7 +225,7 @@ struct WifiConnectionScreen: View {
                         }
                     }
                 }
-                .background(Color(red: 0.06, green: 0.05, blue: 0.08).edgesIgnoringSafeArea(.all))
+                .background(Color("PrimaryBlack").edgesIgnoringSafeArea(.all))
             }
         }.navigationTitle("Connect Wi-Fi")
             .navigationBarTitleDisplayMode(.inline)

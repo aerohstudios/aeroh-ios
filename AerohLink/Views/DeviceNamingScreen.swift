@@ -14,27 +14,27 @@ struct DeviceNamingScreen: View {
     let columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 1), count: 3)
     var body: some View {
         ZStack {
-            Color(red: 0.06, green: 0.05, blue: 0.08)
+            Color("PrimaryBlack")
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .leading) {
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Device name")
                         .font(Font.custom("Poppins", size: 14))
-                        .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                        .foregroundColor(Color("SecondaryWhite"))
 
                     TextField("Aeroh Link", text: $deviceName)
                         .foregroundColor(.white)
                         .padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 15)
-                                .stroke(Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
+                                .stroke(Color("SecondaryBlack"), lineWidth: 1)
                         )
                 }.padding()
 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Select room")
                         .font(Font.custom("Poppins", size: 14))
-                        .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                        .foregroundColor(Color("SecondaryWhite"))
                     LazyVGrid(columns: columns, spacing: 2) {
                         ForEach(roomTypes, id: \.self) { roomType in
                             Button(action: {
@@ -50,7 +50,7 @@ struct DeviceNamingScreen: View {
                                     }
                                     Text(roomType)
                                         .font(.system(size: 12))
-                                        .foregroundColor(selectedRoom == roomType ? .yellow : Color(red: 0.75, green: 0.75, blue: 0.75))
+                                        .foregroundColor(selectedRoom == roomType ? .yellow : Color("SecondaryWhite"))
                                         .padding(.vertical, 0)
                                         .padding(.horizontal, 0)
                                 }.padding()
@@ -60,12 +60,12 @@ struct DeviceNamingScreen: View {
                     .frame(maxWidth: .infinity)
                     .cornerRadius(15)
                     .background(
-                        RoundedRectangle(cornerRadius: 15, style: .continuous).fill(Color(red: 0.16, green: 0.16, blue: 0.16))
+                        RoundedRectangle(cornerRadius: 15, style: .continuous).fill(Color("SecondaryBlack"))
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: 15)
                             .inset(by: 0.5)
-                            .stroke(Color(red: 0.75, green: 0.75, blue: 0.75), lineWidth: 1)
+                            .stroke(Color("SecondaryWhite"), lineWidth: 1)
                     )
                 }.padding()
                 Spacer()
@@ -74,8 +74,8 @@ struct DeviceNamingScreen: View {
                         Text("Next")
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
-                            .background(Color(red: 1.00, green: 0.79, blue: 0.23))
+                            .foregroundColor(Color("PrimaryBlack"))
+                            .background(Color("Action"))
                             .clipShape(Capsule())
                             .padding(.horizontal)
                 })

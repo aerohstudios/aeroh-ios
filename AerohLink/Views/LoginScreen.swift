@@ -22,7 +22,7 @@ struct LoginScreen: View {
 
         ZStack {
             // Background color
-            Color(red: 0.06, green: 0.05, blue: 0.08)
+            Color("PrimaryBlack")
                 .edgesIgnoringSafeArea(.all)
 
             VStack(spacing: 30) {
@@ -33,7 +33,7 @@ struct LoginScreen: View {
                 VStack(spacing: 22) {
                     // Login Text
                     Text("Log in")
-                        .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                        .foregroundColor(Color("SecondaryWhite"))
                         .font(.title2)
                         .bold()
 
@@ -65,7 +65,7 @@ struct LoginScreen: View {
                             .padding()
                             .overlay(
                                 RoundedRectangle(cornerRadius: 30)
-                                    .stroke(emailError ? Color.red : Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
+                                    .stroke(emailError ? Color.red : Color("SecondaryBlack"), lineWidth: 1)
                             )
                             .padding(.horizontal)
                             .colorScheme(.dark)
@@ -88,7 +88,7 @@ struct LoginScreen: View {
                         .padding()
                         .overlay(
                             RoundedRectangle(cornerRadius: 30)
-                                .stroke(passwordError ? Color.red : Color(red: 0.16, green: 0.16, blue: 0.16), lineWidth: 1)
+                                .stroke(passwordError ? Color.red : Color("SecondaryBlack"), lineWidth: 1)
                         )
                         .padding(.horizontal)
                         .colorScheme(.dark)
@@ -116,8 +116,8 @@ struct LoginScreen: View {
                         Text("Log in")
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
-                            .background(Color(red: 1.00, green: 0.79, blue: 0.23))
+                            .foregroundColor(Color("PrimaryBlack"))
+                            .background(Color("Action"))
 
                             .clipShape(Capsule())
                             .padding(.horizontal)
@@ -127,16 +127,16 @@ struct LoginScreen: View {
                         // Line on the left
                         Rectangle()
                             .frame(width: 50, height: 1)
-                            .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                            .foregroundColor(Color("SecondaryWhite"))
 
                         // OR Text
                         Text("OR")
-                            .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                            .foregroundColor(Color("SecondaryWhite"))
 
                         // Line on the right
                         Rectangle()
                             .frame(width: 50, height: 1)
-                            .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                            .foregroundColor(Color("SecondaryWhite"))
                     }
 
                     // Sign up Button
@@ -144,7 +144,7 @@ struct LoginScreen: View {
                         Text("Sign up")
                             .frame(maxWidth: .infinity)                            .padding()
                             .foregroundColor(.white)
-                            .background(Color(red: 0.06, green: 0.05, blue: 0.08))
+                            .background(Color("PrimaryBlack"))
                             .cornerRadius(30)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 30)

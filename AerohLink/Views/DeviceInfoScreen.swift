@@ -26,7 +26,7 @@ struct DeviceInfoRow: View {
             if showDivider {
                 Divider()
                     .frame(height: 1)
-                    .overlay(Color(red: 0.16, green: 0.16, blue: 0.16))
+                    .overlay(Color("SecondaryBlack"))
             }
         }
     }
@@ -37,7 +37,7 @@ struct DeviceInfoRow: View {
                 .foregroundColor(.white)
             Spacer()
             Text(detail)
-                .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                .foregroundColor(Color("SecondaryWhite"))
             if showNavigation {
                 Image("greyArrowIcon")
                     .resizable()
@@ -50,7 +50,7 @@ struct DeviceInfoRow: View {
 struct DeviceInfoScreen: View {
     var body: some View {
         ZStack(alignment: .top) {
-            Color(red: 0.06, green: 0.05, blue: 0.08)
+            Color("PrimaryBlack")
                 .edgesIgnoringSafeArea(.all)
             VStack(alignment: .leading, spacing: 15) {
 

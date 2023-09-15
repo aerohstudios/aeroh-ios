@@ -20,11 +20,11 @@ struct CustomButton: View {
                     .frame(width: 24, height: 24)
                 Text(buttonText)
                     .fontWeight(.medium)
-                    .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
+                    .foregroundColor(Color("PrimaryBlack"))
             }
             .padding()
             .frame(maxWidth: .infinity)
-            .background(Color(red: 1.00, green: 0.79, blue: 0.23))
+            .background(Color("Action"))
             .cornerRadius(5)
             .padding(.horizontal)
         }
@@ -35,7 +35,7 @@ struct DeviceControlScreen: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
-                Color(red: 0.06, green: 0.05, blue: 0.08)
+                Color("PrimaryBlack")
                     .edgesIgnoringSafeArea(.all)
 
                 VStack(alignment: .center, spacing: 15) {

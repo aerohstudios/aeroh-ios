@@ -56,7 +56,7 @@ struct SearchBluetoothDevices: View {
     @AppStorage("demoMode") private var demoMode = false
     var body: some View {
             ZStack {
-                Color(red: 0.06, green: 0.05, blue: 0.08)
+                Color("PrimaryBlack")
                     .edgesIgnoringSafeArea(.all)
 
                 VStack(alignment: .center) {
@@ -64,11 +64,11 @@ struct SearchBluetoothDevices: View {
                     if demoMode {
                         HStack(spacing: 5) {
                             ProgressView()
-                                .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                                .foregroundColor(Color("SecondaryWhite"))
 
                             Text("Searching for nearby devices")
                                 .font(Font.custom("Poppins", size: 16))
-                                .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                                .foregroundColor(Color("SecondaryWhite"))
                         }
                         VStack(alignment: .center) {
                             BluetoothDeviceRowView(device: DeviceModel(name: "Aeroh Link"), isLastDevice: true)
@@ -77,11 +77,11 @@ struct SearchBluetoothDevices: View {
                     } else if bluetoothManager.isBluetoothOn {
                         HStack(spacing: 5) {
                             ProgressView()
-                                .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                                .foregroundColor(Color("SecondaryWhite"))
 
                             Text("Searching for nearby devices")
                                 .font(Font.custom("Poppins", size: 16))
-                                .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                                .foregroundColor(Color("SecondaryWhite"))
                         }
 
                         ScrollView {
@@ -116,7 +116,7 @@ struct SearchBluetoothDevices: View {
                             .padding(.horizontal, 30)
                             .padding(.vertical, 15)
                             .frame(maxWidth: .infinity, minHeight: 55)
-                            .background(Color(red: 0.16, green: 0.16, blue: 0.16))
+                            .background(Color("SecondaryBlack"))
                             .clipShape(Capsule())
                         })
                     }
@@ -157,15 +157,15 @@ struct BluetoothDeviceRowView: View {
                     Text("Add")
                         .font(.system(size: 12))
                         .frame(width: 79, height: 30)
-                        .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
-                        .background(Color(red: 1.00, green: 0.79, blue: 0.23))
+                        .foregroundColor(Color("PrimaryBlack"))
+                        .background(Color("Action"))
                         .clipShape(Capsule())
                 })
             }.padding(.horizontal)
 
         }.foregroundColor(.clear)
             .frame(width: 351, height: 124)
-            .background(Color(red: 0.16, green: 0.16, blue: 0.16))
+            .background(Color("SecondaryBlack"))
             .cornerRadius(15)
     }
 }
@@ -186,13 +186,13 @@ struct BottomSheetView: View {
 
                     Text("Enable Bluetooth to add aeroh link")
                         .font(Font.system(size: 14))
-                        .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                        .foregroundColor(Color("SecondaryWhite"))
                 }
             }
 
             Divider()
                 .frame(height: 2)
-                .overlay(Color(red: 0.16, green: 0.16, blue: 0.16))
+                .overlay(Color("SecondaryBlack"))
 
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
@@ -202,13 +202,13 @@ struct BottomSheetView: View {
 
                     Text("Go to settings >")
                         .font(Font.system(size: 14))
-                        .foregroundColor(Color(red: 1, green: 0.78, blue: 0.23))
+                        .foregroundColor(Color("Action"))
                 }
                 Image("SettingsIllustration")
             }
             Divider()
                 .frame(height: 2)
-                .overlay(Color(red: 0.16, green: 0.16, blue: 0.16))
+                .overlay(Color("SecondaryBlack"))
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Turn on Bluetooth")
@@ -218,7 +218,7 @@ struct BottomSheetView: View {
 
                     Text("Turned on")
                         .font(Font.custom("Poppins", size: 14))
-                        .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                        .foregroundColor(Color("SecondaryWhite"))
                 }
                 Image("BluetoothOnIllustration")
             }

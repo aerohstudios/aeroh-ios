@@ -20,8 +20,7 @@ struct HomeScreen: View {
         var body: some View {
         NavigationStack {
             ZStack(alignment: .trailing) {
-                Color(red: 0.06, green: 0.05, blue: 0.08)
-                    .edgesIgnoringSafeArea(.all)
+                Color("PrimaryBlack").edgesIgnoringSafeArea(.all)
 
                 GeometryReader { _ in
                     VStack(alignment: .leading) {
@@ -34,7 +33,7 @@ struct HomeScreen: View {
                                     .fontWeight(.semibold)
                                 Text("Good to see you again")
                                     .font(.system(size: 15))
-                                    .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                                    .foregroundColor(Color("SecondaryWhite"))
 
                             }
                             Spacer()
@@ -63,7 +62,7 @@ struct HomeScreen: View {
 
                         Text("Devices")
                             .padding(.horizontal)
-                            .foregroundColor(Color(red: 0.4, green: 0.4, blue: 0.4))
+                            .foregroundColor(Color("NonPrimaryText"))
                             .font(.system(size: 17))
                             .fontWeight(.semibold)
 
@@ -80,7 +79,7 @@ struct HomeScreen: View {
                                     Text("No devices found \n Please add a new device")
                                         .font(Font.system( size: 15))
                                         .multilineTextAlignment(.center)
-                                        .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                                        .foregroundColor(Color("SecondaryWhite"))
 
                                     Spacer()
                                 }
@@ -147,14 +146,14 @@ struct HomeScreen_Previews: PreviewProvider {
                     .padding()
                     .background(
                         Circle()
-                            .fill(Color(red: 1, green: 0.78, blue: 0.23))
+                            .fill(Color("Action"))
                             .frame(width: 44, height: 44))
 
             }
             .padding(.horizontal, 30)
             .cornerRadius(20)
             .frame(maxWidth: .infinity, minHeight: 55)
-            .background(Color(red: 0.16, green: 0.16, blue: 0.16))
+            .background(Color("SecondaryBlack"))
             .clipShape(RoundedRectangle(cornerRadius: 20))
         }
     }
@@ -176,7 +175,7 @@ struct Menu: View {
                         .fontWeight(.semibold)
 
                     Text(verbatim: UserDefaults.standard.string(forKey: "email") ?? "email")
-                        .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                        .foregroundColor(Color("SecondaryWhite"))
                         .font(.system(size: 16))
                 }
                 .padding(.horizontal)
@@ -219,7 +218,7 @@ struct Menu: View {
             Spacer()
         }.frame(width: UIScreen.main.bounds.width / 1.5)
             .padding(.horizontal, 20)
-            .background((Color(red: 0.06, green: 0.05, blue: 0.08)).edgesIgnoringSafeArea(.all))
+            .background((Color("PrimaryBlack")).edgesIgnoringSafeArea(.all))
             .alert(isPresented: $showingLogoutAlert) {
                 Alert(title: Text("Logout"),
                       message: Text("Are you sure you want to logout?"),
@@ -253,7 +252,7 @@ struct DeviceRowView: View {
                         .padding()
                         .background(
                             Circle()
-                                .fill(Color(red: 0.16, green: 0.16, blue: 0.16))
+                                .fill(Color("SecondaryBlack"))
                                 .frame(width: 60, height: 60))
 
                     VStack(alignment: .leading, spacing: 5) {
@@ -268,7 +267,7 @@ struct DeviceRowView: View {
             if !isLastDevice {
                 Divider()
                     .frame(height: 1)
-                    .overlay(Color(red: 0.16, green: 0.16, blue: 0.16))
+                    .overlay(Color("SecondaryBlack"))
             }
         }
     }

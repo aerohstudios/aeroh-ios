@@ -17,7 +17,7 @@ struct SplashScreen: View {
         if !isActive {
             ZStack {
                 // Background color
-                Color(red: 1.00, green: 0.79, blue: 0.23)
+                Color("Action")
                     .edgesIgnoringSafeArea(.all)
 
                 VStack {

@@ -12,54 +12,54 @@ struct ChangeDeviceTypeScreen: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
-                Color(red: 0.06, green: 0.05, blue: 0.08)
+                Color("PrimaryBlack")
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                 VStack(alignment: .leading, spacing: 20) {
                     HStack(spacing: 20) {
-                        DeviceTypeComponent(icon: Image(systemName: "tv.fill"), text: "TV", color: Color(red: 0.16, green: 0.16, blue: 0.16), isSelected: selectedSquareIndex == 0)
+                        DeviceTypeComponent(icon: Image(systemName: "tv.fill"), text: "TV", color: Color("SecondaryBlack"), isSelected: selectedSquareIndex == 0)
                             .onTapGesture {
                                 selectedSquareIndex = 0
                             }
-                        DeviceTypeComponent(icon: Image(systemName: "tv.and.mediabox"), text: "Set-top box", color: Color(red: 0.16, green: 0.16, blue: 0.16), isSelected: selectedSquareIndex == 1)
+                        DeviceTypeComponent(icon: Image(systemName: "tv.and.mediabox"), text: "Set-top box", color: Color("SecondaryBlack"), isSelected: selectedSquareIndex == 1)
                             .onTapGesture {
                                 selectedSquareIndex = 1
                             }
-                        DeviceTypeComponent(icon: Image(systemName: "fanblades.fill"), text: "AC", color: Color(red: 0.16, green: 0.16, blue: 0.16), isSelected: selectedSquareIndex == 2)
+                        DeviceTypeComponent(icon: Image(systemName: "fanblades.fill"), text: "AC", color: Color("SecondaryBlack"), isSelected: selectedSquareIndex == 2)
                             .onTapGesture {
                                 selectedSquareIndex = 2
                             }
                     }
                     HStack(spacing: 20) {
-                        DeviceTypeComponent(icon: Image(systemName: "fan.floor.fill"), text: "Fan", color: Color(red: 0.16, green: 0.16, blue: 0.16), isSelected: selectedSquareIndex == 3)
+                        DeviceTypeComponent(icon: Image(systemName: "fan.floor.fill"), text: "Fan", color: Color("SecondaryBlack"), isSelected: selectedSquareIndex == 3)
                             .onTapGesture {
                                 selectedSquareIndex = 3
                             }
-                        DeviceTypeComponent(icon: Image(systemName: "appletv.fill"), text: "Smart box", color: Color(red: 0.16, green: 0.16, blue: 0.16), isSelected: selectedSquareIndex == 4)
+                        DeviceTypeComponent(icon: Image(systemName: "appletv.fill"), text: "Smart box", color: Color("SecondaryBlack"), isSelected: selectedSquareIndex == 4)
                             .onTapGesture {
                                 selectedSquareIndex = 4
                             }
-                        DeviceTypeComponent(icon: Image(systemName: "hifispeaker.2.fill"), text: "A/V receiver", color: Color(red: 0.16, green: 0.16, blue: 0.16), isSelected: selectedSquareIndex == 5)
+                        DeviceTypeComponent(icon: Image(systemName: "hifispeaker.2.fill"), text: "A/V receiver", color: Color("SecondaryBlack"), isSelected: selectedSquareIndex == 5)
                             .onTapGesture {
                                 selectedSquareIndex = 5
                             }
                     }
                     HStack(spacing: 20) {
-                        DeviceTypeComponent(icon: Image(systemName: "externaldrive.fill"), text: "DVD player", color: Color(red: 0.16, green: 0.16, blue: 0.16), isSelected: selectedSquareIndex == 6)
+                        DeviceTypeComponent(icon: Image(systemName: "externaldrive.fill"), text: "DVD player", color: Color("SecondaryBlack"), isSelected: selectedSquareIndex == 6)
                             .onTapGesture {
                                 selectedSquareIndex = 6
                             }
-                        DeviceTypeComponent(icon: Image(systemName: "videoprojector.fill"), text: "Projector", color: Color(red: 0.16, green: 0.16, blue: 0.16), isSelected: selectedSquareIndex == 7)
+                        DeviceTypeComponent(icon: Image(systemName: "videoprojector.fill"), text: "Projector", color: Color("SecondaryBlack"), isSelected: selectedSquareIndex == 7)
                             .onTapGesture {
                                 selectedSquareIndex = 7
                             }
-                        DeviceTypeComponent(icon: Image(systemName: "camera.fill"), text: "Camera", color: Color(red: 0.16, green: 0.16, blue: 0.16), isSelected: selectedSquareIndex == 8)
+                        DeviceTypeComponent(icon: Image(systemName: "camera.fill"), text: "Camera", color: Color("SecondaryBlack"), isSelected: selectedSquareIndex == 8)
                             .onTapGesture {
                                 selectedSquareIndex = 8
                             }
                     }
                     HStack(alignment: .top, spacing: 20) {
-                        DeviceTypeComponent(icon: Image(systemName: "plus.circle.fill"), text: "Custom", color: Color(red: 0.16, green: 0.16, blue: 0.16), isSelected: selectedSquareIndex == 9)
+                        DeviceTypeComponent(icon: Image(systemName: "plus.circle.fill"), text: "Custom", color: Color("SecondaryBlack"), isSelected: selectedSquareIndex == 9)
                             .onTapGesture {
                                 selectedSquareIndex = 9
                             }
@@ -70,8 +70,8 @@ struct ChangeDeviceTypeScreen: View {
                     Text("Save")
                         .frame(maxWidth: .infinity)
                         .padding()
-                        .foregroundColor(Color(red: 0.06, green: 0.05, blue: 0.08))
-                        .background(Color(red: 1.00, green: 0.79, blue: 0.23))
+                        .foregroundColor(Color("PrimaryBlack"))
+                        .background(Color("Action"))
                         .clipShape(Capsule())
                         .padding(.horizontal)
                 })
@@ -113,7 +113,7 @@ struct DeviceTypeComponent: View {
                     .padding(5)
                 Text(text)
                     .font(.system(size: 14))
-                    .foregroundColor(Color(red: 0.75, green: 0.75, blue: 0.75))
+                    .foregroundColor(Color("SecondaryWhite"))
             }
         }
     }
