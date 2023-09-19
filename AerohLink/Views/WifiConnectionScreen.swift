@@ -58,6 +58,7 @@ struct WifiConnectionScreen: View {
     @ObservedObject var viewModel = WiFiListViewModel()
     @AppStorage("demoMode") private var demoMode = false
     @StateObject private var newDeviceController = NewDeviceController()
+    @State private var createDeviceSuccessful = false
 
     var body: some View {
         NavigationView {
@@ -113,6 +114,9 @@ struct WifiConnectionScreen: View {
                             NavigationLink(destination: DeviceNamingScreen(), label: {
                                 Button(action: {
                                     saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
+                                    newDeviceController.createDevice(name: "Aeroh Link", macAddr: "12:AB:34:CD:56:EF") { _ in
+                                        createDeviceSuccessful = true
+                                    }
                                 }) {
                                     Text("Next")
                                         .frame(maxWidth: .infinity)
@@ -195,6 +199,7 @@ struct WifiConnectionScreen: View {
                                 Button(action: {
                                     saveWiFiCredentials(ssid: wifiName, password: wifiPassword)
                                     newDeviceController.createDevice(name: "Aeroh Link", macAddr: "12:AB:34:CD:56:EF") { _ in
+                                        createDeviceSuccessful = true
                                     }
                                 }) {
                                     Text("Next")
@@ -229,7 +234,9 @@ struct WifiConnectionScreen: View {
             }
         }.navigationTitle("Connect Wi-Fi")
             .navigationBarTitleDisplayMode(.inline)
-
+            .overlay(
+                ErrorModalView(isShowing: $newDeviceController.showErrorAlert, errorLog: newDeviceController.error?.localizedDescription ?? "Error", supportEmail: "support@aeroh.org")
+                    )
     }
 
     func saveWiFiCredentials(ssid: String, password: String) {
