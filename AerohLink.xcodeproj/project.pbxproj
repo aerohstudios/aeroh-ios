@@ -24,6 +24,11 @@
 		918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */; };
 		918B84EB2A45798700C4FD75 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918B84EA2A45798700C4FD75 /* SplashScreen.swift */; };
 		918BEDC32AA212FC001CFF59 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918BEDC22AA212FC001CFF59 /* SettingsPage.swift */; };
+		918EA3E22AB9A0D3002AA904 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918EA3E12AB9A0D3002AA904 /* UIDeviceExtension.swift */; };
+		918EA3E42AB9A4A7002AA904 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918EA3E32AB9A4A7002AA904 /* BundleExtension.swift */; };
+		918EA3E62AB9A4E4002AA904 /* DeviceModels.json in Resources */ = {isa = PBXBuildFile; fileRef = 918EA3E52AB9A4E4002AA904 /* DeviceModels.json */; };
+		918EA3EA2AB9AE1C002AA904 /* SupportEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918EA3E92AB9AE1C002AA904 /* SupportEmail.swift */; };
+		918EA3EF2AB9ED29002AA904 /* ErrorModalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918EA3EE2AB9ED29002AA904 /* ErrorModalComponent.swift */; };
 		9193EF582A6E35BC00F4DBDB /* EnvConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193EF572A6E35BC00F4DBDB /* EnvConstants.swift */; };
 		9193EF5E2A73F35A00F4DBDB /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193EF5D2A73F35900F4DBDB /* LoginManager.swift */; };
 		9193EF602A740FFE00F4DBDB /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9193EF5F2A740FFE00F4DBDB /* UserModel.swift */; };
@@ -89,6 +94,12 @@
 		918B84EA2A45798700C4FD75 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		918B84EC2A457A5900C4FD75 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		918BEDC22AA212FC001CFF59 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
+		918EA3E12AB9A0D3002AA904 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
+		918EA3E32AB9A4A7002AA904 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
+		918EA3E52AB9A4E4002AA904 /* DeviceModels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = DeviceModels.json; path = ../../../../../Downloads/DeviceModels.json; sourceTree = "<group>"; };
+		918EA3E72AB9A52D002AA904 /* DeviceModels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DeviceModels.json; sourceTree = "<group>"; };
+		918EA3E92AB9AE1C002AA904 /* SupportEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportEmail.swift; sourceTree = "<group>"; };
+		918EA3EE2AB9ED29002AA904 /* ErrorModalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModalComponent.swift; sourceTree = "<group>"; };
 		9193EF572A6E35BC00F4DBDB /* EnvConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvConstants.swift; sourceTree = "<group>"; };
 		9193EF5D2A73F35900F4DBDB /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		9193EF5F2A740FFE00F4DBDB /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -162,6 +173,7 @@
 		58F022822A440F9C00980667 /* AerohLink */ = {
 			isa = PBXGroup;
 			children = (
+				918EA3E02AB9A0A9002AA904 /* Extensions */,
 				58A97CEA2AAAA3A6009261FA /* AerohLinkDebug.entitlements */,
 				91AD20C42A5FAB5B008D521D /* Constants */,
 				91AD20B52A5FA7E8008D521D /* Models */,
@@ -170,6 +182,7 @@
 				918B84E72A4576C000C4FD75 /* Views */,
 				58F022832A440F9C00980667 /* AerohLinkApp.swift */,
 				58F022872A440F9D00980667 /* Assets.xcassets */,
+				918EA3E72AB9A52D002AA904 /* DeviceModels.json */,
 				58F022892A440F9D00980667 /* Preview Content */,
 			);
 			path = AerohLink;
@@ -178,6 +191,7 @@
 		58F022892A440F9D00980667 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				918EA3E52AB9A4E4002AA904 /* DeviceModels.json */,
 				58F0228A2A440F9D00980667 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -211,6 +225,7 @@
 		918B84E72A4576C000C4FD75 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				918EA3ED2AB9ED0A002AA904 /* Components */,
 				58F022852A440F9C00980667 /* ContentView.swift */,
 				918B84E82A4576D600C4FD75 /* OnboardingScreenView.swift */,
 				918B84EA2A45798700C4FD75 /* SplashScreen.swift */,
@@ -230,6 +245,23 @@
 				916769872AB1DCA200E7873E /* ChangeRoomNameScreen.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		918EA3E02AB9A0A9002AA904 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				918EA3E12AB9A0D3002AA904 /* UIDeviceExtension.swift */,
+				918EA3E32AB9A4A7002AA904 /* BundleExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		918EA3ED2AB9ED0A002AA904 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				918EA3EE2AB9ED29002AA904 /* ErrorModalComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		91AD20AD2A5FA621008D521D /* Controllers */ = {
@@ -263,6 +295,7 @@
 				91AD20B82A5FA80F008D521D /* KeyChainManager.swift */,
 				911FE6182A8100D70059E69C /* UserInfo.swift */,
 				91CB07B32A84EC3900573301 /* DeviceModel.swift */,
+				918EA3E92AB9AE1C002AA904 /* SupportEmail.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -389,6 +422,7 @@
 			files = (
 				58F0228B2A440F9D00980667 /* Preview Assets.xcassets in Resources */,
 				58F022882A440F9D00980667 /* Assets.xcassets in Resources */,
+				918EA3E62AB9A4E4002AA904 /* DeviceModels.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,7 +486,10 @@
 				91EFEB0C2AAF3318000A61B6 /* DeviceTypeSelectionScreen.swift in Sources */,
 				916769862AB1C9CC00E7873E /* ChangeDeviceTypeScreen.swift in Sources */,
 				911FE6152A77AD630059E69C /* LoginScreen.swift in Sources */,
+				918EA3EA2AB9AE1C002AA904 /* SupportEmail.swift in Sources */,
 				91AD20AF2A5FA67C008D521D /* SignupController.swift in Sources */,
+				918EA3E22AB9A0D3002AA904 /* UIDeviceExtension.swift in Sources */,
+				918EA3EF2AB9ED29002AA904 /* ErrorModalComponent.swift in Sources */,
 				91EFEB0E2AAF5FA7000A61B6 /* DeviceControlScreen.swift in Sources */,
 				91AD20B92A5FA80F008D521D /* KeyChainManager.swift in Sources */,
 				91AD20BF2A5FAA24008D521D /* APIManager.swift in Sources */,
@@ -467,6 +504,7 @@
 				58F022842A440F9C00980667 /* AerohLinkApp.swift in Sources */,
 				91AD20B42A5FA75F008D521D /* TimestampGenerator.swift in Sources */,
 				91A37AC22AB09CC800E9B929 /* DeviceSettingsScreen.swift in Sources */,
+				918EA3E42AB9A4A7002AA904 /* BundleExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
