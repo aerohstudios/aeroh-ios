@@ -6,12 +6,12 @@
 //
 
 import Foundation
+import SwiftUI
 
 class UserController: ObservableObject {
     @Published var user: UserInfo = UserInfo(email: "email", firstName: "First Name", id: nil)
-    @Published var showAlert = false
-    @Published var alertMessage = ""
-
+    @Published var error: Error?
+    @Published var showErrorAlert = false
     func fetchUser(accessToken: String) {
         APIManager.shared.fetchUser(with: accessToken) { result in
             switch result {
@@ -23,8 +23,10 @@ class UserController: ObservableObject {
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self.showAlert = true
-                    self.alertMessage = error.localizedDescription
+                    withAnimation {
+                        self.showErrorAlert = true
+                    }
+                    self.error = error
                 }
             }
         }
