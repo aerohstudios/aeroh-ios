@@ -112,9 +112,10 @@ struct HomeScreen: View {
                     devicesController.fetchDevicesIfNeeded(accessToken: accessToken)
                 }
             }
-        }.alert(isPresented: $userController.showAlert) {
-            Alert(title: Text("Network Error"), message: Text(userController.alertMessage), dismissButton: .default(Text("OK")))
         }
+        .overlay(
+            ErrorModalView(isShowing: $userController.showErrorAlert, errorLog: userController.error?.localizedDescription ?? "Error", supportEmail: "support@aeroh.org")
+                )
     }
 
     private func loadKeychainValues() {
