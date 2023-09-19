@@ -120,15 +120,21 @@ class APIManager {
                                 } else {
                                     completion(.failure(APIError.dataParsingError))
                                 }
-                            case .failure(let error):
-                                completion(.failure(error))
+                            case .failure:
+                                completion(.failure(APIError.serverNotReachableError))
                             }
                         }
                     } else if KeychainManager.shared.getRefreshToken() != nil {
-                        refreshTokenAndRetryRequest { _ in }
+                        refreshTokenAndRetryRequest { result in
+                                switch result {
+                                case .success:
+                                    break
+                                case .failure:
+                                    completion(.failure(APIError.serverNotReachableError))
+                                }
+                            }
                     }
     }
-
         func fetchDevices(with accessToken: String, completion: @escaping (Result<[DeviceModel], Error>) -> Void) {
             guard isInternetConnected else {
                 completion(.failure(APIError.noInternetConnectionError))
@@ -189,7 +195,6 @@ class APIManager {
                     self.retryRefreshedTokenRequest(completion: completion)
                 case .failure(let error):
                     self.handleTokenRefreshFailure(error: error, completion: completion)
-                    print(error)
                 }
             }
     }
@@ -214,7 +219,7 @@ class APIManager {
                 completion(.failure(.customError(error.localizedDescription)))
             }
         } else {
-            completion(.failure(.serverError))
+            completion(.failure(APIError.serverNotReachableError))
         }
     }
 
@@ -253,8 +258,8 @@ class APIManager {
                         completion(.failure(.serverError))
                     }
                 }
-        } else {
-            completion(.failure(.customError("Invalid Request")))
+        } else if KeychainManager.shared.getRefreshToken() != nil {
+            refreshTokenAndRetryRequest { _ in }
         }
     }
 }
@@ -286,12 +291,11 @@ extension APIError: LocalizedError {
 }
 extension KeychainManager {
     internal func isAccessTokenValid() -> Bool {
-        let tokenGenerationDate = KeychainManager.shared.getCreatedAt() // Assuming it returns TimeInterval or Unix timestamp
+        let tokenGenerationDate = KeychainManager.shared.getCreatedAt()
         let expiresIn = KeychainManager.shared.getExpiresIn()
         let currentDate = Date()
         let createdDateNewType = Date(timeIntervalSince1970: TimeInterval(tokenGenerationDate ?? 0))
         let expirationDate = createdDateNewType.addingTimeInterval(TimeInterval(expiresIn ?? 0))
-
         return expirationDate > currentDate
     }
 }
