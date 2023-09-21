@@ -9,13 +9,19 @@ import SwiftUI
 
 struct SettingsPage: View {
     @AppStorage("demoMode") private var demoMode = false
+    @AppStorage("showFirmwareUpdate") private var showFirmwareUpdate = false
     var body: some View {
         ZStack(alignment: .top) {
             Color("PrimaryBlack")
                 .edgesIgnoringSafeArea(.all)
-            HStack {
-                Toggle("Demo Mode", isOn: $demoMode)
-            }.padding()
+            VStack {
+                HStack {
+                    Toggle("Demo Mode", isOn: $demoMode)
+                }.padding()
+                HStack {
+                    Toggle("Show firmware Update", isOn: $showFirmwareUpdate)
+                }.padding()
+            }
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
