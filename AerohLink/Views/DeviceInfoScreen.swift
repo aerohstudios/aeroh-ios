@@ -60,7 +60,7 @@ struct DeviceInfoScreen: View {
 
                 DeviceInfoRow(title: "Device type:", detail: "AC", destination: AnyView(ChangeDeviceTypeScreen()), showDivider: true, showNavigation: true)
 
-                DeviceInfoRow(title: "Firmware version:", detail: "1.3.1", destination: AnyView(DeviceControlScreen()), showDivider: true, showNavigation: true)
+                DeviceInfoRow(title: "Firmware version:", detail: "1.3.1", destination: AnyView(FirmwareVersionScreen()), showDivider: true, showNavigation: true)
 
                 DeviceInfoRow(title: "Mac address:", detail: "12:AB:34:CD:56:EF", destination: nil, showDivider: true, showNavigation: false)
 
