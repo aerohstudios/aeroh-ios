@@ -33,7 +33,7 @@ struct DeviceSettingsScreen: View {
                 Divider()
                     .frame(height: 1)
                     .overlay(Color("SecondaryBlack"))
-                NavigationLink(destination: DeviceNamingScreen(), label: {
+                NavigationLink(destination: ConfigureScreen(), label: {
                     Text("Configure")
                         .foregroundColor(.white)
                     Spacer()
