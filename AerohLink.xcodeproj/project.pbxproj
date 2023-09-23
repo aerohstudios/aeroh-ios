@@ -53,6 +53,8 @@
 		91EFEB0E2AAF5FA7000A61B6 /* DeviceControlScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91EFEB0D2AAF5FA7000A61B6 /* DeviceControlScreen.swift */; };
 		91F6450F2ABB379C0010119A /* FirmwareUpdateScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F6450E2ABB379C0010119A /* FirmwareUpdateScreen.swift */; };
 		91F645112ABC851D0010119A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F645102ABC851D0010119A /* LoadingView.swift */; };
+		91F645132ABD911A0010119A /* ConfigureScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F645122ABD911A0010119A /* ConfigureScreen.swift */; };
+		91F645152ABD9A640010119A /* RecordAndReplayScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91F645142ABD9A640010119A /* RecordAndReplayScreen.swift */; };
 		91FECB5E2AAB524B00D3BEC2 /* NewDeviceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FECB5D2AAB524B00D3BEC2 /* NewDeviceController.swift */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +128,8 @@
 		91EFEB0D2AAF5FA7000A61B6 /* DeviceControlScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceControlScreen.swift; sourceTree = "<group>"; };
 		91F6450E2ABB379C0010119A /* FirmwareUpdateScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirmwareUpdateScreen.swift; sourceTree = "<group>"; };
 		91F645102ABC851D0010119A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		91F645122ABD911A0010119A /* ConfigureScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureScreen.swift; sourceTree = "<group>"; };
+		91F645142ABD9A640010119A /* RecordAndReplayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordAndReplayScreen.swift; sourceTree = "<group>"; };
 		91FECB5D2AAB524B00D3BEC2 /* NewDeviceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeviceController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -251,6 +255,8 @@
 				916769872AB1DCA200E7873E /* ChangeRoomNameScreen.swift */,
 				918EA3F02ABAED72002AA904 /* FirmwareVersionScreen.swift */,
 				91F6450E2ABB379C0010119A /* FirmwareUpdateScreen.swift */,
+				91F645122ABD911A0010119A /* ConfigureScreen.swift */,
+				91F645142ABD9A640010119A /* RecordAndReplayScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -496,6 +502,7 @@
 				91AD20C12A5FAA49008D521D /* LoginController.swift in Sources */,
 				91EFEB0C2AAF3318000A61B6 /* DeviceTypeSelectionScreen.swift in Sources */,
 				916769862AB1C9CC00E7873E /* ChangeDeviceTypeScreen.swift in Sources */,
+				91F645152ABD9A640010119A /* RecordAndReplayScreen.swift in Sources */,
 				911FE6152A77AD630059E69C /* LoginScreen.swift in Sources */,
 				918EA3EA2AB9AE1C002AA904 /* SupportEmail.swift in Sources */,
 				91AD20AF2A5FA67C008D521D /* SignupController.swift in Sources */,
@@ -504,6 +511,7 @@
 				918EA3EF2AB9ED29002AA904 /* ErrorModalComponent.swift in Sources */,
 				91EFEB0E2AAF5FA7000A61B6 /* DeviceControlScreen.swift in Sources */,
 				91AD20B92A5FA80F008D521D /* KeyChainManager.swift in Sources */,
+				91F645132ABD911A0010119A /* ConfigureScreen.swift in Sources */,
 				91AD20BF2A5FAA24008D521D /* APIManager.swift in Sources */,
 				918B84E92A4576D600C4FD75 /* OnboardingScreenView.swift in Sources */,
 				911341422A49620200694A17 /* SignupScreen.swift in Sources */,
