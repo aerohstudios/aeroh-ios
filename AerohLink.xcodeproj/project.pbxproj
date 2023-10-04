@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		583026D52ACE1A2E003F1568 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583026D42ACE1A2E003F1568 /* LazyView.swift */; };
+		583026E72ACE270D003F1568 /* BlufiLibrary in Resources */ = {isa = PBXBuildFile; fileRef = 583026E62ACE270D003F1568 /* BlufiLibrary */; };
+		583026EC2ACE28A5003F1568 /* BlufiNotifyData.m in Sources */ = {isa = PBXBuildFile; fileRef = 583026EA2ACE28A5003F1568 /* BlufiNotifyData.m */; };
+		583026ED2ACE28A5003F1568 /* BlufiFrameCtrlData.m in Sources */ = {isa = PBXBuildFile; fileRef = 583026EB2ACE28A5003F1568 /* BlufiFrameCtrlData.m */; };
+		583026F42ACE28B6003F1568 /* BlufiScanResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 583026EE2ACE28B6003F1568 /* BlufiScanResponse.m */; };
+		583026F52ACE28B6003F1568 /* BlufiStatusResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 583026EF2ACE28B6003F1568 /* BlufiStatusResponse.m */; };
+		583026F62ACE28B6003F1568 /* BlufiVersionResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 583026F02ACE28B6003F1568 /* BlufiVersionResponse.m */; };
+		583026F72ACE28B6003F1568 /* BlufiConfigureParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 583026F12ACE28B6003F1568 /* BlufiConfigureParams.m */; };
+		583026F82ACE28B6003F1568 /* BlufiConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 583026F22ACE28B6003F1568 /* BlufiConstants.m */; };
+		583026F92ACE28B6003F1568 /* BlufiClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 583026F32ACE28B6003F1568 /* BlufiClient.m */; };
+		583026FC2ACE28CA003F1568 /* BlufiSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 583026FA2ACE28CA003F1568 /* BlufiSecurity.m */; };
+		583026FD2ACE28CA003F1568 /* BlufiDH.m in Sources */ = {isa = PBXBuildFile; fileRef = 583026FB2ACE28CA003F1568 /* BlufiDH.m */; };
+		583027022ACE2BD3003F1568 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 583026FE2ACE2B88003F1568 /* libcrypto.a */; };
+		583027032ACE2BD3003F1568 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 583026FF2ACE2B88003F1568 /* libssl.a */; };
 		58F022842A440F9C00980667 /* AerohLinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022832A440F9C00980667 /* AerohLinkApp.swift */; };
 		58F022862A440F9C00980667 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022852A440F9C00980667 /* ContentView.swift */; };
 		58F022882A440F9D00980667 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58F022872A440F9D00980667 /* Assets.xcassets */; };
@@ -79,6 +92,20 @@
 /* Begin PBXFileReference section */
 		583026D32ACE0F7D003F1568 /* AerohLink.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AerohLink.entitlements; sourceTree = "<group>"; };
 		583026D42ACE1A2E003F1568 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
+		583026E62ACE270D003F1568 /* BlufiLibrary */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BlufiLibrary; sourceTree = "<group>"; };
+		583026E82ACE272C003F1568 /* AerohLink-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AerohLink-Bridging-Header.h"; sourceTree = "<group>"; };
+		583026EA2ACE28A5003F1568 /* BlufiNotifyData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BlufiNotifyData.m; path = AerohLink/BlufiLibrary/Data/BlufiNotifyData.m; sourceTree = "<group>"; };
+		583026EB2ACE28A5003F1568 /* BlufiFrameCtrlData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BlufiFrameCtrlData.m; path = AerohLink/BlufiLibrary/Data/BlufiFrameCtrlData.m; sourceTree = "<group>"; };
+		583026EE2ACE28B6003F1568 /* BlufiScanResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BlufiScanResponse.m; path = AerohLink/BlufiLibrary/Response/BlufiScanResponse.m; sourceTree = "<group>"; };
+		583026EF2ACE28B6003F1568 /* BlufiStatusResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BlufiStatusResponse.m; path = AerohLink/BlufiLibrary/Response/BlufiStatusResponse.m; sourceTree = "<group>"; };
+		583026F02ACE28B6003F1568 /* BlufiVersionResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BlufiVersionResponse.m; path = AerohLink/BlufiLibrary/Response/BlufiVersionResponse.m; sourceTree = "<group>"; };
+		583026F12ACE28B6003F1568 /* BlufiConfigureParams.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BlufiConfigureParams.m; path = AerohLink/BlufiLibrary/Response/BlufiConfigureParams.m; sourceTree = "<group>"; };
+		583026F22ACE28B6003F1568 /* BlufiConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BlufiConstants.m; path = AerohLink/BlufiLibrary/Response/BlufiConstants.m; sourceTree = "<group>"; };
+		583026F32ACE28B6003F1568 /* BlufiClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BlufiClient.m; path = AerohLink/BlufiLibrary/Response/BlufiClient.m; sourceTree = "<group>"; };
+		583026FA2ACE28CA003F1568 /* BlufiSecurity.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BlufiSecurity.m; path = AerohLink/BlufiLibrary/Security/BlufiSecurity.m; sourceTree = "<group>"; };
+		583026FB2ACE28CA003F1568 /* BlufiDH.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BlufiDH.m; path = AerohLink/BlufiLibrary/Security/BlufiDH.m; sourceTree = "<group>"; };
+		583026FE2ACE2B88003F1568 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = AerohLink/BlufiLibrary/Security/openssl/libcrypto.a; sourceTree = "<group>"; };
+		583026FF2ACE2B88003F1568 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = AerohLink/BlufiLibrary/Security/openssl/libssl.a; sourceTree = "<group>"; };
 		58A97CEA2AAAA3A6009261FA /* AerohLinkDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AerohLinkDebug.entitlements; sourceTree = "<group>"; };
 		58F022802A440F9C00980667 /* AerohLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerohLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F022832A440F9C00980667 /* AerohLinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerohLinkApp.swift; sourceTree = "<group>"; };
@@ -141,6 +168,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				583027022ACE2BD3003F1568 /* libcrypto.a in Frameworks */,
+				583027032ACE2BD3003F1568 /* libssl.a in Frameworks */,
 				91AD20C92A5FB2D1008D521D /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,6 +194,16 @@
 		58F022772A440F9C00980667 = {
 			isa = PBXGroup;
 			children = (
+				583026FB2ACE28CA003F1568 /* BlufiDH.m */,
+				583026FA2ACE28CA003F1568 /* BlufiSecurity.m */,
+				583026F32ACE28B6003F1568 /* BlufiClient.m */,
+				583026F12ACE28B6003F1568 /* BlufiConfigureParams.m */,
+				583026F22ACE28B6003F1568 /* BlufiConstants.m */,
+				583026EE2ACE28B6003F1568 /* BlufiScanResponse.m */,
+				583026EF2ACE28B6003F1568 /* BlufiStatusResponse.m */,
+				583026F02ACE28B6003F1568 /* BlufiVersionResponse.m */,
+				583026EB2ACE28A5003F1568 /* BlufiFrameCtrlData.m */,
+				583026EA2ACE28A5003F1568 /* BlufiNotifyData.m */,
 				58F022822A440F9C00980667 /* AerohLink */,
 				58F022932A440F9D00980667 /* AerohLinkTests */,
 				58F0229D2A440F9D00980667 /* AerohLinkUITests */,
@@ -186,6 +225,8 @@
 		58F022822A440F9C00980667 /* AerohLink */ = {
 			isa = PBXGroup;
 			children = (
+				583026E82ACE272C003F1568 /* AerohLink-Bridging-Header.h */,
+				583026E62ACE270D003F1568 /* BlufiLibrary */,
 				583026D32ACE0F7D003F1568 /* AerohLink.entitlements */,
 				918EA3E02AB9A0A9002AA904 /* Extensions */,
 				58A97CEA2AAAA3A6009261FA /* AerohLinkDebug.entitlements */,
@@ -231,6 +272,8 @@
 		917EB5D12AA633DF00407F43 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				583026FE2ACE2B88003F1568 /* libcrypto.a */,
+				583026FF2ACE2B88003F1568 /* libssl.a */,
 				917EB5D22AA633E000407F43 /* NetworkExtension.framework */,
 			);
 			name = Frameworks;
@@ -443,6 +486,7 @@
 				58F0228B2A440F9D00980667 /* Preview Assets.xcassets in Resources */,
 				58F022882A440F9D00980667 /* Assets.xcassets in Resources */,
 				918EA3E62AB9A4E4002AA904 /* DeviceModels.json in Resources */,
+				583026E72ACE270D003F1568 /* BlufiLibrary in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +532,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				583026FC2ACE28CA003F1568 /* BlufiSecurity.m in Sources */,
+				583026FD2ACE28CA003F1568 /* BlufiDH.m in Sources */,
+				583026F42ACE28B6003F1568 /* BlufiScanResponse.m in Sources */,
+				583026F52ACE28B6003F1568 /* BlufiStatusResponse.m in Sources */,
+				583026F62ACE28B6003F1568 /* BlufiVersionResponse.m in Sources */,
+				583026F72ACE28B6003F1568 /* BlufiConfigureParams.m in Sources */,
+				583026F82ACE28B6003F1568 /* BlufiConstants.m in Sources */,
+				583026F92ACE28B6003F1568 /* BlufiClient.m in Sources */,
+				583026EC2ACE28A5003F1568 /* BlufiNotifyData.m in Sources */,
+				583026ED2ACE28A5003F1568 /* BlufiFrameCtrlData.m in Sources */,
 				91BC848D2A8CC58100C4C46E /* SearchBluetoothDevices.swift in Sources */,
 				911FE6192A8100D70059E69C /* UserInfo.swift in Sources */,
 				911FE6172A7D07160059E69C /* UserController.swift in Sources */,
@@ -693,6 +747,10 @@
 				DEVELOPMENT_TEAM = N3BWCX2BRJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/AerohLink/BlufiLibrary/**",
+					"$(SRCROOT)/AerohLink/BlufiLibrary/Security/openssl/include/",
+				);
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Aeroh Link";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We use Bluetooth to connect to nearby Aeroh devices for provisioning.";
@@ -706,6 +764,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/AerohLink/BlufiLibrary/Security/openssl";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.aeroh.AerohLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -713,6 +772,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/AerohLink/AerohLink-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -730,6 +790,10 @@
 				DEVELOPMENT_TEAM = N3BWCX2BRJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/AerohLink/BlufiLibrary/**",
+					"$(SRCROOT)/AerohLink/BlufiLibrary/Security/openssl/include/",
+				);
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Aeroh Link";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We use Bluetooth to connect to nearby Aeroh devices for provisioning.";
@@ -743,6 +807,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/AerohLink/BlufiLibrary/Security/openssl";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = org.aeroh.AerohLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -750,6 +815,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/AerohLink/AerohLink-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
