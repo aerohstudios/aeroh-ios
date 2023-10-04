@@ -15,15 +15,22 @@ struct SupportEmail {
     let errorLog: String
     var body: String {
         """
+\(messageHeader):
+-----------------------------------
+
+
+-----------------------------------
+Metadata
+-----------------------------------
 Application Name: \(Bundle.main.displayName)
 iOS: \(UIDevice.current.systemVersion)
 Device Model: \(UIDevice.current.modelName)
 App Version: \(Bundle.main.appVersion)
 App Build: \(Bundle.main.appBuild)
 Error: \(errorLog)
-Stack Trace: \(Thread.callStackSymbols.joined(separator: "\n"))
-\(messageHeader)
--------------------------------------------
+Stack Trace:
+
+\(Thread.callStackSymbols.joined(separator: "\n"))
 """
     }
     func send(openURL: OpenURLAction) {

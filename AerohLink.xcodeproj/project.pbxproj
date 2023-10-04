@@ -96,7 +96,7 @@
 		918BEDC22AA212FC001CFF59 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		918EA3E12AB9A0D3002AA904 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		918EA3E32AB9A4A7002AA904 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
-		918EA3E52AB9A4E4002AA904 /* DeviceModels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = DeviceModels.json; path = ../../../../../Downloads/DeviceModels.json; sourceTree = "<group>"; };
+		918EA3E52AB9A4E4002AA904 /* DeviceModels.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = DeviceModels.json; path = ../DeviceModels.json; sourceTree = "<group>"; };
 		918EA3E72AB9A52D002AA904 /* DeviceModels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DeviceModels.json; sourceTree = "<group>"; };
 		918EA3E92AB9AE1C002AA904 /* SupportEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportEmail.swift; sourceTree = "<group>"; };
 		918EA3EE2AB9ED29002AA904 /* ErrorModalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModalComponent.swift; sourceTree = "<group>"; };

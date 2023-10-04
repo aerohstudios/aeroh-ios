@@ -14,8 +14,8 @@ struct ErrorModalView: View {
     @Environment(\.openURL) var openURL
     var email: SupportEmail {
         SupportEmail(
-            toAddress: "support@aeroh.org",
-            subject: "Support Email",
+            toAddress: "support+ios@aeroh.org",
+            subject: "Aeroh iOS App Crash Report",
             messageHeader: "Please describe your issue below",
             errorLog: errorLog
         )
