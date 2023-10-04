@@ -76,6 +76,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		583026D32ACE0F7D003F1568 /* AerohLink.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AerohLink.entitlements; sourceTree = "<group>"; };
 		58A97CEA2AAAA3A6009261FA /* AerohLinkDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AerohLinkDebug.entitlements; sourceTree = "<group>"; };
 		58F022802A440F9C00980667 /* AerohLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerohLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F022832A440F9C00980667 /* AerohLinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerohLinkApp.swift; sourceTree = "<group>"; };
@@ -183,6 +184,7 @@
 		58F022822A440F9C00980667 /* AerohLink */ = {
 			isa = PBXGroup;
 			children = (
+				583026D32ACE0F7D003F1568 /* AerohLink.entitlements */,
 				918EA3E02AB9A0A9002AA904 /* Extensions */,
 				58A97CEA2AAAA3A6009261FA /* AerohLinkDebug.entitlements */,
 				91AD20C42A5FAB5B008D521D /* Constants */,
@@ -690,6 +692,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Aeroh Link";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We use Bluetooth to connect to nearby Aeroh devices for provisioning.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need Wi-Fi access to connect Aeroh IoT devices to the internet.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
@@ -716,6 +719,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AerohLink/AerohLink.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AerohLink/Preview Content\"";
@@ -725,6 +729,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Aeroh Link";
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "We use Bluetooth to connect to nearby Aeroh devices for provisioning.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need Wi-Fi access to connect Aeroh IoT devices to the internet.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
@@ -735,7 +740,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.aeroh.Aeroh-Link";
+				PRODUCT_BUNDLE_IDENTIFIER = org.aeroh.AerohLink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
