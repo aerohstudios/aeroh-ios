@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		583026D52ACE1A2E003F1568 /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583026D42ACE1A2E003F1568 /* LazyView.swift */; };
 		58F022842A440F9C00980667 /* AerohLinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022832A440F9C00980667 /* AerohLinkApp.swift */; };
 		58F022862A440F9C00980667 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F022852A440F9C00980667 /* ContentView.swift */; };
 		58F022882A440F9D00980667 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58F022872A440F9D00980667 /* Assets.xcassets */; };
@@ -77,6 +78,7 @@
 
 /* Begin PBXFileReference section */
 		583026D32ACE0F7D003F1568 /* AerohLink.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AerohLink.entitlements; sourceTree = "<group>"; };
+		583026D42ACE1A2E003F1568 /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		58A97CEA2AAAA3A6009261FA /* AerohLinkDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AerohLinkDebug.entitlements; sourceTree = "<group>"; };
 		58F022802A440F9C00980667 /* AerohLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AerohLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F022832A440F9C00980667 /* AerohLinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerohLinkApp.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				91F6450E2ABB379C0010119A /* FirmwareUpdateScreen.swift */,
 				91F645122ABD911A0010119A /* ConfigureScreen.swift */,
 				91F645142ABD9A640010119A /* RecordAndReplayScreen.swift */,
+				583026D42ACE1A2E003F1568 /* LazyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				91DC89A72A8FC8B60086A033 /* WifiConnectionScreen.swift in Sources */,
 				91FECB5E2AAB524B00D3BEC2 /* NewDeviceController.swift in Sources */,
 				916769842AB1C1D700E7873E /* DeviceRenameScreen.swift in Sources */,
+				583026D52ACE1A2E003F1568 /* LazyView.swift in Sources */,
 				91CB07B02A840BEF00573301 /* DeviceController.swift in Sources */,
 				58F022842A440F9C00980667 /* AerohLinkApp.swift in Sources */,
 				91AD20B42A5FA75F008D521D /* TimestampGenerator.swift in Sources */,
@@ -723,7 +727,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AerohLink/Preview Content\"";
-				DEVELOPMENT_TEAM = 8MJ523L73A;
+				DEVELOPMENT_TEAM = N3BWCX2BRJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Info.plist;
