@@ -261,7 +261,7 @@ struct DeviceRowView: View {
                             .font(.system(size: 18))
                             .foregroundColor(.white)
                     }
-
+                    Spacer()
                 }
             })
 
