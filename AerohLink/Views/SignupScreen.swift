@@ -18,6 +18,7 @@ struct SignupScreen: View {
     @State private var alertTitle = ""
     @State private var alertMessage = ""
     @ObservedObject var loginManager: LoginManager
+    @State private var isLoading = false
 
     var body: some View {
         ZStack {
@@ -138,7 +139,9 @@ struct SignupScreen: View {
                         let isValid = validateForm()
 
                         if isValid {
+                            isLoading = true
                             SignupController().authenticate(firstName: firstName, email: email, password: password) { result in
+                                isLoading = false
                                 switch result {
                                 case .success:
                                     withAnimation {
@@ -150,12 +153,22 @@ struct SignupScreen: View {
                             }
                         }
                     }) {
-                        Text("Sign up")
-                            .frame(maxWidth: .infinity)   .padding()
-                            .foregroundColor(Color("PrimaryBlack"))
-                            .background(Color("Action"))
-                            .clipShape(Capsule())
-                            .padding(.horizontal)
+                        if isLoading {
+                            Text("Signing up...")
+                                .frame(maxWidth: .infinity)   .padding()
+                                .foregroundColor(Color("PrimaryBlack"))
+                                .background(Color("Action"))
+                                .clipShape(Capsule())
+                                .padding(.horizontal)
+                                .opacity(0.3)
+                        } else {
+                            Text("Sign up")
+                                .frame(maxWidth: .infinity)   .padding()
+                                .foregroundColor(Color("PrimaryBlack"))
+                                .background(Color("Action"))
+                                .clipShape(Capsule())
+                                .padding(.horizontal)
+                        }
                     }
 
                     // Separator and "OR" text
