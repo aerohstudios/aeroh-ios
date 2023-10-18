@@ -140,33 +140,30 @@ struct BluetoothDeviceRowView: View {
     var isLastDevice: Bool
 
     var body: some View {
-        HStack(alignment: .center, spacing: 60) {
-            Image("AerohLinkIllustration")
-                .resizable()
-                .frame(width: 113.0, height: 68.34)
-                .aspectRatio(1, contentMode: .fit)
-                .padding()
+        NavigationLink(destination: LazyView(WifiConnectionScreen()), label: {
+            HStack(alignment: .center, spacing: 60) {
+                Image("AerohLinkIllustration")
+                    .resizable()
+                    .frame(width: 113.0, height: 68.34)
+                    .aspectRatio(1, contentMode: .fit)
+                    .padding()
 
-            VStack(alignment: .leading, spacing: 10) {
-                Text(device.name)
-                    .font(.system(size: 16))
-                    .foregroundColor(.white)
-                    .fontWeight(.medium)
+                VStack(alignment: .trailing, spacing: 4) {
+                    Text(device.name)
+                        .font(.system(size: 16))
+                        .foregroundColor(.white)
+                        .fontWeight(.medium)
 
-                NavigationLink(destination: LazyView(WifiConnectionScreen()), label: {
-                    Text("Add")
-                        .font(.system(size: 12))
-                        .frame(width: 79, height: 30)
-                        .foregroundColor(Color("PrimaryBlack"))
-                        .background(Color("Action"))
-                        .clipShape(Capsule())
-                })
-            }.padding(.horizontal)
+                    Text("12:AB:34:CD:56:EF")
+                      .font(Font.system(size: 10))
+                      .foregroundColor(Color("SecondaryWhite"))
+                }.padding(.horizontal)
 
-        }.foregroundColor(.clear)
-            .frame(width: 351, height: 124)
-            .background(Color("SecondaryBlack"))
-            .cornerRadius(15)
+            }.foregroundColor(.clear)
+                .frame(width: 351, height: 124)
+                .background(Color("SecondaryBlack"))
+                .cornerRadius(15)
+        })
     }
 }
 
