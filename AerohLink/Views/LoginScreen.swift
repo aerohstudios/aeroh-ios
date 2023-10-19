@@ -17,6 +17,7 @@ struct LoginScreen: View {
     @State private var alertTitle = ""
     @State private var alertMessage = ""
     @ObservedObject var loginManager: LoginManager
+    @State private var isLoading = false
 
     var body: some View {
 
@@ -100,7 +101,9 @@ struct LoginScreen: View {
                         isValid = validateForm()
 
                         if isValid {
+                            isLoading = true
                             LoginController().authenticate(email: email, password: password, loginManager: loginManager) { result in
+                                isLoading = false
                                 switch result {
                                 case .success:
                                     withAnimation {
@@ -113,14 +116,24 @@ struct LoginScreen: View {
                         }
 
                     }) {
-                        Text("Log in")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .foregroundColor(Color("PrimaryBlack"))
-                            .background(Color("Action"))
-
-                            .clipShape(Capsule())
-                            .padding(.horizontal)
+                        if isLoading {
+                            Text("Logging in...")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .foregroundColor(Color("PrimaryBlack"))
+                                .background(Color("Action"))
+                                .clipShape(Capsule())
+                                .padding(.horizontal)
+                                .opacity(0.3)
+                        } else {
+                            Text("Log in")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .foregroundColor(Color("PrimaryBlack"))
+                                .background(Color("Action"))
+                                .clipShape(Capsule())
+                                .padding(.horizontal)
+                        }
                     }
 
                     HStack(spacing: 7) {

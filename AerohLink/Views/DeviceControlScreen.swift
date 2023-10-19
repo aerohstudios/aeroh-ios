@@ -32,6 +32,7 @@ struct CustomButton: View {
 
 }
 struct DeviceControlScreen: View {
+    @StateObject var loginManager = LoginManager()
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
@@ -53,14 +54,24 @@ struct DeviceControlScreen: View {
             .navigationBarBackButtonHidden(true)
         }
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                NavigationLink(destination: HomeScreen(loginManager: loginManager), label: {
+                    Image("whiteArrowIcon")
+                        .resizable()
+                        .frame(width: 16, height: 16)
+                        .rotationEffect(.degrees(-180))
+                })
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 NavigationLink(destination: DeviceSettingsScreen(), label: {
                     Image(systemName: "gearshape.fill")
+                        .font(.system(size: 16))
                         .foregroundColor(.white)
                 })
             }
         }
         .navigationTitle("Aeroh Link")
+        .navigationBarBackButtonHidden(true)
     }
 }
 
