@@ -105,6 +105,7 @@ struct HomeScreen: View {
                 }
                 .background(Color.primary.opacity(self.show ? 0.05 : 0).edgesIgnoringSafeArea(.all))
             }
+            .navigationBarBackButtonHidden(true)
             .onAppear {
                 loadKeychainValues()
                 userController.fetchUser(accessToken: accessToken)
