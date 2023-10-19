@@ -61,6 +61,7 @@ struct DeviceControlScreen: View {
             }
         }
         .navigationTitle("Aeroh Link")
+        .navigationBarBackButtonHidden(true)
     }
 }
 
